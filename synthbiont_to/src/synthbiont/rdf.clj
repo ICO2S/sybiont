@@ -9,6 +9,6 @@
        RDF_BASE_URI "http://www.bacillondex.org"
        stream (FileInputStream. (File. rdfFilePath))
        model (ModelFactory/createDefaultModel)]               
-  (.setNsPrefix model "" RDF_BASE_URI)  
+  (.setNsPrefix model "" RDF_BASE_URI)
   (.read model stream (RDFS/getURI))
   ))

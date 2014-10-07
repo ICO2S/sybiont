@@ -1,6 +1,8 @@
 (ns synthbiont.core
   (:use [tawny.owl])
   (:use [synthbiont.ontology])  
+  (:use [synthbiont.rdf])
+  (:use [synthbiont.param])  
   (:require [tawny
              [polyglot]
              [reasoner :as r]
@@ -16,47 +18,15 @@
 
  (def ^:dynamic model) 
  
-; ontology URIs
-(def ONTOLOGY_URI "http://www.sybio.ncl.ac.uk")
-(def ONTOLOGY_DATA_URI "http://www.bacillondex.org")
-(def GO_URI "http://purl.org/obo/owl/GO")
 
-
-;Namespaces
-(def conceptNS (str ONTOLOGY_DATA_URI  "/concept/"))
-(def relationTypeNS (str ONTOLOGY_DATA_URI  "/relationType/"))
-(def attributeNS (str ONTOLOGY_DATA_URI  "/attributeName/"))
-(def evidenceTypeNS (str ONTOLOGY_DATA_URI  "/evidenceType/"))
-(def cvNS (str ONTOLOGY_DATA_URI  "/cv/"))
-(def ondexcoreNS "http://ondex.sourceforge.net/ondex-core#")
-
-;RDF Data Property definitions
-(def RDFS_COMMENT_PROPERTIES (hash-set "description" "annotation" "comment" "conceptDescription"))
-(def RDFS_LABEL_PROPERTIES (hash-set "title" "conceptName"))
-(def ANNOTATION_PROPERTIES (hash-set "pid" "evidence" "elementOf" "TAXID" "annotatedsequence" "originalannotatedsequence" "AA" "URL" "operongenes" "BEGIN" "END" "ReadingFrame" "BM" "Control" "Target" "DELTAGO" "EndOfBindingSite" "Length" "StartOfBindingsite" "UnnormalizedMaxExpression" "UnnormalizedMinExpression" "COGProcess" "title" "conceptName" "description" "annotation" "comment" "conceptDescription"))
-(def PROPERTIES_TO_IGNORE (hash-set "identifier"))
-(def GO_CLASSES (hash-set "MolFunc" "BioProc" "CelComp"))
-(def SUBCLASS_RELATION (hash-set "is_a"))
-(def SAMECLASS_RELATION (hash-set "equ"))
-
-;New Class definitions
-(def EVIDENCE_TYPE_PARENT_CLASS "EvidenceType")
-(def DATA_SOURCE_PARENT_CLASS "DataSource")
-    
-;TODO (def INVERSE_PROPERTIES {:"part_of" "has_part", :"en_by" "encodes", :"equ" "equ",:"bi_to" "bound_by"})
-
-;(def ^:dynamic objectPropertyUris {})
-;(def ^:dynamic datatypePropertyUris '())
-;(def datatypePropertyUris (hash-set "equ"))       
+(def INVERSE_PROPERTIES {"part_of" "has_part", "en_by" "encodes", "equ" "equ","bi_to" "bound_by"})
+   
 ( def  datatypePropertyUris (set [])) 
-( def  objectPropertyUris (set []))   
+( def  objectPropertyUris (set []))  
+( def  annotationPropertyUris (set []))  
+( def  resourceTypeUris (set []))  
 
-(defontology synthbiont
-	 :iri "http://www.sybio.ncl.ac.uk"
-	 :prefix "sybio:"
-	 :comment "An ontology for synthetic biology"
-	 :versioninfo "1.0"
-  )  
+
  
  	(defontology bacillondex
 	  :iri "http://www.bacillondex.org"
@@ -64,94 +34,56 @@
 	  :comment "An ontology for Bacillus subtilis parts"
 	  :versioninfo "1.0"    
    )  
+
   
- ;*******GENERIC ONTOLOGY METHODS**************************
-;BEGIN
-
-
-(defn addLabel [ontology class value]
-  (owl-class ontology class :label value))
-
-(defn addAnnotationProperty [ontology class predicate value]
-  (annotation-property synthbiont predicate)
-  (owl-class ontology class :annotation (annotation synthbiont predicate value)))
-
-(defn addCommentForProperty [ontology predicate value isObjectProperty]
-  (if (= isObjectProperty true)
-    (object-property ontology predicate :comment value)
-    (datatype-property ontology predicate :comment value)    
-    ))
-
-(defn addLabelForProperty [ontology predicate value isObjectProperty]
-  (if (= isObjectProperty true)
-    (object-property ontology predicate :label value)
-    (datatype-property ontology predicate :label value)    
-    ))
-
-(defn addAnnotationPropertyForProperty [ontology predicate predicateAnnotateWith value isObjectProperty]
-  (println "annotating property with:"  predicateAnnotateWith " value:" value)
-  (annotation-property synthbiont predicateAnnotateWith)
-  (if (= isObjectProperty true)
-    (object-property synthbiont predicate :annotation (annotation synthbiont predicateAnnotateWith value))
-    (datatype-property synthbiont predicate :annotation (annotation synthbiont predicateAnnotateWith value))
-    ))
-
-(defn addDatatypeProperty [ontology class predicate value]
-  (datatype-property synthbiont predicate)
-  (owl-class ontology class :subclass (has-value synthbiont predicate value)))
-
-(defn addObjectProperty [ontology class valueOntology valueClass predicate]
-  (object-property synthbiont predicate)
-  (owl-class ontology class :subclass (owl-some synthbiont predicate (owl-class valueOntology valueClass)))
-)
-; END ****************************************************
-
-(defn getRDFModel []
-  (let [rdfFilePath "/home/goksel/work/sbolstack/DataFiles/BacillOndexPlus.rdf"
-       RDF_BASE_URI "http://www.bacillondex.org"
-       stream (FileInputStream. (File. rdfFilePath))
-       model (ModelFactory/createDefaultModel)]               
-  (.setNsPrefix model "" RDF_BASE_URI)  
-  (.read model stream (RDFS/getURI))
-  ))
-
+(defontology synthbiont
+	 :iri "http://www.sybio.ncl.ac.uk"
+	 :prefix "sybio:"
+	 :comment "An ontology for synthetic biology"
+	 :versioninfo "1.0"
+  )  
 
 (defn getID [resourceURI]
   (let [index (.lastIndexOf resourceURI "/")]
    (.substring resourceURI (+ index 1))))
 
-(defn addAnnotation [ontology class predicate value]
+(defn addAnnotation [ontology class predicateOntology predicate predicateURI value]
  (if (contains? RDFS_COMMENT_PROPERTIES  predicate)
    (addComment ontology class value)
    (do
      (if (contains? RDFS_LABEL_PROPERTIES  predicate)
 		   (addLabel ontology class value)
-       (addAnnotationProperty ontology class predicate value))       
+       (do
+          (addAnnotationProperty ontology class predicateOntology predicate value)
+          (def annotationPropertyUris (conj annotationPropertyUris  predicateURI));GMGMGM
+        ))       
      )   
  ))
 
 (defn addLiteralPropertyToClass [ontology stmt]
   (let [predicateName (str (.getLocalName(.getPredicate stmt)))
         objectValue (str (.toString (.getValue (.asLiteral (.getObject stmt)))))
-         class (getID (.getURI (.getSubject stmt)))]
+         class (getID (.getURI (.getSubject stmt)))
+         predicateURI (.getURI (.getPredicate stmt))
+         ]
   (if-not (contains? PROPERTIES_TO_IGNORE  predicateName)
     (if (contains? ANNOTATION_PROPERTIES  predicateName)
-      (addAnnotation ontology class predicateName objectValue) 
+      (addAnnotation ontology class synthbiont predicateName predicateURI objectValue) 
       ( do        
-        (def datatypePropertyUris (conj datatypePropertyUris  (.getURI (.getPredicate stmt))))
-        (addDatatypeProperty ontology class predicateName objectValue) 
+        (def datatypePropertyUris (conj datatypePropertyUris  predicateURI))
+        (addDatatypeProperty ontology class synthbiont predicateName objectValue) 
       )
     )
   )
   ))
 
 (defn handleMetaResource [ontology resource parentOntology parentClass]
-  (let [typeId (getID (.getURI resource))]  
-   (owl-class ontology typeId)  
-  (if not (nil? parentClass)
+  (let [typeId (getID (.getURI resource))
+        typeResourceProperties (iterator-seq (.listProperties resource))
+        ]  
+  (owl-class ontology typeId)  
+  (if-not (nil? parentClass)
     (owl-class ontology typeId :subclass (owl-class parentOntology parentClass)))
-  ;TODO Change it to let  
-  (def typeResourceProperties (iterator-seq (.listProperties resource))) 
   (doseq [stmt typeResourceProperties] 
      (if (.isLiteral (.getObject stmt)) 
        (addLiteralPropertyToClass synthbiont stmt))
@@ -172,6 +104,24 @@
     (owl-class bacillondex (getID (.getURI classResource)) :subclass (owl-class synthbiont parentClass))     
   ))
 
+  (defn handleInverseProperty [ontology class valueOntology valueClass predicateOntology predicate]
+    (let [inversePredicate (.get INVERSE_PROPERTIES predicate)]
+        (if-not (nil? inversePredicate)
+          (do
+	          (as-inverse
+	             (object-property predicateOntology predicate)
+	             (object-property predicateOntology inversePredicate))
+          
+             (addObjectProperty valueOntology valueClass  ontology class predicateOntology inversePredicate)          
+		      
+             (if (= inversePredicate "has_part")                 
+                 (owl-class valueOntology valueClass :subclass ( exactly predicateOntology 1 inversePredicate (owl-class ontology class) ))
+                 ;(owl-class valueOntology valueClass :subclass (owl-some predicateOntology predicate (owl-class ontology class)))                 
+                 ;(owl-class valueOntology valueClass :subclass (exactly 1 predicateOntology inversePredicate ontology class )) 
+               )                 
+          ))
+    ))         
+            
 (defn handleRelationStatement [stmt]
   (let [predicate (.getLocalName (.getPredicate stmt))
         valueResource (.getResource model (.getURI (.asResource (.getObject stmt))))
@@ -188,24 +138,24 @@
         (if-not (or (contains? SUBCLASS_RELATION predicate) (contains? SAMECLASS_RELATION predicate)) 
           (do 
             (def objectPropertyUris (conj objectPropertyUris  (.getURI (.getPredicate stmt))))
-            (addObjectProperty bacillondex class bacillondex valueResourceId predicate)
-          )
-           ; TODO: Add the properties for this property
-           ; TODO: Add the inverse properties in the beginning or after        
-          )                          
+            (addObjectProperty bacillondex class bacillondex valueResourceId synthbiont predicate)
+            (handleInverseProperty bacillondex class bacillondex valueResourceId synthbiont predicate)  
+          ))                          
         ))
 
 (defn handleOndexCoreResource [stmt]
   (let [resource (.asResource (.getObject stmt))
         resourceUri (.getURI resource)
         predicate (.getLocalName (.getPredicate stmt))
-        class (getID (.getURI (.getSubject stmt)))]
+        class (getID (.getURI (.getSubject stmt)))
+        predicateUri (.getURI (.getPredicate stmt))        
+        ]
     (if (.startsWith resourceUri evidenceTypeNS)
       (handleMetaResource bacillondex resource synthbiont EVIDENCE_TYPE_PARENT_CLASS))
     (if (.startsWith resourceUri cvNS)
         (handleMetaResource bacillondex resource synthbiont DATA_SOURCE_PARENT_CLASS))    
     (if (contains? ANNOTATION_PROPERTIES predicate)
-      (addAnnotation bacillondex class predicate resourceUri)
+      (addAnnotation bacillondex class synthbiont predicate predicateUri resourceUri)
       (print "TODO: Handle core resources that are not annotations")
       )
     ))
@@ -230,44 +180,56 @@
 (defn handleConceptResource [resource]
    (let [typeResource (.asResource (.getObject (.getProperty resource (RDF/type))))
          type (getID (.getURI typeResource))]
-    (handleMetaResource synthbiont typeResource nil  nil)
+    ;(handleMetaResource synthbiont typeResource nil  nil)
+    (def resourceTypeUris (conj resourceTypeUris  (.getURI typeResource)))
     (addOntologyClass resource type)
     (doseq [stmt (iterator-seq (.listProperties resource))] 
       (handleStatement stmt )      
       )    
     ))
 
-(defn addPropertyAnnotation [ontology predicate predicateAnnotateWith value isObjectProperty]
+(defn addPropertyAnnotation [ontology predicate predicateAnnotateWith value propertyType]
  (if (contains? RDFS_COMMENT_PROPERTIES  predicateAnnotateWith)
-   (addCommentForProperty ontology predicate value isObjectProperty)
+   (addCommentForProperty ontology predicate value propertyType)
    (do
      (if (contains? RDFS_LABEL_PROPERTIES  predicateAnnotateWith)
-		   (addLabelForProperty ontology predicate value isObjectProperty)
-       (addAnnotationPropertyForProperty ontology predicate predicateAnnotateWith value isObjectProperty))       
+		   (addLabelForProperty ontology predicate value propertyType)
+       (addAnnotationPropertyForProperty ontology predicate predicateAnnotateWith value propertyType))       
      )   
  ))
 
-(defn handleProperty [propertyUri isObjectProperty]
+(defn handleProperty [propertyUri propertyType]
   (let [ propertyResource (.getResource model propertyUri)
         propertyName (.getLocalName propertyResource)                
         ]
-       (if isObjectProperty
-         (object-property synthbiont propertyName)
-         (datatype-property synthbiont propertyName)         
-         ) 
+       (if (= propertyType "object")
+         (object-property synthbiont propertyName))
+       
+       (if (= propertyType "datatype")       
+         (datatype-property synthbiont propertyName))
+       
+       (if (= propertyType "annotation")       
+         (annotation-property synthbiont propertyName))
+       
        (doseq [stmt (iterator-seq (.listProperties propertyResource))] 
          (if (.isLiteral (.getObject stmt))
            (if-not (contains? PROPERTIES_TO_IGNORE (.getLocalName (.getPredicate stmt)))
-             (addPropertyAnnotation synthbiont propertyName (.getLocalName (.getPredicate stmt)) (str (.getValue (.asLiteral (.getObject stmt)))) isObjectProperty)
+             (addPropertyAnnotation synthbiont propertyName (.getLocalName (.getPredicate stmt)) (str (.getValue (.asLiteral (.getObject stmt)))) propertyType)
              )
            )     
        )
     ))
 
+(defn addInverseProperties []
+  
+  )
+
 (defn convert []
+   (print "Reading the file ...")   
    (def model (getRDFModel))  
+   (println "done!")   
+   
    (let [ subjects (iterator-seq (.listSubjects model))]
-      
    ;Phil's version (doseq [subjectURI (map #(.getURI %) subjects)] 
    (doseq [subject subjects]
 	   ( let [subjectURI (.getURI subject)]     	      
@@ -275,15 +237,27 @@
 	       (handleConceptResource subject)))
      )
    )
-   (print "Datatype properties:" datatypePropertyUris)
-   (doseq [propertyUri datatypePropertyUris]
-     (handleProperty propertyUri false)
-     ;(handleProperty objectPropertyUris true)
-     )
    
-    (doseq [propertyUri objectPropertyUris]
-    (handleProperty propertyUri true)
-    )
+   (print "Adding the class types ()...")
+   (doseq [typeUri resourceTypeUris]
+       (handleMetaResource synthbiont (.getResource model typeUri) nil  nil))
+   (println "done!")
+   
+   (print "Adding the datatype properties ...")      
+   (doseq [propertyUri datatypePropertyUris]
+     (handleProperty propertyUri "datatype"))
+   (println "done!")
+   
+   (print "Adding the object properties ...")          
+   (doseq [propertyUri objectPropertyUris]
+     (handleProperty propertyUri "object"))
+    (println "done!")
+    
+   (print "Adding the annotation properties ...")          
+   (doseq [propertyUri annotationPropertyUris]
+     (handleProperty propertyUri "annotation"))
+    (println "done!")
+            
     (println "converted")    
  )
 
@@ -341,27 +315,34 @@
  ;        :subclass (has-value synthbiont "datatypeproperty1" "datatype property value2" )
  ;        )
   
- ; (def ae (list "one" "two"))
- ; (println "Before adding:" ae)
- ;(conj ae "three")
- ;(println "after adding:" ae)
+ ;(print INVERSE_PROPERTIES)  
+ ;(println "bi_to:" (get INVERSE_PROPERTIES "bi_to") )
+ ;(println "bi_to2:" (get INVERSE_PROPERTIES "bi_to2") )
  
-  ; (def aes (hash-set "one" "two"))
- ; (println "Before adding:" aes)
- ;(conj aes "three")
- ;(println "after adding:" aes)
-  
-  ;(def baselist (list "barnabas" :adam))
-;(def lst1 (cons :willie baselist))
-  
-;  ( def  datatypePropertyUris (list "barnabas" :adam))
-  
-  ;(def datatypePropertyUris  (conj  datatypePropertyUris "willie"))
-  ;(def datatypePropertyUris  (conj  datatypePropertyUris "willie"))
-  
+  ; (let [inversePredicate (.get INVERSE_PROPERTIES "part_of")]
+  ;      (if-not (nil? inversePredicate)
+  ;        (print "inverse:" inversePredicate)
+  ;        )
+   ;     )
+ 
+ ;(owl-class synthbiont "class1" :subclass ( exactly 1 synthbiont "has_part" (owl-class synthbiont "class2") ))
+ ; WORKS (owl-class synthbiont "class1" :subclass ( exactly 1  "has_part" (owl-class synthbiont "class2") ))
+ 
+ 
+ 	;(defontology ontology1)    
+  ;(defontology ontology2)  
 
-
-;(print "RESULT:" datatypePropertyUris)
+  ;(owl-class ontology1 "Class1" :subclass ( exactly ontology2 1  "predicate1" (owl-class ontology1 "Class2") ))
+ ; (owl-class ontology1 "Class1" :subclass ( owl-some  ontology2 "predicate2" (owl-class ontology1 "Class2") ))
+  ;(save-ontology ontology1 "ontology1.owl" :omn)
+  ;(save-ontology ontology2 "ontology2.owl" :omn)
+ 
+ ;(defoproperty predicate2)
+ ;(defclass ontology1 Class1
+   ;:subclass (exactly 1 predicate2 (defclass ontology1 Class2))
+   ;)
+ 
+ ;(owl-class (iri "http://purl.obolibrary.org/obo/GO_0000002" :prefix "go"))
 
  (save-ontology synthbiont "synthbiont.owl" :omn)
  (save-ontology bacillondex "bacillondex.owl" :omn)
