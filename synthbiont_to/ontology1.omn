@@ -1,0 +1,71 @@
+Prefix: o1: <http://www.ontology1.org#>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+
+
+Ontology: <http://www.ontology1.org>
+
+Import: <http://www.purl.org/ontolink/tawny>
+
+Annotations: 
+    <http://www.purl.org/ontolink/tawny#name> "ontology1"@en
+
+AnnotationProperty: <http://www.purl.org/ontolink/tawny#name>
+
+    
+Datatype: rdf:PlainLiteral
+
+    
+ObjectProperty: <http://www.ontology2.org#predicate2>
+
+    
+Class: o1:Class5
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Class5"@en
+    
+    
+Class: o1:Class4
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Class4"@en
+    
+    
+Class: o1:Class3
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Class3"@en
+    
+    SubClassOf: 
+        o1:Class1
+    
+    
+Class: o1:Class2
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Class2"@en
+    
+    
+Class: o1:Class1
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Class1"@en
+    
+    SubClassOf: 
+        <http://www.ontology2.org#predicate2> some <http://www.ontology2.org#Class2>,
+        <http://www.ontology2.org#predicate2> only 
+            (o1:Class2 or o1:Class5),
+        o1:Class4,
+        <http://www.ontology2.org#predicate2> some <http://www.ontology2.org#Class5>
+    
+    
+Class: <http://www.ontology2.org#Class5>
+
+    
+Class: <http://www.ontology2.org#Class2>
+
+    

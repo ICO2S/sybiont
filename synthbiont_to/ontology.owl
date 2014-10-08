@@ -16,17 +16,141 @@
         <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
         <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">pizzaontology</Literal>
     </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Manchester Version</Literal>
+    </Annotation>
+    <Declaration>
+        <Class IRI="#AnchoviesTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ArtichokeTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AsparagusTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CajunSpiceTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CaperTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CheeseTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CheesyPizza"/>
+    </Declaration>
     <Declaration>
         <Class IRI="#ChickenTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DeepPanBase"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FishTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FourCheesePizza"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FruitTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GarlicTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GoatsCheeseTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GorgonzolaTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GreenPepperTopping"/>
     </Declaration>
     <Declaration>
         <Class IRI="#HamTopping"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#HerbSpiceTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HighCaloriePizza"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hot"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#HotSpicedBeefTopping"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#InterestingPizza"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JalapenoPepperTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LeekTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LowCaloriePizza"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MeatTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Medium"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MediumCaloriePizza"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mild"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MixedSeafoodTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MozzarellaTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MushroomTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NamedPizza"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NonVegetarianPizza"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NutTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OliveTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OnionTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ParmesanTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PeperonataTopping"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#PeperoniSausageTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PepperTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PetitPoisTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PineKernels"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PineappleTopping"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Pizza"/>
@@ -38,20 +162,605 @@
         <Class IRI="#PizzaTopping"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#PrawnsTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RocketTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RosemaryTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SauceTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Spiciness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SpinachTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SultanaTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SweetPepperTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ThinAndCrispyBase"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TobascoPepperSauce"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TomatoTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#VegetableTopping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#VegetarianPizza"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#VegetarianPizza2"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#hasBase"/>
     </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasIngredient"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSpiciness"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasTopping"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isIngredientOf"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasCalorificContentValue"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="#myOpinion"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#CheesyPizza"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Pizza"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasTopping"/>
+                <Class IRI="#CheeseTopping"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#FourCheesePizza"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Pizza"/>
+            <ObjectExactCardinality cardinality="4">
+                <ObjectProperty IRI="#hasTopping"/>
+                <Class IRI="#CheeseTopping"/>
+            </ObjectExactCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#HighCaloriePizza"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasCalorificContentValue"/>
+            <DatatypeRestriction>
+                <Datatype abbreviatedIRI="xsd:integer"/>
+                <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minInclusive">
+                    <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">700</Literal>
+                </FacetRestriction>
+            </DatatypeRestriction>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#InterestingPizza"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Pizza"/>
+            <ObjectMinCardinality cardinality="3">
+                <ObjectProperty IRI="#hasTopping"/>
+                <Class IRI="#PizzaTopping"/>
+            </ObjectMinCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#LowCaloriePizza"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasCalorificContentValue"/>
+            <DatatypeRestriction>
+                <Datatype abbreviatedIRI="xsd:integer"/>
+                <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxInclusive">
+                    <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">400</Literal>
+                </FacetRestriction>
+            </DatatypeRestriction>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#MediumCaloriePizza"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasCalorificContentValue"/>
+            <DatatypeRestriction>
+                <Datatype abbreviatedIRI="xsd:integer"/>
+                <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxInclusive">
+                    <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">700</Literal>
+                </FacetRestriction>
+                <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minInclusive">
+                    <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">400</Literal>
+                </FacetRestriction>
+            </DatatypeRestriction>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#NonVegetarianPizza"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Pizza"/>
+            <ObjectComplementOf>
+                <Class IRI="#VegetarianPizza"/>
+            </ObjectComplementOf>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#VegetarianPizza"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Pizza"/>
+            <ObjectComplementOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#hasTopping"/>
+                    <Class IRI="#FishTopping"/>
+                </ObjectSomeValuesFrom>
+            </ObjectComplementOf>
+            <ObjectComplementOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#hasTopping"/>
+                    <Class IRI="#MeatTopping"/>
+                </ObjectSomeValuesFrom>
+            </ObjectComplementOf>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#VegetarianPizza2"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Pizza"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#hasTopping"/>
+                <ObjectComplementOf>
+                    <ObjectUnionOf>
+                        <Class IRI="#FishTopping"/>
+                        <Class IRI="#MeatTopping"/>
+                    </ObjectUnionOf>
+                </ObjectComplementOf>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#AnchoviesTopping"/>
+        <Class IRI="#FishTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ArtichokeTopping"/>
+        <Class IRI="#VegetableTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AsparagusTopping"/>
+        <Class IRI="#VegetableTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CajunSpiceTopping"/>
+        <Class IRI="#HerbSpiceTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CaperTopping"/>
+        <Class IRI="#VegetableTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CheeseTopping"/>
+        <Class IRI="#PizzaTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ChickenTopping"/>
+        <Class IRI="#MeatTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DeepPanBase"/>
+        <Class IRI="#PizzaBase"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DeepPanBase"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasCalorificContentValue"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">250</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FishTopping"/>
+        <Class IRI="#PizzaTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FruitTopping"/>
+        <Class IRI="#PizzaTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GarlicTopping"/>
+        <Class IRI="#VegetableTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GoatsCheeseTopping"/>
+        <Class IRI="#CheeseTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GorgonzolaTopping"/>
+        <Class IRI="#CheeseTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GreenPepperTopping"/>
+        <Class IRI="#PepperTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HamTopping"/>
+        <Class IRI="#MeatTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HerbSpiceTopping"/>
+        <Class IRI="#PizzaTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hot"/>
+        <Class IRI="#Spiciness"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HotSpicedBeefTopping"/>
+        <Class IRI="#MeatTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JalapenoPepperTopping"/>
+        <Class IRI="#PepperTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LeekTopping"/>
+        <Class IRI="#VegetableTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MeatTopping"/>
+        <Class IRI="#PizzaTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Medium"/>
+        <Class IRI="#Spiciness"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mild"/>
+        <Class IRI="#Spiciness"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MixedSeafoodTopping"/>
+        <Class IRI="#FishTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MozzarellaTopping"/>
+        <Class IRI="#CheeseTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MushroomTopping"/>
+        <Class IRI="#VegetableTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NamedPizza"/>
+        <Class IRI="#Pizza"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NutTopping"/>
+        <Class IRI="#PizzaTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OliveTopping"/>
+        <Class IRI="#VegetableTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OnionTopping"/>
+        <Class IRI="#VegetableTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ParmesanTopping"/>
+        <Class IRI="#CheeseTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PeperonataTopping"/>
+        <Class IRI="#PepperTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PeperoniSausageTopping"/>
+        <Class IRI="#MeatTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PepperTopping"/>
+        <Class IRI="#VegetableTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PetitPoisTopping"/>
+        <Class IRI="#VegetableTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PineKernels"/>
+        <Class IRI="#NutTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PineappleTopping"/>
+        <Class IRI="#FruitTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pizza"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasBase"/>
+            <Class IRI="#PizzaBase"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pizza"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasTopping"/>
+            <Class IRI="#PizzaTopping"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pizza"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasCalorificContentValue"/>
+            <Datatype abbreviatedIRI="xsd:integer"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PrawnsTopping"/>
+        <Class IRI="#FishTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RocketTopping"/>
+        <Class IRI="#VegetableTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RosemaryTopping"/>
+        <Class IRI="#HerbSpiceTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SauceTopping"/>
+        <Class IRI="#PizzaTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpinachTopping"/>
+        <Class IRI="#VegetableTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SultanaTopping"/>
+        <Class IRI="#FruitTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SweetPepperTopping"/>
+        <Class IRI="#PepperTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ThinAndCrispyBase"/>
+        <Class IRI="#PizzaBase"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ThinAndCrispyBase"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasCalorificContentValue"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">150</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TobascoPepperSauce"/>
+        <Class IRI="#SauceTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TomatoTopping"/>
+        <Class IRI="#VegetableTopping"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VegetableTopping"/>
+        <Class IRI="#PizzaTopping"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#AnchoviesTopping"/>
+        <Class IRI="#MixedSeafoodTopping"/>
+        <Class IRI="#PrawnsTopping"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#ArtichokeTopping"/>
+        <Class IRI="#AsparagusTopping"/>
+        <Class IRI="#CaperTopping"/>
+        <Class IRI="#GarlicTopping"/>
+        <Class IRI="#LeekTopping"/>
+        <Class IRI="#MushroomTopping"/>
+        <Class IRI="#OliveTopping"/>
+        <Class IRI="#OnionTopping"/>
+        <Class IRI="#PepperTopping"/>
+        <Class IRI="#PetitPoisTopping"/>
+        <Class IRI="#RocketTopping"/>
+        <Class IRI="#SpinachTopping"/>
+        <Class IRI="#TomatoTopping"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#CajunSpiceTopping"/>
+        <Class IRI="#RosemaryTopping"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#CheeseTopping"/>
+        <Class IRI="#FishTopping"/>
+        <Class IRI="#FruitTopping"/>
+        <Class IRI="#HerbSpiceTopping"/>
+        <Class IRI="#MeatTopping"/>
+        <Class IRI="#NutTopping"/>
+        <Class IRI="#SauceTopping"/>
+        <Class IRI="#VegetableTopping"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#ChickenTopping"/>
+        <Class IRI="#HamTopping"/>
+        <Class IRI="#HotSpicedBeefTopping"/>
+        <Class IRI="#PeperoniSausageTopping"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#DeepPanBase"/>
+        <Class IRI="#ThinAndCrispyBase"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#GoatsCheeseTopping"/>
+        <Class IRI="#GorgonzolaTopping"/>
+        <Class IRI="#MozzarellaTopping"/>
+        <Class IRI="#ParmesanTopping"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#GreenPepperTopping"/>
+        <Class IRI="#JalapenoPepperTopping"/>
+        <Class IRI="#PeperonataTopping"/>
+        <Class IRI="#SweetPepperTopping"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#PineappleTopping"/>
+        <Class IRI="#SultanaTopping"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Pizza"/>
+        <Class IRI="#PizzaBase"/>
+        <Class IRI="#PizzaTopping"/>
+    </DisjointClasses>
+    <DisjointUnion>
+        <Class IRI="#Spiciness"/>
+        <Class IRI="#Hot"/>
+        <Class IRI="#Medium"/>
+        <Class IRI="#Mild"/>
+    </DisjointUnion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasBase"/>
+        <ObjectProperty IRI="#hasIngredient"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasTopping"/>
+        <ObjectProperty IRI="#hasIngredient"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasIngredient"/>
+        <ObjectProperty IRI="#isIngredientOf"/>
+    </InverseObjectProperties>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasBase"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasSpiciness"/>
+    </FunctionalObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#hasIngredient"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#isIngredientOf"/>
+    </TransitiveObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasBase"/>
+        <Class IRI="#Pizza"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasTopping"/>
         <Class IRI="#Pizza"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasBase"/>
         <Class IRI="#PizzaBase"/>
     </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasTopping"/>
+        <Class IRI="#PizzaTopping"/>
+    </ObjectPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasCalorificContentValue"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#AnchoviesTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">AnchoviesTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#ArtichokeTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">ArtichokeTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#AsparagusTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">AsparagusTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#CajunSpiceTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">CajunSpiceTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#CaperTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">CaperTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#CheeseTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">CheeseTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#CheesyPizza</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">CheesyPizza</Literal>
+    </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
         <IRI>#ChickenTopping</IRI>
         <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">ChickenTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#DeepPanBase</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">DeepPanBase</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#DeepPanBase</IRI>
+        <Literal xml:lang="pt" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">BaseEspessa</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#FishTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">FishTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#FourCheesePizza</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">FourCheesePizza</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#FruitTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">FruitTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#GarlicTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">GarlicTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#GoatsCheeseTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">GoatsCheeseTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#GorgonzolaTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">GorgonzolaTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#GreenPepperTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">GreenPepperTopping</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
@@ -60,13 +769,143 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#HerbSpiceTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">HerbSpiceTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#HighCaloriePizza</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">HighCaloriePizza</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#Hot</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Hot</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
         <IRI>#HotSpicedBeefTopping</IRI>
         <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">HotSpicedBeefTopping</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#InterestingPizza</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">InterestingPizza</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#JalapenoPepperTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">JalapenoPepperTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#LeekTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">LeekTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#LowCaloriePizza</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">LowCaloriePizza</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#MeatTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">MeatTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#Medium</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Medium</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#MediumCaloriePizza</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">MediumCaloriePizza</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#Mild</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Mild</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#MixedSeafoodTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">MixedSeafoodTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#MozzarellaTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">MozzarellaTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#MushroomTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">MushroomTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#NamedPizza</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">NamedPizza</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="#myOpinion"/>
+        <IRI>#NonVegetarianPizza</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Not a good start.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#NonVegetarianPizza</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">NonVegetarianPizza</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#NutTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">NutTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#OliveTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">OliveTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#OnionTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">OnionTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#ParmesanTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">ParmesanTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#PeperonataTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">PeperonataTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
         <IRI>#PeperoniSausageTopping</IRI>
         <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">PeperoniSausageTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#PepperTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">PepperTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#PetitPoisTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">PetitPoisTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#PineKernels</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">PineKernels</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#PineappleTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">PineappleTopping</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
@@ -76,12 +915,7 @@
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#Pizza</IRI>
-        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Pizza1</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#Pizza</IRI>
-        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">PizzaGM</Literal>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Pizza</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
@@ -100,9 +934,133 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#PrawnsTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">PrawnsTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#RocketTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">RocketTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#RosemaryTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">RosemaryTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#SauceTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SauceTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#Spiciness</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Spiciness</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#SpinachTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SpinachTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#SultanaTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SultanaTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#SweetPepperTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SweetPepperTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#ThinAndCrispyBase</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">ThinAndCrispyBase</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ThinAndCrispyBase</IRI>
+        <Literal xml:lang="pt" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">BaseFinaEQuebradica</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#TobascoPepperSauce</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">TobascoPepperSauce</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#TomatoTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">TomatoTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#VegetableTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">VegetableTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="#myOpinion"/>
+        <IRI>#VegetarianPizza</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Always a good start.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#VegetarianPizza</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">VegetarianPizza</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#VegetarianPizza2</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">VegetarianPizza2</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
         <IRI>#hasBase</IRI>
         <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">hasBase</Literal>
     </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#hasCalorificContentValue</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">hasCalorificContentValue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#hasIngredient</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">hasIngredient</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#hasSpiciness</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">hasSpiciness</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#hasTopping</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">hasTopping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#isIngredientOf</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">isIngredientOf</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.purl.org/ontolink/tawny#name"/>
+        <IRI>#myOpinion</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">myOpinion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#myOpinion</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Do I think this is a good pizza to eat?</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#myOpinion</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">My Opinion</Literal>
+    </AnnotationAssertion>
+    <SubAnnotationPropertyOf>
+        <AnnotationProperty IRI="#myOpinion"/>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+    </SubAnnotationPropertyOf>
 </Ontology>
 
 

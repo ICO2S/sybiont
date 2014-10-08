@@ -4,7 +4,6 @@ Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 Prefix: xml: <http://www.w3.org/XML/1998/namespace>
 Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
 Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-Prefix: sybio: <http://www.sybio.ncl.ac.uk#>
 
 
 
@@ -17,4 +16,35 @@ Annotations:
 
 AnnotationProperty: <http://www.purl.org/ontolink/tawny#name>
 
+    
+Datatype: rdf:PlainLiteral
+
+    
+ObjectProperty: <http://www.sybio.ncl.ac.uk#has_part>
+
+    
+Class: bo:Operator
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Operator"@en
+    
+    
+Class: bo:Promoter1
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Promoter1"@en
+    
+    SubClassOf: 
+        <http://www.sybio.ncl.ac.uk#has_part> some bo:Operator1,
+        <http://www.sybio.ncl.ac.uk#Promoter>
+    
+    
+Class: <http://www.sybio.ncl.ac.uk#Promoter>
+
+    
+Class: bo:Operator1
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Operator1"@en
+    
     

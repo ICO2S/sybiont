@@ -1,3 +1,4 @@
+Prefix: bo: <http://www.bacillondex.org#>
 Prefix: owl: <http://www.w3.org/2002/07/owl#>
 Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 Prefix: xml: <http://www.w3.org/XML/1998/namespace>
@@ -17,6 +18,12 @@ Annotations:
 AnnotationProperty: <http://www.purl.org/ontolink/tawny#name>
 
     
-Class: <http://purl.obolibrary.org/obo/GO_0000002>
+Datatype: rdf:PlainLiteral
 
+    
+Class: sybio:Promoter
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Promoter"@en
+    
     

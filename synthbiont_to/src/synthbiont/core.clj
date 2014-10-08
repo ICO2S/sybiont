@@ -12,6 +12,8 @@
 (import '(java.io FileInputStream File))       
 (import '(com.hp.hpl.jena.rdf.model Model ModelFactory ResourceFactory))
 (import '(com.hp.hpl.jena.vocabulary RDF RDFS))
+(import '(org.semanticweb.owlapi.model ClassExpressionType OWLObjectSomeValuesFrom))
+
  ;(:import (org.semanticweb.owlapi.model IRI OWLNamedObject OWLOntologyID)
  ;          (org.semanticweb.owlapi.util SimpleIRIMapper))
  
@@ -27,13 +29,6 @@
 ( def  resourceTypeUris (set []))  
 
 
- 
- 	(defontology bacillondex
-	  :iri "http://www.bacillondex.org"
-	  :prefix "bo:"
-	  :comment "An ontology for Bacillus subtilis parts"
-	  :versioninfo "1.0"    
-   )  
 
   
 (defontology synthbiont
@@ -42,6 +37,15 @@
 	 :comment "An ontology for synthetic biology"
 	 :versioninfo "1.0"
   )  
+
+
+ 	(defontology bacillondex
+	  :iri "http://www.bacillondex.org"
+	  :prefix "bo:"
+	  :comment "An ontology for Bacillus subtilis parts"
+	  :versioninfo "1.0"    
+   )  
+
 
 (defn getID [resourceURI]
   (let [index (.lastIndexOf resourceURI "/")]
@@ -260,6 +264,34 @@
             
     (println "converted")    
  )
+  
+(defn addClosureAxiomsToSuperClass[ontology classOntology class propertyOntology property]
+ ( def  unionClasses []) 
+ (let [classIri (iri (str (.toString (.getOntologyIRI (.getOntologyID synthbiont))) "#" class))]
+ (doseq [subClass (subclasses classOntology classIri)]
+   (println subClass)
+	 (doseq [superClass (superclasses ontology subClass)]
+	    (if  (= (.getClassExpressionType superClass) (ClassExpressionType/OBJECT_SOME_VALUES_FROM) )
+	      (if (= property (.getFragment(.getIRI(.getProperty (cast OWLObjectSomeValuesFrom superClass)))))
+		      (let [objectClass (.getFragment (.getIRI (.asOWLClass (.getFiller (cast OWLObjectSomeValuesFrom superClass)))))]
+		        (def  unionClasses (conj unionClasses  (owl-class ontology objectClass)))
+		      )      
+	      )
+	     )
+	   )
+	  (owl-class ontology (.getFragment (.getIRI subClass)) :subclass (owl-only propertyOntology property (owl-or unionClasses) ))     
+  )
+ )
+ )
+
+
+(defn addClosureAxioms[]
+  (println "Adding the closure axioms for promoters" )
+  (addClosureAxiomsToSuperClass bacillondex synthbiont "Promoter" synthbiont "has_part")
+  (println "Added the closure axioms for promoters" )
+  
+  )
+
 
 ;(defn get-go-ontology []
 ;  (tawny.owl/remove-ontology-maybe
@@ -271,7 +303,8 @@
 (defn createont []
 
  
-    (convert)
+    ;(convert)
+    ;(addClosureAxioms)
    ; (annotation-property "annotationproperty1")    
    ;(owl-class "testclass"
    ;         :annotation (annotation "annotationproperty1" "annotationproperty value"))
@@ -329,11 +362,55 @@
  ; WORKS (owl-class synthbiont "class1" :subclass ( exactly 1  "has_part" (owl-class synthbiont "class2") ))
  
  
- 	;(defontology ontology1)    
-  ;(defontology ontology2)  
+(owl-class synthbiont "Promoter")
+(owl-class bacillondex "Operator")
+(owl-class bacillondex "Promoter1" :subclass (owl-some synthbiont "has_part" (owl-class bacillondex "Operator1")))
+(owl-class bacillondex "Promoter1" :subclass (owl-class synthbiont "Promoter"))
+
+;(print "subclasses" (subclasses bacillondex (iri "http://www.sybio.ncl.ac.uk#Promoter")))
+;(print "subclasses" (subclasses bacillondex (iri "http://www.sybio.ncl.ac.uk#Promoter")))
+
+(print "subclasses" (subclasses bacillondex (iri (str (.toString (.getOntologyIRI (.getOntologyID synthbiont))) "#Promoter"))))
+                                                 
+ 
+
+ 
+ (save-ontology synthbiont "synthbiont.owl" :omn)
+ (save-ontology bacillondex "bacillondex.owl" :omn)
+  
+)
+
+(defn testontology[]
+ 
+
+
+  
+  
+ 	(defontology ontology1
+     :iri "http://www.ontology1.org"
+	  :prefix "o1:"
+    )    
+
+
+      
+  (defontology ontology2
+         :iri "http://www.ontology2.org"
+	  :prefix "o2:"
+    ) 
 
   ;(owl-class ontology1 "Class1" :subclass ( exactly ontology2 1  "predicate1" (owl-class ontology1 "Class2") ))
- ; (owl-class ontology1 "Class1" :subclass ( owl-some  ontology2 "predicate2" (owl-class ontology1 "Class2") ))
+ (owl-class ontology1 "Class1" :subclass ( owl-some  ontology2 "predicate2" (owl-class ontology2 "Class2") ))
+ (owl-class ontology1 "Class1" :subclass ( owl-some  ontology2 "predicate2" (owl-class ontology2 "Class5") )) 
+ (owl-class ontology1 "Class3" :subclass (owl-class ontology1 "Class1"))
+ (owl-class ontology1 "Class1" :subclass (owl-class ontology1 "Class4"))
+ (owl-class ontology2 "Class5" :subclass (owl-class ontology1 "Class1"))
+ 
+
+;(owl-class ontology1 "Class1" :subclass (owl-only ontology2 "predicate2" (owl-class ontology1 "Class2")))     
+;(owl-class ontology1 "Class1" :subclass (owl-only ontology2 "predicate2" (owl-class ontology1 "Class5")))     
+;(owl-class ontology1 "Class1" :subclass (owl-only ontology2 "predicate2" (owl-or [(owl-class ontology1 "Class5") (owl-class ontology1 "Class2")]) ))     
+
+
   ;(save-ontology ontology1 "ontology1.owl" :omn)
   ;(save-ontology ontology2 "ontology2.owl" :omn)
  
@@ -344,7 +421,45 @@
  
  ;(owl-class (iri "http://purl.obolibrary.org/obo/GO_0000002" :prefix "go"))
 
- (save-ontology synthbiont "synthbiont.owl" :omn)
- (save-ontology bacillondex "bacillondex.owl" :omn)
+
+ ;(println "subclasses" (subclasses ontology1 "Class1"))
+ (println "superclasses" (superclasses ontology1 "Class1"))
+ (println "subclasses" (subclasses ontology1 "Class1"))
+ 
+ ;( def  unionClasses (set [(owl-class ontology1 "Class2") (owl-class ontology1 "Class5")])) 
+ ;( def  unionClasses [(owl-class ontology1 "Class2") (owl-class ontology1 "Class5")]) 
+ ( def  unionClasses []) 
+ 
+
+ 
+ (doseq [superClass (superclasses ontology1 "Class1")]
+    ;(println "A super class:" superClass)
+    ;(println (.getClassExpressionType superClass))
+    (if  (= (.getClassExpressionType superClass) (ClassExpressionType/OBJECT_SOME_VALUES_FROM) )
+      (do
+	      ;(println "found:" superClass)
+	      ;(println "property:" (.getFragment(.getIRI(.getProperty (cast OWLObjectSomeValuesFrom superClass)))))
+;        (println "object:" ((.asOWLClass (.getFiller (cast OWLObjectSomeValuesFrom superClass))))
+        ;(println "object:" (.getFragment (.getIRI (.asOWLClass (.getFiller (cast OWLObjectSomeValuesFrom superClass))))))
+        (let [class (.getFragment (.getIRI (.asOWLClass (.getFiller (cast OWLObjectSomeValuesFrom superClass)))))]
+          (def  unionClasses (conj unionClasses  (owl-class ontology1 class)))
+          )
+        ;(def  unionClasses (conj unionClasses  (.getFragment (.getIRI (.asOWLClass (.getFiller (cast OWLObjectSomeValuesFrom superClass)))))))
+           ;(print "union classes inner" unionClasses)
+          
+           
+       
+	      )
+      ) 
+ )
+ 
+  (print "union classes" unionClasses)
+  (owl-class ontology1 "Class1" :subclass (owl-only ontology2 "predicate2" (owl-or unionClasses) ))     
+
   
-)
+  (save-ontology ontology1 "ontology1.omn" :omn)
+ ;(println "superclasses" (superclasses ontology1 "Class1"))
+  
+  
+  
+  )
