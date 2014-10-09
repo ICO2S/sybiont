@@ -264,30 +264,73 @@
             
     (println "converted")    
  )
-  
+ 
+(defn getClassIri [ontology className]
+  (iri (str (.toString (.getOntologyIRI (.getOntologyID ontology))) "#" className))
+  )
+
+(defn getIriFragment[owlClass]
+  (let [classIri (.getIRI owlClass)
+        suffixIndex (.lastIndexOf (str classIri) "#")
+        ]
+    (subs (str classIri) (+ suffixIndex 1))  
+    )
+  )
+
+(defn addDisjointAxioms[ontology classOntology class propertyOntology property targetClassOntology targetClass]
+ ( def  unionClasses []) 
+ (let [classIri (iri (str (.toString (.getOntologyIRI (.getOntologyID classOntology))) "#" class))]
+ (doseq [subClass (subclasses ontology classIri)]   
+   (println "subclass" subClass)
+   (doseq [superClass (superclasses ontology subClass)]
+       ;(println "-----" "superclass" superClass)
+       (if  (= (.getClassExpressionType superClass) (ClassExpressionType/OBJECT_SOME_VALUES_FROM) )
+            (if (= property (.getFragment(.getIRI(.getProperty (cast OWLObjectSomeValuesFrom superClass)))))
+               (let [relatedClass (getIriFragment (.asOWLClass (.getFiller (cast OWLObjectSomeValuesFrom superClass))))] 
+                 ;(println "-----" "-----" "related class:" relatedClass)
+                 (if (superclass? ontology relatedClass (getClassIri targetClassOntology targetClass))
+                   (do
+                     ;(println "-----" "-----" "-----" "adding the related class:" relatedClass)
+                     (def  unionClasses (conj unionClasses  (owl-class ontology relatedClass)))
+                   )
+                 )
+               )
+             )
+          )
+	  )
+   (println "-----union classes:" unionClasses)
+   (if (>= (count unionClasses) 2)
+       (as-disjoint unionClasses)   
+    )
+    ( def  unionClasses [])   
+   )))
+
+
 (defn addClosureAxiomsToSuperClass[ontology classOntology class propertyOntology property]
  ( def  unionClasses []) 
- (let [classIri (iri (str (.toString (.getOntologyIRI (.getOntologyID synthbiont))) "#" class))]
- (doseq [subClass (subclasses classOntology classIri)]
-   (println subClass)
-	 (doseq [superClass (superclasses ontology subClass)]
-	    (if  (= (.getClassExpressionType superClass) (ClassExpressionType/OBJECT_SOME_VALUES_FROM) )
-	      (if (= property (.getFragment(.getIRI(.getProperty (cast OWLObjectSomeValuesFrom superClass)))))
-		      (let [objectClass (.getFragment (.getIRI (.asOWLClass (.getFiller (cast OWLObjectSomeValuesFrom superClass)))))]
-		        (def  unionClasses (conj unionClasses  (owl-class ontology objectClass)))
-		      )      
-	      )
-	     )
-	   )
-	  (owl-class ontology (.getFragment (.getIRI subClass)) :subclass (owl-only propertyOntology property (owl-or unionClasses) ))     
-  )
- )
- )
+ (let [classIri (iri (str (.toString (.getOntologyIRI (.getOntologyID classOntology))) "#" class))]
+ (doseq [subClass (subclasses ontology classIri)]   
+   (doseq [superClass (superclasses ontology subClass)]
+       (if  (= (.getClassExpressionType superClass) (ClassExpressionType/OBJECT_SOME_VALUES_FROM) )
+            (if (= property (.getFragment(.getIRI(.getProperty (cast OWLObjectSomeValuesFrom superClass)))))
+                (def  unionClasses (conj unionClasses  (owl-class ontology (getIriFragment (.asOWLClass (.getFiller (cast OWLObjectSomeValuesFrom superClass)))))))                      
+              )
+          )
+	  )
+   (if-not (empty? unionClasses)
+     (do 
+       (owl-class ontology (getIriFragment subClass) :subclass (owl-only propertyOntology property (owl-or unionClasses) ))   
+       ( def  unionClasses [])      
+     )
+    )
+   )))
+
 
 
 (defn addClosureAxioms[]
   (println "Adding the closure axioms for promoters" )
   (addClosureAxiomsToSuperClass bacillondex synthbiont "Promoter" synthbiont "has_part")
+  (addDisjointAxioms bacillondex synthbiont "Promoter" synthbiont "has_part", synthbiont "Operator");
   (println "Added the closure axioms for promoters" )
   
   )
@@ -303,8 +346,8 @@
 (defn createont []
 
  
-    ;(convert)
-    ;(addClosureAxioms)
+    (convert)
+    (addClosureAxioms)
    ; (annotation-property "annotationproperty1")    
    ;(owl-class "testclass"
    ;         :annotation (annotation "annotationproperty1" "annotationproperty value"))
@@ -361,22 +404,47 @@
  ;(owl-class synthbiont "class1" :subclass ( exactly 1 synthbiont "has_part" (owl-class synthbiont "class2") ))
  ; WORKS (owl-class synthbiont "class1" :subclass ( exactly 1  "has_part" (owl-class synthbiont "class2") ))
  
- 
-(owl-class synthbiont "Promoter")
-(owl-class bacillondex "Operator")
-(owl-class bacillondex "Promoter1" :subclass (owl-some synthbiont "has_part" (owl-class bacillondex "Operator1")))
-(owl-class bacillondex "Promoter1" :subclass (owl-class synthbiont "Promoter"))
+ ;WORKS
+;(owl-class synthbiont "Promoter")
+;(owl-class synthbiont "Operator")
+;(owl-class bacillondex "12" :subclass (owl-some synthbiont "has_part" (owl-class bacillondex "13" :subclass (owl-class synthbiont "Operator"))))
+;(owl-class bacillondex "12" :subclass (owl-some synthbiont "has_part" (owl-class bacillondex "17" :subclass (owl-class synthbiont "Operator"))))
+;(owl-class bacillondex "12" :subclass (owl-class synthbiont "Promoter"))
+;(owl-class bacillondex "14" :subclass (owl-class synthbiont "Promoter"))
+;(owl-class bacillondex "14" :subclass (owl-some synthbiont "has_part" (owl-class bacillondex "15" :subclass (owl-class synthbiont "Operator"))))
+;(owl-class bacillondex "16" :subclass (owl-class synthbiont "Promoter"))
+;(as-disjoint  (owl-class bacillondex "13") (owl-class bacillondex "15"))
+;(addClosureAxiomsToSuperClass bacillondex synthbiont "Promoter" synthbiont "has_part")
+;(addDisjointAxioms bacillondex synthbiont "Promoter" synthbiont "has_part", synthbiont "Operator");
 
-;(print "subclasses" (subclasses bacillondex (iri "http://www.sybio.ncl.ac.uk#Promoter")))
-;(print "subclasses" (subclasses bacillondex (iri "http://www.sybio.ncl.ac.uk#Promoter")))
 
-(print "subclasses" (subclasses bacillondex (iri (str (.toString (.getOntologyIRI (.getOntologyID synthbiont))) "#Promoter"))))
-                                                 
+;(owl-class  "test1" :super (owl-class "test2"))
+;(owl-class  synthbiont "test3" :super (owl-class bacillondex "test4"))
+;(owl-class  bacillondex "test5" :super (owl-class bacillondex "test6"))
+;(owl-class  bacillondex "test7" :subclass (owl-class synthbiont "test8"))
+
+
+
+
+
+;(println "1- test1 superclass of test2" (superclass? bacillondex "test1" "test2"))
+;(print "2- test1 superclass of test2" (superclass? (iri("http://www.sybio.ncl.ac.uk#test1")) (iri("http://www.sybio.ncl.ac.uk#test2"))))
+;(println "2- test1 superclass of test2" (superclass? bacillondex (iri "http://www.bacillondex.org#test1") (iri "http://www.bacillondex.org#test2")))
+;(println "3- test3 superclass of test4" (superclass? bacillondex (iri "http://www.sybio.ncl.ac.uk#test3") (iri "http://www.bacillondex.org#test4")))
+
+;(print "superclasses" (superclasses  bacillondex "test4"))
+;(print "superclasses" (superclasses  bacillondex "test6"))
+
+;(superclass? bacillondex (iri "http://www.sybio.ncl.ac.uk#test8") (iri "http://www.bacillondex.org#test7"))
+
+;(superclass? bacillondex "test7" (iri "http://www.sybio.ncl.ac.uk#test8"))
+
+;(print "subclasses" (subclasses bacillondex (iri (str (.toString (.getOntologyIRI (.getOntologyID synthbiont))) "#Promoter"))))
  
 
  
- (save-ontology synthbiont "synthbiont.owl" :omn)
- (save-ontology bacillondex "bacillondex.owl" :omn)
+ (save-ontology synthbiont "synthbiont.omn" :omn)
+ (save-ontology bacillondex "bacillondex.omn" :omn)
   
 )
 
@@ -456,6 +524,7 @@
   (print "union classes" unionClasses)
   (owl-class ontology1 "Class1" :subclass (owl-only ontology2 "predicate2" (owl-or unionClasses) ))     
 
+  
   
   (save-ontology ontology1 "ontology1.omn" :omn)
  ;(println "superclasses" (superclasses ontology1 "Class1"))
