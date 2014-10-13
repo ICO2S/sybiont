@@ -48,9 +48,7 @@
     (datatype-property ontology predicate :annotation (annotation ontology predicateAnnotateWith value)))
   
   (if (= propertyType "annotation")  
-    (annotation-property ontology predicate :annotation (annotation ontology predicateAnnotateWith value)))
-  
-    )
+    (annotation-property ontology predicate :annotation (annotation ontology predicateAnnotateWith value))))
 
 (defn addDatatypeProperty [ontology class predicateOntology predicate value]
   (datatype-property predicateOntology predicate)
@@ -60,3 +58,7 @@
   (object-property predicateOntology predicate)
   (owl-class ontology class :subclass (owl-some predicateOntology predicate (owl-class valueOntology valueClass)))
 )
+
+;(defn import [ontologyIri filePath]
+;  
+;  )

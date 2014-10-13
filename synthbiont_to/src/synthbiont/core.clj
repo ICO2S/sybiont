@@ -14,6 +14,10 @@
 (import '(com.hp.hpl.jena.rdf.model Model ModelFactory ResourceFactory))
 (import '(com.hp.hpl.jena.vocabulary RDF RDFS))
 (import '(org.semanticweb.owlapi.model ClassExpressionType OWLObjectSomeValuesFrom))
+(import '(org.semanticweb.owlapi.util SimpleIRIMapper NamespaceUtil DefaultPrefixManager))
+(import '(org.coode.owlapi.manchesterowlsyntax ManchesterOWLSyntaxOntologyFormat))
+
+
 
  ;(:import (org.semanticweb.owlapi.model IRI OWLNamedObject OWLOntologyID)
  ;          (org.semanticweb.owlapi.util SimpleIRIMapper))
@@ -460,68 +464,36 @@
     ) 
 
   ;(owl-class ontology1 "Class1" :subclass ( exactly ontology2 1  "predicate1" (owl-class ontology1 "Class2") ))
- (owl-class ontology1 "Class1" :subclass ( owl-some  ontology2 "predicate2" (owl-class ontology2 "Class2") ))
- (owl-class ontology1 "Class1" :subclass ( owl-some  ontology2 "predicate2" (owl-class ontology2 "Class5") )) 
- (owl-class ontology1 "Class3" :subclass (owl-class ontology1 "Class1"))
- (owl-class ontology1 "Class1" :subclass (owl-class ontology1 "Class4"))
- (owl-class ontology2 "Class5" :subclass (owl-class ontology1 "Class1"))
+ (owl-class ontology1 "Class1") 
+ ; (owl-class ontology2 "Class2")
+ (owl-class ontology2 "Class2" :subclass (owl-class ontology1 "Class1"))
  
+ 
+;(let [ 
+;      iriMapper1 (SimpleIRIMapper. (iri(str "http://www.ontology1.org")) (iri(str "ontology1.omn")))
+;      iriMapper2 (SimpleIRIMapper. (iri(str "http://www.ontology2.org")) (iri(str "ontology2.omn")))      
+;      ]
 
-;(owl-class ontology1 "Class1" :subclass (owl-only ontology2 "predicate2" (owl-class ontology1 "Class2")))     
-;(owl-class ontology1 "Class1" :subclass (owl-only ontology2 "predicate2" (owl-class ontology1 "Class5")))     
-;(owl-class ontology1 "Class1" :subclass (owl-only ontology2 "predicate2" (owl-or [(owl-class ontology1 "Class5") (owl-class ontology1 "Class2")]) ))     
-
-
-  ;(save-ontology ontology1 "ontology1.owl" :omn)
-  ;(save-ontology ontology2 "ontology2.owl" :omn)
- 
- ;(defoproperty predicate2)
- ;(defclass ontology1 Class1
-   ;:subclass (exactly 1 predicate2 (defclass ontology1 Class2))
-   ;)
- 
- ;(owl-class (iri "http://purl.obolibrary.org/obo/GO_0000002" :prefix "go"))
-
-
- ;(println "subclasses" (subclasses ontology1 "Class1"))
- (println "superclasses" (superclasses ontology1 "Class1"))
- (println "subclasses" (subclasses ontology1 "Class1"))
- 
- ;( def  unionClasses (set [(owl-class ontology1 "Class2") (owl-class ontology1 "Class5")])) 
- ;( def  unionClasses [(owl-class ontology1 "Class2") (owl-class ontology1 "Class5")]) 
- ( def  unionClasses []) 
- 
-
- 
- (doseq [superClass (superclasses ontology1 "Class1")]
-    ;(println "A super class:" superClass)
-    ;(println (.getClassExpressionType superClass))
-    (if  (= (.getClassExpressionType superClass) (ClassExpressionType/OBJECT_SOME_VALUES_FROM) )
-      (do
-	      ;(println "found:" superClass)
-	      ;(println "property:" (.getFragment(.getIRI(.getProperty (cast OWLObjectSomeValuesFrom superClass)))))
-;        (println "object:" ((.asOWLClass (.getFiller (cast OWLObjectSomeValuesFrom superClass))))
-        ;(println "object:" (.getFragment (.getIRI (.asOWLClass (.getFiller (cast OWLObjectSomeValuesFrom superClass))))))
-        (let [class (.getFragment (.getIRI (.asOWLClass (.getFiller (cast OWLObjectSomeValuesFrom superClass)))))]
-          (def  unionClasses (conj unionClasses  (owl-class ontology1 class)))
-          )
-        ;(def  unionClasses (conj unionClasses  (.getFragment (.getIRI (.asOWLClass (.getFiller (cast OWLObjectSomeValuesFrom superClass)))))))
-           ;(print "union classes inner" unionClasses)
-          
-           
-       
-	      )
-      ) 
- )
- 
-  (print "union classes" unionClasses)
-  (owl-class ontology1 "Class1" :subclass (owl-only ontology2 "predicate2" (owl-or unionClasses) ))     
+;(.removeIRIMapper (owl-ontology-manager) iriMapper1)   
+;(.removeIRIMapper (owl-ontology-manager) iriMapper2)   
 
   
+(save-ontology ontology1 "ontology1.omn" :omn)
+(owl-import ontology1)
+;(.setPrefix (NamespaceUtil.) (str "http://www.ontology1.org") (str "o1"))
+;(.setPrefix (NamespaceUtil.) (str "http://www.ontology3.org") (str "o3"))
+(.setPrefix (.getOntologyFormat (owl-ontology-manager) ontology2) "o1" "http://www.ontology1.org")
+
+;(.addPrefixes (DefaultPrefixManager.) (.setPrefix (ManchesterOWLSyntaxOntologyFormat.) "http://www.ontology1.org" "o1"))
+
+(save-ontology ontology2 "ontology2.omn" :omn)
   
-  (save-ontology ontology1 "ontology1.omn" :omn)
- ;(println "superclasses" (superclasses ontology1 "Class1"))
+
+;(.addIRIMapper (owl-ontology-manager) iriMapper)    
   
+ 
+ ;)
+
   
-  
-  )
+
+)

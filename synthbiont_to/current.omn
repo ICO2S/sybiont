@@ -1,0 +1,59 @@
+Prefix: o2: <http://www.ontology2.org#>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: sybio: <http://www.sybio.ncl.ac.uk#>
+
+
+
+Ontology: <http://www.ontology2.org>
+
+Import: <http://www.purl.org/ontolink/tawny>
+
+Annotations: 
+    <http://www.purl.org/ontolink/tawny#name> "ontology2"@en
+
+AnnotationProperty: <http://www.purl.org/ontolink/tawny#name>
+
+    
+Datatype: rdf:PlainLiteral
+
+    
+Class: <http://www.ontology1.org#Class5>
+
+    
+Class: <http://www.ontology1.org#Class4>
+
+    
+Class: o2:Class3
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Class3"@en
+    
+    SubClassOf: 
+        <http://www.ontology1.org#Class6>
+    
+    
+Class: o2:Class2
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Class2"@en
+    
+    SubClassOf: 
+        <http://www.ontology1.org#Class5>
+    
+    
+Class: o2:Class1
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Class1"@en
+    
+    SubClassOf: 
+        <http://www.ontology1.org#Class4>
+    
+    
+Class: <http://www.ontology1.org#Class6>
+
+    
