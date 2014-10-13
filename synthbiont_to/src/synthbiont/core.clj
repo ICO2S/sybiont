@@ -3,6 +3,7 @@
   (:use [synthbiont.ontology])  
   (:use [synthbiont.rdf])
   (:use [synthbiont.param])  
+  (:use [synthbiont.definition])    
   (:require [tawny
              [polyglot]
              [reasoner :as r]
@@ -29,14 +30,6 @@
 ( def  resourceTypeUris (set []))  
 
 
-
-  
-(defontology synthbiont
-	 :iri "http://www.sybio.ncl.ac.uk"
-	 :prefix "sybio:"
-	 :comment "An ontology for synthetic biology"
-	 :versioninfo "1.0"
-  )  
 
 
  	(defontology bacillondex
