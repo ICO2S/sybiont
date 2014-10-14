@@ -19,12 +19,16 @@ Annotations:
 AnnotationProperty: <http://www.purl.org/ontolink/tawny#name>
 
     
+AnnotationProperty: rdfs:label
+
+    
 Datatype: rdf:PlainLiteral
 
     
 Class: o1:Class1
 
     Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "Class1"@en
+        <http://www.purl.org/ontolink/tawny#name> "Class1"@en,
+        rdfs:label "Class 1"@en
     
     

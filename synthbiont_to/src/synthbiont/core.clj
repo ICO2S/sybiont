@@ -139,8 +139,21 @@
         (if-not (or (contains? SUBCLASS_RELATION predicate) (contains? SAMECLASS_RELATION predicate)) 
           (do 
             (def objectPropertyUris (conj objectPropertyUris  (.getURI (.getPredicate stmt))))
-            (addObjectProperty bacillondex class bacillondex valueResourceId synthbiont predicate)
-            (handleInverseProperty bacillondex class bacillondex valueResourceId synthbiont predicate)  
+            (object-property synthbiont predicate)
+            (let [valueTypeResource (.asResource (.getObject (.getProperty valueResource (RDF/type))))
+                  valueType (getID (.getURI valueTypeResource))]                 
+                (if (contains? GO_CLASSES valueType) 
+                     (do 
+                       (owl-class bacillondex class :subclass (owl-some synthbiont predicate (owl-class bacillondex (owl-class (iri (str GO_URI "#" (getGoTerm valueResource)))))))
+                     )
+                     (do
+                       (owl-class bacillondex class :subclass (owl-some synthbiont predicate (owl-class bacillondex valueResourceId)))
+                       (handleInverseProperty bacillondex class bacillondex valueResourceId synthbiont predicate)  
+                       )
+                   )
+                )                        
+            ;(addObjectProperty bacillondex class bacillondex valueResourceId synthbiont predicate)
+            ;(handleInverseProperty bacillondex class bacillondex valueResourceId synthbiont predicate)  
           ))                          
         ))
 
@@ -278,7 +291,7 @@
  ( def  unionClasses []) 
  (let [classIri (iri (str (.toString (.getOntologyIRI (.getOntologyID classOntology))) "#" class))]
  (doseq [subClass (subclasses ontology classIri)]   
-   (println "subclass" subClass)
+   ;(println "subclass" subClass)
    (doseq [superClass (superclasses ontology subClass)]
        ;(println "-----" "superclass" superClass)
        (if  (= (.getClassExpressionType superClass) (ClassExpressionType/OBJECT_SOME_VALUES_FROM) )
@@ -295,13 +308,12 @@
              )
           )
 	  )
-   (println "-----union classes:" unionClasses)
+   ;(println "-----union classes:" unionClasses)
    (if (>= (count unionClasses) 2)
        (as-disjoint unionClasses)   
     )
     ( def  unionClasses [])   
    )))
-
 
 (defn addClosureAxiomsToSuperClass[ontology classOntology class propertyOntology property]
  ( def  unionClasses []) 
@@ -322,16 +334,12 @@
     )
    )))
 
-
-
 (defn addClosureAxioms[]
   (println "Adding the closure axioms for promoters" )
   (addClosureAxiomsToSuperClass bacillondex synthbiont "Promoter" synthbiont "has_part")
   (addDisjointAxioms bacillondex synthbiont "Promoter" synthbiont "has_part", synthbiont "Operator");
-  (println "Added the closure axioms for promoters" )
-  
+  (println "Added the closure axioms for promoters" )  
   )
-
 
 ;(defn get-go-ontology []
 ;  (tawny.owl/remove-ontology-maybe
@@ -341,10 +349,9 @@
 ;   (IRI/create (clojure.java.io/resource "go-snippet.owl"))))
 
 (defn createont []
-
- 
     (convert)
     (addClosureAxioms)
+    
    ; (annotation-property "annotationproperty1")    
    ;(owl-class "testclass"
    ;         :annotation (annotation "annotationproperty1" "annotationproperty value"))
@@ -353,7 +360,6 @@
    ;(owl-class synthbiont "testclass"
    ;         :subclass (has-value "datatypeproperty1" "datatype property value" ))
  
-   
   ;(owl-class  bacillondex "testclass2"
   ;        :subclass (has-value "datatypeproperty1" "datatype property value2" )
   ;        )
@@ -420,10 +426,6 @@
 ;(owl-class  bacillondex "test5" :super (owl-class bacillondex "test6"))
 ;(owl-class  bacillondex "test7" :subclass (owl-class synthbiont "test8"))
 
-
-
-
-
 ;(println "1- test1 superclass of test2" (superclass? bacillondex "test1" "test2"))
 ;(print "2- test1 superclass of test2" (superclass? (iri("http://www.sybio.ncl.ac.uk#test1")) (iri("http://www.sybio.ncl.ac.uk#test2"))))
 ;(println "2- test1 superclass of test2" (superclass? bacillondex (iri "http://www.bacillondex.org#test1") (iri "http://www.bacillondex.org#test2")))
@@ -438,25 +440,20 @@
 
 ;(print "subclasses" (subclasses bacillondex (iri (str (.toString (.getOntologyIRI (.getOntologyID synthbiont))) "#Promoter"))))
  
-
- 
  (save-ontology synthbiont "synthbiont.omn" :omn)
- (save-ontology bacillondex "bacillondex.omn" :omn)
-  
+ ;(save-ontology bacillondex "bacillondex.omn" :omn)
+ (owl-import bacillondex (iri(File."synthbiont.omn")))
+ ;(owl-import bacillondex (iri(str "file:synthbiont.omn"))) 
+ 
+ (save-ontology bacillondex "bacillondexontology2.rdf" :rdf)   
 )
 
 (defn testontology[]
  
-
-
-  
-  
  	(defontology ontology1
      :iri "http://www.ontology1.org"
 	  :prefix "o1:"
     )    
-
-
       
   (defontology ontology2
          :iri "http://www.ontology2.org"
@@ -464,9 +461,13 @@
     ) 
 
   ;(owl-class ontology1 "Class1" :subclass ( exactly ontology2 1  "predicate1" (owl-class ontology1 "Class2") ))
- (owl-class ontology1 "Class1") 
+ (owl-class ontology1 "Class1"
+            :label "Class 1"
+            ) 
  ; (owl-class ontology2 "Class2")
- (owl-class ontology2 "Class2" :subclass (owl-class ontology1 "Class1"))
+ (owl-class ontology2 "Class2" 
+            :label "Class 2"
+            :subclass (owl-class ontology1 "Class1"))
  
  
 ;(let [ 
@@ -476,24 +477,25 @@
 
 ;(.removeIRIMapper (owl-ontology-manager) iriMapper1)   
 ;(.removeIRIMapper (owl-ontology-manager) iriMapper2)   
-
   
 (save-ontology ontology1 "ontology1.omn" :omn)
-(owl-import ontology1)
+(save-ontology ontology1 "ontology1.rdf" :rdf)
+(save-ontology ontology1 "ontology1.oml" :owl)
+
+;(owl-import ontology1)
+;(owl-import ontology2 (iri(str "ontology1.omn")))
+(owl-import ontology2 (iri(File."ontology1.omn")))
+
+;(.addIRIMapper (owl-ontology-manager) (SimpleIRIMapper. (iri(str "http://www.ontology1.org")) (iri(str "ontology1.omn"))))
 ;(.setPrefix (NamespaceUtil.) (str "http://www.ontology1.org") (str "o1"))
 ;(.setPrefix (NamespaceUtil.) (str "http://www.ontology3.org") (str "o3"))
-(.setPrefix (.getOntologyFormat (owl-ontology-manager) ontology2) "o1" "http://www.ontology1.org")
-
+;(.setPrefix (.getOntologyFormat (owl-ontology-manager) ontology2) "o1" "http://www.ontology1.org")
 ;(.addPrefixes (DefaultPrefixManager.) (.setPrefix (ManchesterOWLSyntaxOntologyFormat.) "http://www.ontology1.org" "o1"))
 
 (save-ontology ontology2 "ontology2.omn" :omn)
-  
+(save-ontology ontology2 "ontology2.rdf" :rdf)
+(save-ontology ontology2 "ontology2.owl" :owl)
 
-;(.addIRIMapper (owl-ontology-manager) iriMapper)    
-  
- 
+;(.addIRIMapper (owl-ontology-manager) iriMapper)     
  ;)
-
-  
-
 )

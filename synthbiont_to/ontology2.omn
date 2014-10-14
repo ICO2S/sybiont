@@ -1,4 +1,4 @@
-Prefix: o1: <http://www.ontology2.org#>
+Prefix: o2: <http://www.ontology2.org#>
 Prefix: owl: <http://www.w3.org/2002/07/owl#>
 Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 Prefix: xml: <http://www.w3.org/XML/1998/namespace>
@@ -10,13 +10,16 @@ Prefix: sybio: <http://www.sybio.ncl.ac.uk#>
 
 Ontology: <http://www.ontology2.org>
 
-Import: <http://www.ontology1.org>
 Import: <http://www.purl.org/ontolink/tawny>
+Import: <file:/home/goksel/work/synthbiont_v2.0/synthbiont_to/ontology1.omn>
 
 Annotations: 
     <http://www.purl.org/ontolink/tawny#name> "ontology2"@en
 
 AnnotationProperty: <http://www.purl.org/ontolink/tawny#name>
+
+    
+AnnotationProperty: rdfs:label
 
     
 Datatype: rdf:PlainLiteral
@@ -25,10 +28,11 @@ Datatype: rdf:PlainLiteral
 Class: <http://www.ontology1.org#Class1>
 
     
-Class: o1:Class2
+Class: o2:Class2
 
     Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "Class2"@en
+        <http://www.purl.org/ontolink/tawny#name> "Class2"@en,
+        rdfs:label "Class 2"@en
     
     SubClassOf: 
         <http://www.ontology1.org#Class1>
