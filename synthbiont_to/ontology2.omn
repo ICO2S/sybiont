@@ -28,6 +28,13 @@ Datatype: rdf:PlainLiteral
 Class: <http://www.ontology1.org#Class1>
 
     
+Class: o2:Class3
+
+    Annotations: 
+        rdfs:label "Class 3"@en,
+        <http://www.purl.org/ontolink/tawny#name> "Class3"@en
+    
+    
 Class: o2:Class2
 
     Annotations: 

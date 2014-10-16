@@ -369,8 +369,8 @@ ObjectProperty: sybio:ex_by
 ObjectProperty: sybio:upstream
 
     Annotations: 
-        rdfs:label "is_upstream_of"@en,
-        <http://www.purl.org/ontolink/tawny#name> "upstream"@en
+        <http://www.purl.org/ontolink/tawny#name> "upstream"@en,
+        rdfs:label "is_upstream_of"@en
     
     
 ObjectProperty: sybio:isthirdgeneof
@@ -563,9 +563,9 @@ ObjectProperty: sybio:phosphorylated_by
 ObjectProperty: sybio:r
 
     Annotations: 
-        rdfs:comment "Root relation type"@en,
         rdfs:label "is_related_to"@en,
-        <http://www.purl.org/ontolink/tawny#name> "r"@en
+        <http://www.purl.org/ontolink/tawny#name> "r"@en,
+        rdfs:comment "Root relation type"@en
     
     
 ObjectProperty: sybio:min_expressed_in
@@ -699,9 +699,9 @@ DataProperty: sybio:TFFamily
 DataProperty: sybio:GCContent
 
     Annotations: 
-        rdfs:label "GC Content"@en,
+        <http://www.purl.org/ontolink/tawny#name> "GCContent"@en,
         rdfs:comment "Fraction of Guanine/Cytosine in nucleic acid sequence"@en,
-        <http://www.purl.org/ontolink/tawny#name> "GCContent"@en
+        rdfs:label "GC Content"@en
     
     
 DataProperty: sybio:GC3Content
@@ -793,8 +793,6 @@ DataProperty: sybio:TFDomain
 Class: sybio:COGCategory
 
     Annotations: 
-        rdfs:label "COG Class Category"@en,
-        rdfs:comment "COG Class Category"@en,
         <http://www.purl.org/ontolink/tawny#name> "COGCategory"@en
     
     
@@ -848,50 +846,39 @@ Class: <http://purl.org/obo/owl/SO#SO_0000139>
 Class: sybio:KOGE
 
     Annotations: 
-        rdfs:label "Kegg Orthologs Gene"@en,
-        rdfs:comment "Kegg Ortholog Group of sequence similarity"@en,
         <http://www.purl.org/ontolink/tawny#name> "KOGE"@en
     
     
 Class: sybio:COG
 
     Annotations: 
-        rdfs:label "Clusters of Orthologous Groups of proteins"@en,
-        rdfs:comment "Clusters of Orthologous Groups of proteins (COGs) were delineated by comparing protein
-                    sequences encoded in complete genomes, representing major phylogenetic lineages. Each COG consists
-                    of individual proteins or groups of paralogs from at least 3 lineages and thus corresponds to an
-                    ancient conserved domain. - http://www.ncbi.nlm.nih.gov/COG/
-                "@en,
-        rdfs:comment "COG Class"@en,
-        rdfs:label "COG Class"@en,
         <http://www.purl.org/ontolink/tawny#name> "COG"@en
     
     
 Class: sybio:MicroArrayExperiment
 
     Annotations: 
-        rdfs:label "MicroArrayExperiment"@en,
-        rdfs:comment "Microarray experiment"@en,
         <http://www.purl.org/ontolink/tawny#name> "MicroArrayExperiment"@en
     
     
 Class: <http://purl.org/obo/owl/SO#SO_0000997>
 
     
-Class: <http://www.sybio.ncl.ac.uk#BacilluScope:DBTBS:KEGG>
+Class: sybio:RNA
 
     Annotations: 
-        rdfs:label "BacilluScope:DBTBS:KEGG"@en,
-        <http://www.purl.org/ontolink/tawny#name> "BacilluScope:DBTBS:KEGG"@en,
-        rdfs:comment "Collapsed CV Set"@en
+        <http://www.purl.org/ontolink/tawny#name> "RNA"@en
+    
+    SubClassOf: 
+        <http://purl.org/obo/owl/SO#SO_0000356>
     
     
 Class: sybio:SigGPromoter
 
     Annotations: 
+        rdfs:comment "SigG dependent promoter"@en,
         rdfs:label "SigG promoter"@en,
-        <http://www.purl.org/ontolink/tawny#name> "SigGPromoter"@en,
-        rdfs:comment "SigG dependent promoter"@en
+        <http://www.purl.org/ontolink/tawny#name> "SigGPromoter"@en
     
     EquivalentTo: 
         sybio:Promoter
@@ -901,14 +888,6 @@ Class: sybio:SigGPromoter
     
     SubClassOf: 
         sybio:Promoter
-    
-    
-Class: <http://www.sybio.ncl.ac.uk#GO:GOAEBI>
-
-    Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "GO:GOAEBI"@en,
-        rdfs:comment "Collapsed CV Set"@en,
-        rdfs:label "GO:GOAEBI"@en
     
     
 Class: sybio:ResponseRegulatorEncodingCDS
@@ -928,43 +907,13 @@ Class: sybio:ResponseRegulatorEncodingCDS
 Class: sybio:TF
 
     Annotations: 
-        rdfs:label "Transcription factor"@en,
-        rdfs:comment "A transcription factor is a protein that regulates the expression of one or more gene by
-                    binding to an associated DNA region (see TFBS).
-                "@en,
         <http://www.purl.org/ontolink/tawny#name> "TF"@en
-    
-    
-Class: <http://www.sybio.ncl.ac.uk#BacilluScope:GOAEBI:String>
-
-    Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "BacilluScope:GOAEBI:String"@en,
-        rdfs:label "BacilluScope:GOAEBI:String"@en,
-        rdfs:comment "Collapsed CV Set"@en
     
     
 Class: sybio:Protcmplx
 
     Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "Protcmplx"@en,
-        rdfs:comment "Protein Complex consists of several subunits"@en,
-        rdfs:label "Protein complex"@en
-    
-    
-Class: <http://www.sybio.ncl.ac.uk#BacilluScope:DBTBS:GOAEBI>
-
-    Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "BacilluScope:DBTBS:GOAEBI"@en,
-        rdfs:label "BacilluScope:DBTBS:GOAEBI"@en,
-        rdfs:comment "Collapsed CV Set"@en
-    
-    
-Class: <http://www.sybio.ncl.ac.uk#BacilluScope:DBTBS:String>
-
-    Annotations: 
-        rdfs:label "BacilluScope:DBTBS:String"@en,
-        <http://www.purl.org/ontolink/tawny#name> "BacilluScope:DBTBS:String"@en,
-        rdfs:comment "Collapsed CV Set"@en
+        <http://www.purl.org/ontolink/tawny#name> "Protcmplx"@en
     
     
 Class: sybio:DataSource
@@ -976,34 +925,16 @@ Class: sybio:DataSource
 Class: sybio:Protein
 
     Annotations: 
-        rdfs:comment "A protein is comprised of one or more Polypeptides and potentially other molecules.
-                "@en,
-        rdfs:label "Protein"@en,
         <http://www.purl.org/ontolink/tawny#name> "Protein"@en
-    
-    
-Class: <http://www.sybio.ncl.ac.uk#BacilluScope:DBTBS:GOAEBI:KEGG:String>
-
-    Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "BacilluScope:DBTBS:GOAEBI:KEGG:String"@en,
-        rdfs:label "BacilluScope:DBTBS:GOAEBI:KEGG:String"@en,
-        rdfs:comment "Collapsed CV Set"@en
-    
-    
-Class: <http://www.sybio.ncl.ac.uk#BacilluScope:KEGG>
-
-    Annotations: 
-        rdfs:label "BacilluScope:KEGG"@en,
-        <http://www.purl.org/ontolink/tawny#name> "BacilluScope:KEGG"@en,
-        rdfs:comment "Collapsed CV Set"@en
     
     
 Class: sybio:CelComp
 
     Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "CelComp"@en,
-        rdfs:comment "Cellular Component (GO)"@en,
-        rdfs:label "Cellular_Component"@en
+        <http://www.purl.org/ontolink/tawny#name> "CelComp"@en
+    
+    EquivalentTo: 
+        <http://purl.org/obo/owl/GO#GO_0005575>
     
     
 Class: sybio:SigWPromoter
@@ -1023,21 +954,10 @@ Class: sybio:SigWPromoter
         sybio:Promoter
     
     
-Class: <http://www.sybio.ncl.ac.uk#BacilluScope:DBTBS:KEGG:String>
-
-    Annotations: 
-        rdfs:comment "Collapsed CV Set"@en,
-        rdfs:label "BacilluScope:DBTBS:KEGG:String"@en,
-        <http://www.purl.org/ontolink/tawny#name> "BacilluScope:DBTBS:KEGG:String"@en
-    
-    
 Class: sybio:Operon
 
     Annotations: 
-        rdfs:comment "An operon is comprised of a promoter, an operator, one or more genes and a terminator.
-                "@en,
-        <http://www.purl.org/ontolink/tawny#name> "Operon"@en,
-        rdfs:label "Operon"@en
+        <http://www.purl.org/ontolink/tawny#name> "Operon"@en
     
     SubClassOf: 
         <http://purl.org/obo/owl/SO#SO_0000178>
@@ -1076,16 +996,11 @@ Class: sybio:InduciblePromoter
 Class: sybio:Terminator
 
     Annotations: 
-        rdfs:comment "Terminator"@en,
-        rdfs:label "Terminator"@en,
         <http://www.purl.org/ontolink/tawny#name> "Terminator"@en
     
     SubClassOf: 
         <http://purl.org/obo/owl/SO#SO_0000614>
     
-    
-Class: <http://purl.org/obo/owl/SO#SO_0000057>
-
     
 Class: sybio:ConstitutivePromoter
 
@@ -1101,34 +1016,39 @@ Class: sybio:ConstitutivePromoter
 Class: sybio:KOEN
 
     Annotations: 
-        rdfs:label "Kegg Orthologs Enzyme"@en,
-        rdfs:comment "Kegg Ortholog Group of sequence similarity"@en,
         <http://www.purl.org/ontolink/tawny#name> "KOEN"@en
     
     
-Class: <http://www.sybio.ncl.ac.uk#BacilluScope:String>
+Class: <http://purl.org/obo/owl/GO#GO_0003674>
 
-    Annotations: 
-        rdfs:label "BacilluScope:String"@en,
-        <http://www.purl.org/ontolink/tawny#name> "BacilluScope:String"@en,
-        rdfs:comment "Collapsed CV Set"@en
+    EquivalentTo: 
+        sybio:MolFunc
     
     
-Class: sybio:NORGatePromoter
+Class: sybio:Shim
 
     Annotations: 
-        rdfs:comment "NOR gate promoter"@en,
-        <http://www.purl.org/ontolink/tawny#name> "NORGatePromoter"@en,
-        rdfs:label "NOR gate promoter"@en
+        <http://www.purl.org/ontolink/tawny#name> "Shim"@en
     
     SubClassOf: 
-        sybio:RepressiblePromoterWith2Operators
+        <http://purl.org/obo/owl/SO#SO_0000997>
     
     
 Class: sybio:SigIPromoter
 
     Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "SigIPromoter"@en
+        <http://www.purl.org/ontolink/tawny#name> "SigIPromoter"@en,
+        rdfs:label "SigI promoter"@en,
+        rdfs:comment "SigI dependent promoter"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "BSU13450"^^xsd:string))) or (sybio:has_part some sybio:SigIPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
     
     
 Class: sybio:RepressorEncodingCDS
@@ -1145,40 +1065,29 @@ Class: sybio:RepressorEncodingCDS
              and (sybio:bi_to some sybio:NegativelyRegulatedOperator)))
     
     
-Class: sybio:MolFunc
+Class: sybio:NORGatePromoter
 
     Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "MolFunc"@en,
-        rdfs:label "Molecular_Function"@en,
-        rdfs:comment "Molecular Function (GO)"@en
-    
-    
-Class: sybio:SigFPromoter
-
-    Annotations: 
-        rdfs:comment "SigF dependent promoter"@en,
-        <http://www.purl.org/ontolink/tawny#name> "SigFPromoter"@en,
-        rdfs:label "SigF promoter"@en
-    
-    EquivalentTo: 
-        sybio:Promoter
-         and ((sybio:bound_by some 
-            (sybio:TF
-             and (sybio:conceptAccession value "BSU23450"^^xsd:string))) or (sybio:has_part some sybio:SigFPromoter))
+        rdfs:comment "NOR gate promoter"@en,
+        rdfs:label "NOR gate promoter"@en,
+        <http://www.purl.org/ontolink/tawny#name> "NORGatePromoter"@en
     
     SubClassOf: 
-        sybio:Promoter
+        sybio:RepressiblePromoterWith2Operators
     
     
-Class: sybio:IEA
+Class: sybio:ActivatorEncodingCDS
 
     Annotations: 
-        rdfs:comment "Annotations based on \"hits\" in sequence similarity
-                    searches, if they have not been reviewed by curators
-                    (curator-reviewed hits would get ISS)
-                "@en,
-        rdfs:label "Inferred from Electronic Annotation"@en,
-        <http://www.purl.org/ontolink/tawny#name> "IEA"@en
+        rdfs:label "Activator encoding CDS"@en,
+        rdfs:comment "Coding sequences that encode for transcriptional activators"@en,
+        <http://www.purl.org/ontolink/tawny#name> "ActivatorEncodingCDS"@en
+    
+    EquivalentTo: 
+        sybio:CDS
+         and (sybio:encodes some 
+            (sybio:Protein
+             and (sybio:bi_to some sybio:PositivelyRegulatedOperator)))
     
     
 Class: <http://purl.org/obo/owl/SO#SO_0000178>
@@ -1215,9 +1124,7 @@ Class: sybio:SigKPromoter
 Class: sybio:Promoter
 
     Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "Promoter"@en,
-        rdfs:label "Promoter"@en,
-        rdfs:comment "Promoter"@en
+        <http://www.purl.org/ontolink/tawny#name> "Promoter"@en
     
     SubClassOf: 
         <http://purl.org/obo/owl/SO#SO_0000167>
@@ -1238,14 +1145,6 @@ Class: sybio:SigBPromoter
     
     SubClassOf: 
         sybio:Promoter
-    
-    
-Class: sybio:IMPD
-
-    Annotations: 
-        rdfs:comment "imported from database"@en,
-        rdfs:label "Imported from database"@en,
-        <http://www.purl.org/ontolink/tawny#name> "IMPD"@en
     
     
 Class: sybio:ConstitutiveSigAPromoter
@@ -1281,12 +1180,25 @@ Class: sybio:SigMPromoter
         sybio:Promoter
     
     
+Class: <http://purl.org/obo/owl/GO#GO_0005575>
+
+    EquivalentTo: 
+        sybio:CelComp
+    
+    
+Class: sybio:Operator
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Operator"@en
+    
+    SubClassOf: 
+        <http://purl.org/obo/owl/SO#SO_0000057>
+    
+    
 Class: sybio:EC
 
     Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "EC"@en,
-        rdfs:label "Enzyme Classification"@en,
-        rdfs:comment "All Enzymes are ordered by Classes(e.g. 1.2.3.2)"@en
+        <http://www.purl.org/ontolink/tawny#name> "EC"@en
     
     
 Class: sybio:SigDPromoter
@@ -1306,55 +1218,42 @@ Class: sybio:SigDPromoter
         sybio:Promoter
     
     
-Class: sybio:BacilluScope
-
-    Annotations: 
-        rdfs:comment "BacilluScope Bacillus subtilis genome annotation database."@en,
-        rdfs:label "BacilluScope"@en,
-        <http://www.purl.org/ontolink/tawny#name> "BacilluScope"@en
-    
-    
-Class: <http://purl.org/obo/owl/GO#GO_0000155>
+Class: <http://purl.org/obo/owl/SO#SO_0000057>
 
     
 Class: sybio:Comp
 
     Annotations: 
-        rdfs:label "Compound"@en,
-        rdfs:comment "a chemical compound"@en,
         <http://www.purl.org/ontolink/tawny#name> "Comp"@en
-    
-    
-Class: <http://www.sybio.ncl.ac.uk#BacilluScope:KEGG:String>
-
-    Annotations: 
-        rdfs:comment "Collapsed CV Set"@en,
-        rdfs:label "BacilluScope:KEGG:String"@en,
-        <http://www.purl.org/ontolink/tawny#name> "BacilluScope:KEGG:String"@en
     
     
 Class: sybio:Reaction
 
     Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "Reaction"@en,
-        rdfs:comment "a chemical reaction"@en,
-        rdfs:label "Reaction"@en
+        <http://www.purl.org/ontolink/tawny#name> "Reaction"@en
     
     
-Class: sybio:DBTBS
+Class: sybio:SigFPromoter
 
     Annotations: 
-        rdfs:label "Bacillus subtilis Transcription Factor Database"@en,
-        rdfs:comment "http://dbtbs.hgc.jp/"@en,
-        <http://www.purl.org/ontolink/tawny#name> "DBTBS"@en
+        rdfs:comment "SigF dependent promoter"@en,
+        <http://www.purl.org/ontolink/tawny#name> "SigFPromoter"@en,
+        rdfs:label "SigF promoter"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "BSU23450"^^xsd:string))) or (sybio:has_part some sybio:SigFPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
     
     
 Class: sybio:KOPR
 
     Annotations: 
-        rdfs:comment "Kegg Ortholog Group of sequence similarity"@en,
-        <http://www.purl.org/ontolink/tawny#name> "KOPR"@en,
-        rdfs:label "Kegg Orthologs Protein"@en
+        <http://www.purl.org/ontolink/tawny#name> "KOPR"@en
     
     
 Class: sybio:ANDGatePromoter
@@ -1371,41 +1270,8 @@ Class: sybio:ANDGatePromoter
 Class: <http://purl.org/obo/owl/SO#SO_0000167>
 
     
-Class: sybio:SigLPromoter
-
-    Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "SigLPromoter"@en,
-        rdfs:comment "SigL dependent promoter"@en,
-        rdfs:label "SigL promoter"@en
-    
-    EquivalentTo: 
-        sybio:Promoter
-         and ((sybio:bound_by some 
-            (sybio:TF
-             and (sybio:conceptAccession value "BSU34200"^^xsd:string))) or (sybio:has_part some sybio:SigLPromoter))
-    
-    SubClassOf: 
-        sybio:Promoter
-    
-    
-Class: sybio:String
-
-    Annotations: 
-        rdfs:comment "String 8 database"@en,
-        rdfs:label "String"@en,
-        <http://www.purl.org/ontolink/tawny#name> "String"@en
-    
-    
 Class: <http://purl.org/obo/owl/SO#SO_0000316>
 
-    
-Class: <http://www.sybio.ncl.ac.uk#BacilluScope:GOAEBI:KEGG:String>
-
-    Annotations: 
-        rdfs:comment "Collapsed CV Set"@en,
-        rdfs:label "BacilluScope:GOAEBI:KEGG:String"@en,
-        <http://www.purl.org/ontolink/tawny#name> "BacilluScope:GOAEBI:KEGG:String"@en
-    
     
 Class: sybio:RepressiblePromoter
 
@@ -1418,17 +1284,6 @@ Class: sybio:RepressiblePromoter
         sybio:Promoter
          and (sybio:has_part exactly 1 sybio:NegativelyRegulatedOperator)
          and (sybio:has_part exactly 1 sybio:Operator)
-    
-    
-Class: sybio:GOAEBI
-
-    Annotations: 
-        rdfs:label "Gene Ontology Annotation"@en,
-        <http://www.purl.org/ontolink/tawny#name> "GOAEBI"@en,
-        rdfs:comment "The GOA project aims to provide high-quality Gene Ontology (GO) annotations to proteins in
-                    the UniProt Knowledgebase (UniProtKB) and International Protein Index (IPI) and is a central dataset
-                    for other major multi-species databases; such as Ensembl and NCBI. - http://www.ebi.ac.uk/GOA/
-                "@en
     
     
 Class: sybio:SigVPromoter
@@ -1457,13 +1312,8 @@ Class: sybio:EvidenceType
 Class: <http://purl.org/obo/owl/GO#GO_0000156>
 
     
-Class: <http://www.sybio.ncl.ac.uk#BacilluScope:DBTBS>
+Class: <http://purl.org/obo/owl/GO#GO_0000155>
 
-    Annotations: 
-        rdfs:comment "Collapsed CV Set"@en,
-        rdfs:label "BacilluScope:DBTBS"@en,
-        <http://www.purl.org/ontolink/tawny#name> "BacilluScope:DBTBS"@en
-    
     
 Class: sybio:PositivelyRegulatedOperator
 
@@ -1498,22 +1348,19 @@ Class: sybio:SigXPromoter
 Class: sybio:CDS
 
     Annotations: 
-        rdfs:comment "Coding sequence"@en,
-        <http://www.purl.org/ontolink/tawny#name> "CDS"@en,
-        rdfs:label "Coding sequence"@en
+        <http://www.purl.org/ontolink/tawny#name> "CDS"@en
     
     SubClassOf: 
         <http://purl.org/obo/owl/SO#SO_0000316>
     
     
-Class: sybio:Shim
+Class: sybio:MolFunc
 
     Annotations: 
-        rdfs:label "Spacer sequence"@en,
-        <http://www.purl.org/ontolink/tawny#name> "Shim"@en
+        <http://www.purl.org/ontolink/tawny#name> "MolFunc"@en
     
-    SubClassOf: 
-        <http://purl.org/obo/owl/SO#SO_0000997>
+    EquivalentTo: 
+        <http://purl.org/obo/owl/GO#GO_0003674>
     
     
 Class: sybio:NegativelyRegulatedOperator
@@ -1527,14 +1374,6 @@ Class: sybio:NegativelyRegulatedOperator
         sybio:Operator
          and (sybio:NA some rdf:PlainLiteral)
          and (sybio:RT value "Negative"^^xsd:string)
-    
-    
-Class: <http://www.sybio.ncl.ac.uk#GOAEBI:KEGG:String>
-
-    Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "GOAEBI:KEGG:String"@en,
-        rdfs:comment "Collapsed CV Set"@en,
-        rdfs:label "GOAEBI:KEGG:String"@en
     
     
 Class: sybio:YlaCPromoter
@@ -1571,32 +1410,6 @@ Class: sybio:SigZPromoter
         sybio:Promoter
     
     
-Class: <http://www.sybio.ncl.ac.uk#BacilluScope:GOAEBI:KEGG>
-
-    Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "BacilluScope:GOAEBI:KEGG"@en,
-        rdfs:label "BacilluScope:GOAEBI:KEGG"@en,
-        rdfs:comment "Collapsed CV Set"@en
-    
-    
-Class: <http://www.sybio.ncl.ac.uk#BacilluScope:GOAEBI>
-
-    Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "BacilluScope:GOAEBI"@en,
-        rdfs:comment "Collapsed CV Set"@en,
-        rdfs:label "BacilluScope:GOAEBI"@en
-    
-    
-Class: sybio:KEGG
-
-    Annotations: 
-        rdfs:label "Kyoto Encyclopedia of Genes and Genomes"@en,
-        rdfs:comment "KEGG (Kyoto Encyclopedia of Genes and Genomes) is a bioinformatics resource for linking
-                    genomes to life and the environment. - http://www.genome.jp/kegg/
-                "@en,
-        <http://www.purl.org/ontolink/tawny#name> "KEGG"@en
-    
-    
 Class: sybio:InduciblePromoterWith2Operators
 
     Annotations: 
@@ -1630,9 +1443,7 @@ Class: sybio:SigHPromoter
 Class: sybio:Path
 
     Annotations: 
-        rdfs:label "Pathway"@en,
-        <http://www.purl.org/ontolink/tawny#name> "Path"@en,
-        rdfs:comment "Biological Pathway"@en
+        <http://www.purl.org/ontolink/tawny#name> "Path"@en
     
     
 Class: sybio:RepressibleInduciblePromoterWith2Operators
@@ -1649,22 +1460,10 @@ Class: sybio:RepressibleInduciblePromoterWith2Operators
          and (sybio:has_part exactly 2 sybio:Operator)
     
     
-Class: sybio:RNA
-
-    Annotations: 
-        rdfs:label "RNA"@en,
-        <http://www.purl.org/ontolink/tawny#name> "RNA"@en,
-        rdfs:comment "Ribonucleic Acid. A polymer of riboses with pyrimidine and purine bases."@en
-    
-    SubClassOf: 
-        <http://purl.org/obo/owl/SO#SO_0000356>
-    
-    
 Class: sybio:RBS
 
     Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "RBS"@en,
-        rdfs:label "Ribosome Binding Site"@en
+        <http://www.purl.org/ontolink/tawny#name> "RBS"@en
     
     SubClassOf: 
         <http://purl.org/obo/owl/SO#SO_0000139>
@@ -1695,17 +1494,16 @@ Class: sybio:ORGatePromoter
 Class: sybio:BioProc
 
     Annotations: 
-        rdfs:label "Biological_Process"@en,
-        <http://www.purl.org/ontolink/tawny#name> "BioProc"@en,
-        rdfs:comment "Biological_Process (GO)"@en
+        <http://www.purl.org/ontolink/tawny#name> "BioProc"@en
+    
+    EquivalentTo: 
+        <http://purl.org/obo/owl/GO#GO_0008150>
     
     
 Class: sybio:FFL
 
     Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "FFL"@en,
-        rdfs:comment "Feed Forward Loop"@en,
-        rdfs:label "Feed Forward Loop"@en
+        <http://www.purl.org/ontolink/tawny#name> "FFL"@en
     
     
 Class: sybio:SigAPromoter
@@ -1725,37 +1523,27 @@ Class: sybio:SigAPromoter
         sybio:Promoter
     
     
-Class: <http://www.sybio.ncl.ac.uk#BacilluScope:DBTBS:GOAEBI:String>
+Class: sybio:SigLPromoter
 
     Annotations: 
-        rdfs:label "BacilluScope:DBTBS:GOAEBI:String"@en,
-        <http://www.purl.org/ontolink/tawny#name> "BacilluScope:DBTBS:GOAEBI:String"@en,
-        rdfs:comment "Collapsed CV Set"@en
-    
-    
-Class: sybio:Operator
-
-    Annotations: 
-        rdfs:comment "Operator"@en,
-        rdfs:label "Operator"@en,
-        <http://www.purl.org/ontolink/tawny#name> "Operator"@en
-    
-    SubClassOf: 
-        <http://purl.org/obo/owl/SO#SO_0000057>
-    
-    
-Class: sybio:ActivatorEncodingCDS
-
-    Annotations: 
-        rdfs:label "Activator encoding CDS"@en,
-        rdfs:comment "Coding sequences that encode for transcriptional activators"@en,
-        <http://www.purl.org/ontolink/tawny#name> "ActivatorEncodingCDS"@en
+        <http://www.purl.org/ontolink/tawny#name> "SigLPromoter"@en,
+        rdfs:comment "SigL dependent promoter"@en,
+        rdfs:label "SigL promoter"@en
     
     EquivalentTo: 
-        sybio:CDS
-         and (sybio:encodes some 
-            (sybio:Protein
-             and (sybio:bi_to some sybio:PositivelyRegulatedOperator)))
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "BSU34200"^^xsd:string))) or (sybio:has_part some sybio:SigLPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
+    
+    
+Class: <http://purl.org/obo/owl/GO#GO_0008150>
+
+    EquivalentTo: 
+        sybio:BioProc
     
     
 Class: <http://purl.org/obo/owl/SO#SO_0000356>
@@ -1767,8 +1555,6 @@ Class: <http://purl.org/obo/owl/SO#SO_0000614>
 Class: sybio:Enzyme
 
     Annotations: 
-        rdfs:label "Enzyme"@en,
-        <http://www.purl.org/ontolink/tawny#name> "Enzyme"@en,
-        rdfs:comment "An Enzyme is a Protein that catalyzes a chemical reaction."@en
+        <http://www.purl.org/ontolink/tawny#name> "Enzyme"@en
     
     

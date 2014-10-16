@@ -48,31 +48,30 @@
   (let [index (.lastIndexOf resourceURI "/")]
    (.substring resourceURI (+ index 1))))
 
-(defn addAnnotation [ontology class predicateOntology predicate predicateURI value]
+(defn addAnnotation [owlClass predicateOntology predicate predicateURI value]
  (if (contains? RDFS_COMMENT_PROPERTIES  predicate)
-   (addComment ontology class value)
+   (addComment owlClass value)
    (do
      (if (contains? RDFS_LABEL_PROPERTIES  predicate)
-		   (addLabel ontology class value)
+		   (addLabel owlClass value)
        (do
-          (addAnnotationProperty ontology class predicateOntology predicate value)
+          (addAnnotationProperty owlClass predicateOntology predicate value)
           (def annotationPropertyUris (conj annotationPropertyUris  predicateURI));GMGMGM
         ))       
      )   
  ))
 
-(defn addLiteralPropertyToClass [ontology stmt]
+(defn addLiteralPropertyToClass [stmt owlClass]
   (let [predicateName (str (.getLocalName(.getPredicate stmt)))
         objectValue (str (.toString (.getValue (.asLiteral (.getObject stmt)))))
-         class (getID (.getURI (.getSubject stmt)))
          predicateURI (.getURI (.getPredicate stmt))
          ]
   (if-not (contains? PROPERTIES_TO_IGNORE  predicateName)
     (if (contains? ANNOTATION_PROPERTIES  predicateName)
-      (addAnnotation ontology class synthbiont predicateName predicateURI objectValue) 
+      (addAnnotation owlClass synthbiont predicateName predicateURI objectValue) 
       ( do        
         (def datatypePropertyUris (conj datatypePropertyUris  predicateURI))
-        (addDatatypeProperty ontology class synthbiont predicateName objectValue) 
+        (addDatatypeProperty owlClass synthbiont predicateName objectValue) 
       )
     )
   )
@@ -82,12 +81,17 @@
   (let [typeId (getID (.getURI resource))
         typeResourceProperties (iterator-seq (.listProperties resource))
         ]  
+    ;(println "In handle meta resource")
   (owl-class ontology typeId)  
   (if-not (nil? parentClass)
     (owl-class ontology typeId :subclass (owl-class parentOntology parentClass)))
   (doseq [stmt typeResourceProperties] 
-     (if (.isLiteral (.getObject stmt)) 
-       (addLiteralPropertyToClass synthbiont stmt))
+     (if (.isLiteral (.getObject stmt))
+       (do
+         ;(print "Adding the literal...")
+         (addLiteralPropertyToClass  stmt (owl-class ontology typeId)))
+         ;(println "done!") 
+       )
   )  
   ))
 
@@ -105,63 +109,50 @@
     (owl-class bacillondex (getID (.getURI classResource)) :subclass (owl-class synthbiont parentClass))     
   ))
 
-  (defn handleInverseProperty [ontology class valueOntology valueClass predicateOntology predicate]
+  (defn handleInverseProperty [classIri valueClassIri predicateOntology predicate]
     (let [inversePredicate (.get INVERSE_PROPERTIES predicate)]
         (if-not (nil? inversePredicate)
           (do
 	          (as-inverse
 	             (object-property predicateOntology predicate)
-	             (object-property predicateOntology inversePredicate))
-          
-             (addObjectProperty valueOntology valueClass  ontology class predicateOntology inversePredicate)          
-		      
+	             (object-property predicateOntology inversePredicate))          
+               (owl-class classIri :subclass (owl-some predicateOntology predicate (owl-class valueClassIri)))
+  		      
              (if (= inversePredicate "has_part")                 
-                 (owl-class valueOntology valueClass :subclass ( exactly predicateOntology 1 inversePredicate (owl-class ontology class) ))
-                 ;(owl-class valueOntology valueClass :subclass (owl-some predicateOntology predicate (owl-class ontology class)))                 
-                 ;(owl-class valueOntology valueClass :subclass (exactly 1 predicateOntology inversePredicate ontology class )) 
+                 (owl-class valueClassIri :subclass ( exactly predicateOntology 1 inversePredicate (owl-class classIri) ))                 
                )                 
           ))
     ))         
             
-(defn handleRelationStatement [stmt]
+(defn handleRelationStatement [stmt owlClass]
   (let [predicate (.getLocalName (.getPredicate stmt))
         valueResource (.getResource model (.getURI (.asResource (.getObject stmt))))
-        class (getID (.getURI (.getSubject stmt)))
-        valueResourceId (getID (.getURI valueResource))]
-        ;TODO:  Not adding the class for the related object here
-        ;TODO: Not adding the related class' super class        
+        valueResourceId (getID (.getURI valueResource))
+        valueTypeResource (.asResource (.getObject (.getProperty valueResource (RDF/type))))
+        valueType (getID (.getURI valueTypeResource))
+        valueClass (addOntologyClass valueResource valueType)
+        ]
+        ;(print "valueClass:" valueClass)
         (if (contains? SUBCLASS_RELATION predicate)
-          (owl-class bacillondex class :subclass (owl-class bacillondex valueResourceId )))
+          (owl-class (.getIRI owlClass) :subclass (owl-class (.getIRI valueClass) )))
         
         (if (contains? SAMECLASS_RELATION predicate) 
-          (owl-class bacillondex class :equivalent (owl-class bacillondex valueResourceId )))
+          (owl-class (.getIRI owlClass) :equivalent (owl-class (.getIRI valueClass) )))
       
         (if-not (or (contains? SUBCLASS_RELATION predicate) (contains? SAMECLASS_RELATION predicate)) 
           (do 
             (def objectPropertyUris (conj objectPropertyUris  (.getURI (.getPredicate stmt))))
             (object-property synthbiont predicate)
-            (let [valueTypeResource (.asResource (.getObject (.getProperty valueResource (RDF/type))))
-                  valueType (getID (.getURI valueTypeResource))]                 
-                (if (contains? GO_CLASSES valueType) 
-                     (do 
-                       (owl-class bacillondex class :subclass (owl-some synthbiont predicate (owl-class bacillondex (owl-class (iri (str GO_URI "#" (getGoTerm valueResource)))))))
-                     )
-                     (do
-                       (owl-class bacillondex class :subclass (owl-some synthbiont predicate (owl-class bacillondex valueResourceId)))
-                       (handleInverseProperty bacillondex class bacillondex valueResourceId synthbiont predicate)  
-                       )
-                   )
-                )                        
-            ;(addObjectProperty bacillondex class bacillondex valueResourceId synthbiont predicate)
-            ;(handleInverseProperty bacillondex class bacillondex valueResourceId synthbiont predicate)  
+             (owl-class (.getIRI owlClass) :subclass (owl-some synthbiont predicate (owl-class (.getIRI valueClass))))  
+             (handleInverseProperty (.getIRI owlClass)  (.getIRI valueClass) synthbiont predicate)                                   
           ))                          
         ))
 
-(defn handleOndexCoreResource [stmt]
+
+(defn handleOndexCoreResource [stmt owlClass]
   (let [resource (.asResource (.getObject stmt))
         resourceUri (.getURI resource)
         predicate (.getLocalName (.getPredicate stmt))
-        class (getID (.getURI (.getSubject stmt)))
         predicateUri (.getURI (.getPredicate stmt))        
         ]
     (if (.startsWith resourceUri evidenceTypeNS)
@@ -169,26 +160,26 @@
     (if (.startsWith resourceUri cvNS)
         (handleMetaResource bacillondex resource synthbiont DATA_SOURCE_PARENT_CLASS))    
     (if (contains? ANNOTATION_PROPERTIES predicate)
-      (addAnnotation bacillondex class synthbiont predicate predicateUri resourceUri)
+      (addAnnotation owlClass synthbiont predicate predicateUri resourceUri)
       (print "TODO: Handle core resources that are not annotations")
       )
     ))
 
-(defn handleOndexCoreStatement [stmt]
+(defn handleOndexCoreStatement [stmt owlClass]
     (if (.isLiteral (.getObject stmt))
-      (addLiteralPropertyToClass bacillondex stmt)
-      (handleOndexCoreResource stmt))
+      (addLiteralPropertyToClass stmt owlClass)
+      (handleOndexCoreResource stmt owlClass))
   )
 
-(defn handleStatement [stmt]
+(defn handleStatement [stmt owlClass]
   (let [predicateNS (.getNameSpace (.getPredicate stmt))]
     (if (= predicateNS relationTypeNS)
-      (handleRelationStatement stmt)
+      (handleRelationStatement stmt owlClass)
     )
     (if (= predicateNS attributeNS)
-     (addLiteralPropertyToClass bacillondex stmt))
+     (addLiteralPropertyToClass stmt owlClass))
    (if (= predicateNS ondexcoreNS)
-    (handleOndexCoreStatement stmt))    
+    (handleOndexCoreStatement stmt owlClass))    
   ))
   
 (defn handleConceptResource [resource]
@@ -196,9 +187,10 @@
          type (getID (.getURI typeResource))]
     ;(handleMetaResource synthbiont typeResource nil  nil)
     (def resourceTypeUris (conj resourceTypeUris  (.getURI typeResource)))
-    (addOntologyClass resource type)
-    (doseq [stmt (iterator-seq (.listProperties resource))] 
-      (handleStatement stmt )      
+    (let [owlClass (addOntologyClass resource type)]
+      (doseq [stmt (iterator-seq (.listProperties resource))] 
+        (handleStatement stmt owlClass)      
+        )
       )    
     ))
 
@@ -253,9 +245,14 @@
    )
    
    (print "Adding the class types ()...")
+   ;(try
+   ;  (
    (doseq [typeUri resourceTypeUris]
        (handleMetaResource synthbiont (.getResource model typeUri) nil  nil))
    (println "done!")
+   ;)
+    ; (catch Exception e (str "caught exception: " (.getMessage e) (.printStackTrace e))))
+   
    
    (print "Adding the datatype properties ...")      
    (doseq [propertyUri datatypePropertyUris]
@@ -445,9 +442,14 @@
  (owl-import bacillondex (iri(File."synthbiont.omn")))
  ;(owl-import bacillondex (iri(str "file:synthbiont.omn"))) 
  
- (save-ontology bacillondex "bacillondexontology2.rdf" :rdf)   
+ (save-ontology bacillondex "bacillondexontology.rdf" :rdf)   
+ (save-ontology bacillondex "bacillondexontology.omn" :omn)   
+ 
 )
 
+(defn getclass[o cls]
+  (owl-class o cls)
+  )
 (defn testontology[]
  
  	(defontology ontology1
@@ -468,7 +470,15 @@
  (owl-class ontology2 "Class2" 
             :label "Class 2"
             :subclass (owl-class ontology1 "Class1"))
+
+ ;((getclass ontology2 "Class3") :label (str "Class 3"))
+ (let [owlclass (getclass ontology2 "Class3")]
+   ;(owlclass :label "Class 3")
+   ;((cast owl-class owlclass) :label "Class 3")
+   (owl-class (.getIRI (getclass ontology2 "Class3")) :label "Class 3")
+   )
  
+
  
 ;(let [ 
 ;      iriMapper1 (SimpleIRIMapper. (iri(str "http://www.ontology1.org")) (iri(str "ontology1.omn")))
@@ -479,8 +489,8 @@
 ;(.removeIRIMapper (owl-ontology-manager) iriMapper2)   
   
 (save-ontology ontology1 "ontology1.omn" :omn)
-(save-ontology ontology1 "ontology1.rdf" :rdf)
-(save-ontology ontology1 "ontology1.oml" :owl)
+;(save-ontology ontology1 "ontology1.rdf" :rdf)
+;(save-ontology ontology1 "ontology1.oml" :owl)
 
 ;(owl-import ontology1)
 ;(owl-import ontology2 (iri(str "ontology1.omn")))
@@ -493,8 +503,8 @@
 ;(.addPrefixes (DefaultPrefixManager.) (.setPrefix (ManchesterOWLSyntaxOntologyFormat.) "http://www.ontology1.org" "o1"))
 
 (save-ontology ontology2 "ontology2.omn" :omn)
-(save-ontology ontology2 "ontology2.rdf" :rdf)
-(save-ontology ontology2 "ontology2.owl" :owl)
+;(save-ontology ontology2 "ontology2.rdf" :rdf)
+;(save-ontology ontology2 "ontology2.owl" :owl)
 
 ;(.addIRIMapper (owl-ontology-manager) iriMapper)     
  ;)

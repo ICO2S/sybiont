@@ -10,7 +10,7 @@
      xmlns:tawny="http://www.purl.org/ontolink/tawny#">
     <owl:Ontology rdf:about="http://www.ontology2.org">
         <tawny:name xml:lang="en">ontology2</tawny:name>
-        <owl:imports rdf:resource="file:ontology1.omn"/>
+        <owl:imports rdf:resource="file:/home/goksel/work/synthbiont_v2.0/synthbiont_to/ontology1.omn"/>
         <owl:imports rdf:resource="http://www.purl.org/ontolink/tawny"/>
     </owl:Ontology>
     
@@ -39,6 +39,14 @@
         <rdfs:label xml:lang="en">Class 2</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.ontology1.org#Class1"/>
         <tawny:name xml:lang="en">Class2</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ontology2.org#Class3 -->
+
+    <owl:Class rdf:about="http://www.ontology2.org#Class3">
+        <tawny:name xml:lang="en">Class3</tawny:name>
     </owl:Class>
 </rdf:RDF>
 

@@ -5,16 +5,16 @@
              [reasoner :as r]
              [pattern :as p]]))
 
-(defn addComment [ontology class value]
-  (owl-class ontology class :comment value))
+(defn addComment [owlClass value]
+  (owl-class (.getIRI owlClass) :comment value))
 
 
-(defn addLabel [ontology class value]
-  (owl-class ontology class :label value))
+(defn addLabel [owlClass value]
+  (owl-class (.getIRI owlClass) :label value))
 
-(defn addAnnotationProperty [ontology class predicateOntology predicate value]
+(defn addAnnotationProperty [owlClass predicateOntology predicate value]
   (annotation-property predicateOntology predicate)
-  (owl-class ontology class :annotation (annotation predicateOntology predicate value)))
+  (owl-class (.getIRI owlClass) :annotation (annotation predicateOntology predicate value)))
 
 (defn addCommentForProperty [ontology predicate value propertyType]
   (if (= propertyType "object")
@@ -50,14 +50,23 @@
   (if (= propertyType "annotation")  
     (annotation-property ontology predicate :annotation (annotation ontology predicateAnnotateWith value))))
 
-(defn addDatatypeProperty [ontology class predicateOntology predicate value]
+(defn addDatatypeProperty [owlClass predicateOntology predicate value]
   (datatype-property predicateOntology predicate)
-  (owl-class ontology class :subclass (has-value predicateOntology predicate value)))
+  (owl-class (.getIRI owlClass) :subclass (has-value predicateOntology predicate value)))
 
-(defn addObjectProperty [ontology class valueOntology valueClass predicateOntology predicate]
+(defn addObjectProperty [owlClass valueClass predicateOntology predicate]
   (object-property predicateOntology predicate)
-  (owl-class ontology class :subclass (owl-some predicateOntology predicate (owl-class valueOntology valueClass)))
+  (owl-class (.getIRI owlClass) :subclass (owl-some predicateOntology predicate (owl-class (.getIRI valueClass))))
 )
+
+(defn addObjectProperty [owlClass valueClass predicateOntology predicate]
+  (object-property predicateOntology predicate)
+  (owl-class (.getIRI owlClass) :subclass (owl-some predicateOntology predicate (owl-class (.getIRI valueClass))))
+)
+
+(defn getClassIri [ontology className]
+  (iri (str (.toString (.getOntologyIRI (.getOntologyID ontology))) "#" className))
+  )
 
 ;(defn import [ontologyIri filePath]
 ;  

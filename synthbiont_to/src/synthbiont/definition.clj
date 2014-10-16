@@ -22,7 +22,10 @@
 (defoproperty bi_to)
 (defoproperty bound_by)
 
-;(defclass Promoter :subclass (owl-class (iri((str SO_URI "#SO_0000167")))))
+(defclass BioProc :equivalent (owl-class (iri (str GO_URI "#GO_0008150"))))
+(defclass CelComp :equivalent (owl-class (iri (str GO_URI "#GO_0005575"))))
+(defclass MolFunc :equivalent (owl-class (iri (str GO_URI "#GO_0003674"))))
+
 (defclass Promoter :subclass (owl-class (iri (str SO_URI "#SO_0000167"))))
 (defclass CDS :subclass (owl-class (iri (str SO_URI "#SO_0000316"))))
 (defclass Terminator :subclass (owl-class (iri (str SO_URI "#SO_0000614"))))
@@ -195,6 +198,13 @@
                       (owl-or (owl-some bound_by (owl-and TF (has-value conceptAccession "BSU00980")))
                               (owl-some has_part SigHPromoter))))
 
+(defclass SigIPromoter
+ :label "SigI promoter"
+ :comment "SigI dependent promoter"
+ :subclass Promoter
+ :equivalent (owl-and Promoter
+                      (owl-or (owl-some bound_by (owl-and TF (has-value conceptAccession "BSU13450")))
+                              (owl-some has_part SigIPromoter))))
 (defclass SigKPromoter
  :label "SigK promoter"
  :comment "SigK dependent promoter"
