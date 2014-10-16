@@ -272,9 +272,7 @@
     (println "converted")    
  )
  
-(defn getClassIri [ontology className]
-  (iri (str (.toString (.getOntologyIRI (.getOntologyID ontology))) "#" className))
-  )
+
 
 (defn getIriFragment[owlClass]
   (let [classIri (.getIRI owlClass)
@@ -438,11 +436,10 @@
 ;(print "subclasses" (subclasses bacillondex (iri (str (.toString (.getOntologyIRI (.getOntologyID synthbiont))) "#Promoter"))))
  
  (save-ontology synthbiont "synthbiont.omn" :omn)
- ;(save-ontology bacillondex "bacillondex.omn" :omn)
  (owl-import bacillondex (iri(File."synthbiont.omn")))
  ;(owl-import bacillondex (iri(str "file:synthbiont.omn"))) 
  
- (save-ontology bacillondex "bacillondexontology.rdf" :rdf)   
+ ;(save-ontology bacillondex "bacillondexontology.rdf" :rdf)   
  (save-ontology bacillondex "bacillondexontology.omn" :omn)   
  
 )
