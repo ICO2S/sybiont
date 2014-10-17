@@ -38,6 +38,7 @@
 (defclass Protein)
 (defclass TF)
 
+(as-disjoint Operator Promoter)
 ; TODO Remove:
 ;(owl-class (iri(str "http://purl.org/obo/owl/GO#GO_0000156")))
 

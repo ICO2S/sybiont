@@ -1,0 +1,1566 @@
+Prefix: bo: <http://www.bacillondex.org#>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: sybio: <http://www.sybio.ncl.ac.uk#>
+
+
+
+Ontology: <http://www.sybio.ncl.ac.uk>
+
+Import: <http://www.purl.org/ontolink/tawny>
+
+Annotations: 
+    <http://www.purl.org/ontolink/tawny#name> "synthbiont"@en
+
+AnnotationProperty: sybio:evidence
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "evidence"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "evidence"@en
+    
+    
+AnnotationProperty: sybio:UnnormalizedMinExpression
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "UnnormalizedMinExpression"@en,
+        rdfs:label "Unnormalized Min Expression"@en,
+        rdfs:comment "Unnormalized Min Gene Expression"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "UnnormalizedMinExpression"@en,
+        rdfs:comment "Unnormalized Min Gene Expression"@en,
+        rdfs:label "Unnormalized Min Expression"@en
+    
+    
+AnnotationProperty: sybio:Target
+
+    Annotations: 
+        rdfs:label "Target"@en,
+        <http://www.purl.org/ontolink/tawny#name> "Target"@en,
+        rdfs:comment "Target Experiment"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Target"@en,
+        rdfs:comment "Target Experiment"@en,
+        rdfs:label "Target"@en
+    
+    
+AnnotationProperty: sybio:BM
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "BM"@en,
+        rdfs:comment "Binding motif"@en,
+        rdfs:label "BindingMotif"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "BM"@en,
+        rdfs:comment "Binding motif"@en,
+        rdfs:label "BindingMotif"@en
+    
+    
+AnnotationProperty: sybio:Length
+
+    Annotations: 
+        rdfs:label "Length"@en,
+        <http://www.purl.org/ontolink/tawny#name> "Length"@en,
+        rdfs:comment "Length"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Length"@en,
+        rdfs:comment "Length"@en,
+        rdfs:label "Length"@en
+    
+    
+AnnotationProperty: sybio:UnnormalizedMaxExpression
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "UnnormalizedMaxExpression"@en,
+        rdfs:label "Unnormalized Max Expression"@en,
+        rdfs:comment "Unnormalized Max Gene Expression"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "UnnormalizedMaxExpression"@en,
+        rdfs:comment "Unnormalized Max Gene Expression"@en,
+        rdfs:label "Unnormalized Max Expression"@en
+    
+    
+AnnotationProperty: sybio:EndOfBindingSite
+
+    Annotations: 
+        rdfs:comment "End position of a transcription factor binding site in a promotor region"@en,
+        <http://www.purl.org/ontolink/tawny#name> "EndOfBindingSite"@en,
+        rdfs:label "End of Transcription Factor Binding Site"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "EndOfBindingSite"@en,
+        rdfs:comment "End position of a transcription factor binding site in a promotor region"@en,
+        rdfs:label "End of Transcription Factor Binding Site"@en
+    
+    
+AnnotationProperty: sybio:URL
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "URL"@en,
+        rdfs:comment "url"@en,
+        rdfs:label "URL"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "URL"@en,
+        rdfs:comment "url"@en,
+        rdfs:label "URL"@en
+    
+    
+AnnotationProperty: <http://www.purl.org/ontolink/tawny#name>
+
+    
+AnnotationProperty: sybio:annotatedsequence
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "annotatedsequence"@en,
+        rdfs:label "Annotated Sequence "@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "annotatedsequence"@en,
+        rdfs:label "Annotated Sequence "@en
+    
+    
+AnnotationProperty: sybio:COGProcess
+
+    Annotations: 
+        rdfs:comment "COG Process"@en,
+        <http://www.purl.org/ontolink/tawny#name> "COGProcess"@en,
+        rdfs:label "COG Process"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "COGProcess"@en,
+        rdfs:comment "COG Process"@en,
+        rdfs:label "COG Process"@en
+    
+    
+AnnotationProperty: sybio:originalannotatedsequence
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "originalannotatedsequence"@en,
+        rdfs:comment "Original version of the annotation"@en,
+        rdfs:label "Original Annotated Sequence"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "originalannotatedsequence"@en,
+        rdfs:comment "Original version of the annotation"@en,
+        rdfs:label "Original Annotated Sequence"@en
+    
+    
+AnnotationProperty: sybio:BEGIN
+
+    Annotations: 
+        rdfs:label "Start of feature"@en,
+        <http://www.purl.org/ontolink/tawny#name> "BEGIN"@en,
+        rdfs:comment "Location of start of a feature
+                    In the case of DNA, taken to be the lowest base pair location from
+                    the forward strand, regardless of sense strand for the feature.
+                "@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "BEGIN"@en,
+        rdfs:comment "Location of start of a feature
+                    In the case of DNA, taken to be the lowest base pair location from
+                    the forward strand, regardless of sense strand for the feature.
+                "@en,
+        rdfs:label "Start of feature"@en
+    
+    
+AnnotationProperty: sybio:elementOf
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "elementOf"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "elementOf"@en
+    
+    
+AnnotationProperty: sybio:ReadingFrame
+
+    Annotations: 
+        rdfs:label "Reading Frame"@en,
+        <http://www.purl.org/ontolink/tawny#name> "ReadingFrame"@en,
+        rdfs:comment "Reading frames from -3 to 3"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "ReadingFrame"@en,
+        rdfs:comment "Reading frames from -3 to 3"@en,
+        rdfs:label "Reading Frame"@en
+    
+    
+AnnotationProperty: sybio:operongenes
+
+    Annotations: 
+        rdfs:label "Operon Genes"@en,
+        rdfs:comment "List of genes in the operon"@en,
+        <http://www.purl.org/ontolink/tawny#name> "operongenes"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "operongenes"@en,
+        rdfs:comment "List of genes in the operon"@en,
+        rdfs:label "Operon Genes"@en
+    
+    
+AnnotationProperty: rdfs:label
+
+    
+AnnotationProperty: rdfs:comment
+
+    
+AnnotationProperty: sybio:TAXID
+
+    Annotations: 
+        rdfs:comment "NCBI Taxonomic Identifier"@en,
+        <http://www.purl.org/ontolink/tawny#name> "TAXID"@en,
+        rdfs:label "Taxonomy_ID"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "TAXID"@en,
+        rdfs:comment "NCBI Taxonomic Identifier"@en,
+        rdfs:label "Taxonomy_ID"@en
+    
+    
+AnnotationProperty: sybio:END
+
+    Annotations: 
+        rdfs:comment "Location of end of a feature
+                    In the case of DNA, taken to be the highest base pair location from
+                    the forward strand, regardless of sense strand for the feature.
+                "@en,
+        <http://www.purl.org/ontolink/tawny#name> "END"@en,
+        rdfs:label "End of feature"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "END"@en,
+        rdfs:comment "Location of end of a feature
+                    In the case of DNA, taken to be the highest base pair location from
+                    the forward strand, regardless of sense strand for the feature.
+                "@en,
+        rdfs:label "End of feature"@en
+    
+    
+AnnotationProperty: sybio:DELTAGO
+
+    Annotations: 
+        rdfs:comment "Gibbs free energy for the reaction"@en,
+        rdfs:label "GibbsFreeEnergy"@en,
+        <http://www.purl.org/ontolink/tawny#name> "DELTAGO"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "DELTAGO"@en,
+        rdfs:comment "Gibbs free energy for the reaction"@en,
+        rdfs:label "GibbsFreeEnergy"@en
+    
+    
+AnnotationProperty: sybio:AA
+
+    Annotations: 
+        rdfs:comment "Any Sequence of Amino Acids like a protein"@en,
+        <http://www.purl.org/ontolink/tawny#name> "AA"@en,
+        rdfs:label "AminoacidSequence"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "AA"@en,
+        rdfs:comment "Any Sequence of Amino Acids like a protein"@en,
+        rdfs:label "AminoacidSequence"@en
+    
+    
+AnnotationProperty: sybio:pid
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "pid"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "pid"@en
+    
+    
+AnnotationProperty: sybio:Control
+
+    Annotations: 
+        rdfs:label "Control"@en,
+        <http://www.purl.org/ontolink/tawny#name> "Control"@en,
+        rdfs:comment "Control experiment"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Control"@en,
+        rdfs:comment "Control experiment"@en,
+        rdfs:label "Control"@en
+    
+    
+Datatype: xsd:string
+
+    
+Datatype: rdf:PlainLiteral
+
+    
+ObjectProperty: sybio:in_by
+
+    Annotations: 
+        rdfs:comment "inhibition of a gene's expression by a transcription factor"@en,
+        <http://www.purl.org/ontolink/tawny#name> "in_by"@en,
+        rdfs:label "inhibited_by"@en
+    
+    
+ObjectProperty: sybio:has_part
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "has_part"@en
+    
+    
+ObjectProperty: sybio:cs_by
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "cs_by"@en,
+        rdfs:label "consumed_by"@en
+    
+    
+ObjectProperty: sybio:bound_by
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "bound_by"@en
+    
+    
+ObjectProperty: sybio:max_expressed_in
+
+    Annotations: 
+        rdfs:label "Max Expressed In"@en,
+        rdfs:comment "Max Expressed In"@en,
+        <http://www.purl.org/ontolink/tawny#name> "max_expressed_in"@en
+    
+    
+ObjectProperty: sybio:part_of
+
+    Annotations: 
+        rdfs:comment "For continuants: C part_of C' if and only if: given
+                        any c that instantiates C at a time t, there is some
+                        c' such that c' instantiates C' at time t, and c
+                        *part_of* c' at t. For processes: P part_of P' if
+                        and only if: given any p that instantiates P at a
+                        time t, there is some p' such that p' instantiates
+                        P' at time t, and p *part_of* p' at t. (Here
+                        *part_of* is the instance-level part-relation.)
+                    "@en,
+        <http://www.purl.org/ontolink/tawny#name> "part_of"@en,
+        rdfs:label "part_of"@en
+    
+    
+ObjectProperty: sybio:encodes
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "encodes"@en
+    
+    
+ObjectProperty: sybio:ex_by
+
+    Annotations: 
+        rdfs:label "expressed_by"@en,
+        rdfs:comment "interactions via DNA binding"@en,
+        <http://www.purl.org/ontolink/tawny#name> "ex_by"@en
+    
+    
+ObjectProperty: sybio:upstream
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "upstream"@en,
+        rdfs:label "is_upstream_of"@en
+    
+    
+ObjectProperty: sybio:isthirdgeneof
+
+    Annotations: 
+        rdfs:label "Third Gene Of"@en,
+        rdfs:comment "Third Gene Of an FFL"@en,
+        <http://www.purl.org/ontolink/tawny#name> "isthirdgeneof"@en
+    
+    
+ObjectProperty: sybio:dephosphorylated_by
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "dephosphorylated_by"@en,
+        rdfs:label "dephosphorylated_by"@en
+    
+    
+ObjectProperty: sybio:en_by
+
+    Annotations: 
+        rdfs:comment "Polypeptide->Gene"@en,
+        rdfs:label "is_encoded_by"@en,
+        <http://www.purl.org/ontolink/tawny#name> "en_by"@en
+    
+    
+ObjectProperty: sybio:rg_by
+
+    Annotations: 
+        rdfs:label "regulated_by"@en,
+        <http://www.purl.org/ontolink/tawny#name> "rg_by"@en,
+        rdfs:comment "TF->Gene"@en
+    
+    
+ObjectProperty: sybio:ac_by
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "ac_by"@en,
+        rdfs:label "activated_by"@en,
+        rdfs:comment "activation of a gene's expression by a transcription factor"@en
+    
+    
+ObjectProperty: sybio:pd_by
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "pd_by"@en,
+        rdfs:label "produced_by"@en
+    
+    
+ObjectProperty: sybio:has_participant
+
+    Annotations: 
+        rdfs:comment "P has_participant C if and only if: given any
+                        process p that instantiates P there is some
+                        continuant c, and some time t, such that: c
+                        instantiates C at t and c participates in p at t
+                    "@en,
+        <http://www.purl.org/ontolink/tawny#name> "has_participant"@en,
+        rdfs:label "has_participant"@en
+    
+    
+ObjectProperty: sybio:adjacent_to
+
+    Annotations: 
+        rdfs:label "adjacent_to"@en,
+        <http://www.purl.org/ontolink/tawny#name> "adjacent_to"@en,
+        rdfs:comment "n C adjacent to C' if and only if: given any
+                    instance c that instantiates C at a time t, there is
+                    some c' such that: c' instantiates C' at time t and
+                    c and c' are in spatial proximity
+                "@en
+    
+    
+ObjectProperty: sybio:transcribes_to
+
+    Annotations: 
+        rdfs:comment "Gene->mRNA"@en,
+        rdfs:label "transcribes_to"@en,
+        <http://www.purl.org/ontolink/tawny#name> "transcribes_to"@en
+    
+    
+ObjectProperty: sybio:di_fr
+
+    Annotations: 
+        rdfs:label "dissociated_from"@en,
+        <http://www.purl.org/ontolink/tawny#name> "di_fr"@en
+    
+    
+ObjectProperty: sybio:ca_by
+
+    Annotations: 
+        rdfs:comment "catalyzation of a reaction by a catalyst"@en,
+        <http://www.purl.org/ontolink/tawny#name> "ca_by"@en,
+        rdfs:label "catalyzed_by"@en
+    
+    
+ObjectProperty: sybio:terminates
+
+    Annotations: 
+        rdfs:comment "Defines the relation of a terminator with a gene"@en,
+        rdfs:label "terminates"@en,
+        <http://www.purl.org/ontolink/tawny#name> "terminates"@en
+    
+    
+ObjectProperty: sybio:located_in
+
+    Annotations: 
+        rdfs:label "located_in"@en,
+        rdfs:comment "Localizable->Space"@en,
+        <http://www.purl.org/ontolink/tawny#name> "located_in"@en
+    
+    
+ObjectProperty: sybio:it_wi
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "it_wi"@en,
+        rdfs:comment "Thing->Thing"@en,
+        rdfs:label "interacts_with"@en
+    
+    
+ObjectProperty: sybio:has_function
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "has_function"@en,
+        rdfs:label "has_function"@en
+    
+    
+ObjectProperty: sybio:issecondgeneof
+
+    Annotations: 
+        rdfs:label "Second Gene Of"@en,
+        rdfs:comment "Second Gene Of an FFL"@en,
+        <http://www.purl.org/ontolink/tawny#name> "issecondgeneof"@en
+    
+    
+ObjectProperty: sybio:cat_c
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "cat_c"@en,
+        rdfs:label "part_of_catalyzing_class"@en
+    
+    
+ObjectProperty: sybio:isfirstgeneof
+
+    Annotations: 
+        rdfs:label "First Gene Of"@en,
+        <http://www.purl.org/ontolink/tawny#name> "isfirstgeneof"@en,
+        rdfs:comment "First Gene Of an FFL"@en
+    
+    
+ObjectProperty: sybio:derives_from
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "derives_from"@en,
+        rdfs:comment "Derivation on the instance level (*derives_from*) holds between distinct material
+                    continuants when one succeeds the other across a temporal divide in such
+                    a way that at least a biologically significant
+                    portion of the matter of the earlier continuant is
+                    inherited by the later. We say that one class C
+                    derives_from class C' if instances of C are
+                    connected to instances of C' via some chain of
+                    instance-level derivation relations. Example:
+                    osteocyte derives_from osteoblast. Formally: C
+                    derives_immediately_from C' if and only if: given
+                    any c and any t, if c instantiates C at time t, then
+                    there is some c' and some t', such that c'
+                    instantiates C' at t' and t' earlier-than t and c
+                    *derives_from* c'. C derives_from C' if and only if:
+                    there is an chain of immediate derivation relations
+                    connecting C to C'.
+                "@en,
+        rdfs:label "derives_from"@en
+    
+    
+ObjectProperty: sybio:bi_to
+
+    Annotations: 
+        rdfs:comment "Molecule->Molecule"@en,
+        <http://www.purl.org/ontolink/tawny#name> "bi_to"@en,
+        rdfs:label "binds_to"@en
+    
+    
+ObjectProperty: sybio:phosphorylated_by
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "phosphorylated_by"@en,
+        rdfs:comment "Protein->Protein"@en,
+        rdfs:label "phosphorylated_by"@en
+    
+    
+ObjectProperty: sybio:r
+
+    Annotations: 
+        rdfs:label "is_related_to"@en,
+        <http://www.purl.org/ontolink/tawny#name> "r"@en,
+        rdfs:comment "Root relation type"@en
+    
+    
+ObjectProperty: sybio:min_expressed_in
+
+    Annotations: 
+        rdfs:label "Min Expressed In"@en,
+        <http://www.purl.org/ontolink/tawny#name> "min_expressed_in"@en,
+        rdfs:comment "Min Expressed In"@en
+    
+    
+ObjectProperty: sybio:member_of
+
+    Annotations: 
+        rdfs:label "member_of"@en,
+        <http://www.purl.org/ontolink/tawny#name> "member_of"@en,
+        rdfs:comment "Used for characterisation of grouping relationships, e.g. a reaction is member of a
+                    pathway.
+                "@en
+    
+    
+ObjectProperty: sybio:demethylated_by
+
+    Annotations: 
+        rdfs:label "demethylated_by"@en,
+        <http://www.purl.org/ontolink/tawny#name> "demethylated_by"@en
+    
+    
+ObjectProperty: sybio:methylated_by
+
+    Annotations: 
+        rdfs:label "methylated_by"@en,
+        <http://www.purl.org/ontolink/tawny#name> "methylated_by"@en
+    
+    
+ObjectProperty: sybio:sh_im
+
+    Annotations: 
+        rdfs:comment "shared with two successive reactions (ECrel) or intermediate of two interacting proteins
+                    (PPrel)
+                "@en,
+        <http://www.purl.org/ontolink/tawny#name> "sh_im"@en,
+        rdfs:label "share_intermediate"@en
+    
+    
+DataProperty: sybio:StartOfBindingSite
+
+    Annotations: 
+        rdfs:label "Start of Transcription Factor Binding Site"@en,
+        rdfs:comment "Start position of a transcription factor binding site in a promotor region"@en,
+        <http://www.purl.org/ontolink/tawny#name> "StartOfBindingSite"@en
+    
+    
+DataProperty: sybio:MW
+
+    Annotations: 
+        rdfs:label "MW"@en,
+        <http://www.purl.org/ontolink/tawny#name> "MW"@en,
+        rdfs:comment "Molecular Weight (Daltons)"@en
+    
+    
+DataProperty: sybio:ffltype
+
+    Annotations: 
+        rdfs:label "FFL Type"@en,
+        <http://www.purl.org/ontolink/tawny#name> "ffltype"@en,
+        rdfs:comment "FFL Type"@en
+    
+    
+DataProperty: sybio:BioProcess
+
+    Annotations: 
+        rdfs:label "BioProcess classification"@en,
+        <http://www.purl.org/ontolink/tawny#name> "BioProcess"@en
+    
+    
+DataProperty: sybio:ProductType
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "ProductType"@en,
+        rdfs:label "Product Type"@en,
+        rdfs:comment "The type of the gene product. E.g: protein, regulator, enzyme"@en
+    
+    
+DataProperty: sybio:RT
+
+    Annotations: 
+        rdfs:label "RegulatorType"@en,
+        rdfs:comment "Regulator Type"@en,
+        <http://www.purl.org/ontolink/tawny#name> "RT"@en
+    
+    
+DataProperty: sybio:NA
+
+    Annotations: 
+        rdfs:comment "Any Sequence of Nuclein Acids like DNA or RNA"@en,
+        <http://www.purl.org/ontolink/tawny#name> "NA"@en,
+        rdfs:label "Nucleic_acid_sequence"@en
+    
+    
+DataProperty: sybio:negativefeedback
+
+    Annotations: 
+        rdfs:label "Negative Feedback"@en,
+        rdfs:comment "Negative auto-regulation"@en,
+        <http://www.purl.org/ontolink/tawny#name> "negativefeedback"@en
+    
+    
+DataProperty: sybio:MinExpression
+
+    Annotations: 
+        rdfs:label "Min Expression"@en,
+        rdfs:comment "Min Gene Expression"@en,
+        <http://www.purl.org/ontolink/tawny#name> "MinExpression"@en
+    
+    
+DataProperty: sybio:RoleClassification
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "RoleClassification"@en,
+        rdfs:label "Role Classification"@en
+    
+    
+DataProperty: sybio:TFFamily
+
+    Annotations: 
+        rdfs:label "Transcription Factor Family"@en,
+        <http://www.purl.org/ontolink/tawny#name> "TFFamily"@en,
+        rdfs:comment "Transcription Factor Family"@en
+    
+    
+DataProperty: sybio:GCContent
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "GCContent"@en,
+        rdfs:comment "Fraction of Guanine/Cytosine in nucleic acid sequence"@en,
+        rdfs:label "GC Content"@en
+    
+    
+DataProperty: sybio:GC3Content
+
+    Annotations: 
+        rdfs:comment "Fraction of Guanine/Cytosine at third base in nucleic acid coding sequence"@en,
+        <http://www.purl.org/ontolink/tawny#name> "GC3Content"@en,
+        rdfs:label "GC3 Content"@en
+    
+    
+DataProperty: sybio:LOC
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "LOC"@en,
+        rdfs:comment "Localisation"@en,
+        rdfs:label "LOC"@en
+    
+    
+DataProperty: sybio:conceptAccession
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "conceptAccession"@en
+    
+    
+DataProperty: sybio:pI
+
+    Annotations: 
+        rdfs:label "pI"@en,
+        rdfs:comment "Isoelectric Point"@en,
+        <http://www.purl.org/ontolink/tawny#name> "pI"@en
+    
+    
+DataProperty: sybio:positivefeedback
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "positivefeedback"@en,
+        rdfs:label "Positive Feedback"@en,
+        rdfs:comment "Positive auto-regulation"@en
+    
+    
+DataProperty: sybio:Comment
+
+    Annotations: 
+        rdfs:label "Comment"@en,
+        rdfs:comment "COG Process"@en,
+        <http://www.purl.org/ontolink/tawny#name> "Comment"@en
+    
+    
+DataProperty: sybio:MaxExpression
+
+    Annotations: 
+        rdfs:comment "Max Gene Expression"@en,
+        <http://www.purl.org/ontolink/tawny#name> "MaxExpression"@en,
+        rdfs:label "Max Expression"@en
+    
+    
+DataProperty: sybio:is_fCDS
+
+    Annotations: 
+        rdfs:label "Is fCDS"@en,
+        <http://www.purl.org/ontolink/tawny#name> "is_fCDS"@en,
+        rdfs:comment "true if the gene is fCDS"@en
+    
+    
+DataProperty: sybio:PMID
+
+    Annotations: 
+        rdfs:comment "PubmedID"@en,
+        rdfs:label "PMID"@en,
+        <http://www.purl.org/ontolink/tawny#name> "PMID"@en
+    
+    
+DataProperty: sybio:SF
+
+    Annotations: 
+        rdfs:label "Sigma Factor "@en,
+        <http://www.purl.org/ontolink/tawny#name> "SF"@en,
+        rdfs:comment "Promoter Sigma Factor"@en
+    
+    
+DataProperty: sybio:TFDomain
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "TFDomain"@en,
+        rdfs:comment "Transcription Factor Domain"@en,
+        rdfs:label "Transcription Factor Domain"@en
+    
+    
+Class: sybio:COGCategory
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "COGCategory"@en
+    
+    
+Class: sybio:KinaseEncodingCDS
+
+    Annotations: 
+        rdfs:comment "Coding sequences that encode for kinases"@en,
+        rdfs:label "Kinase encoding CDS"@en,
+        <http://www.purl.org/ontolink/tawny#name> "KinaseEncodingCDS"@en
+    
+    EquivalentTo: 
+        sybio:CDS
+         and (sybio:encodes some 
+            (sybio:Protein
+             and (sybio:has_function some <http://purl.org/obo/owl/GO#GO_0000155>)))
+    
+    
+Class: sybio:RepressiblePromoterWith2Operators
+
+    Annotations: 
+        rdfs:comment "Repressible promoter with two Repressible sites"@en,
+        rdfs:label "Repressible promoter with 2 operators"@en,
+        <http://www.purl.org/ontolink/tawny#name> "RepressiblePromoterWith2Operators"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and (sybio:has_part exactly 2 sybio:NegativelyRegulatedOperator)
+         and (sybio:has_part exactly 2 sybio:Operator)
+    
+    
+Class: sybio:SigEPromoter
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "SigEPromoter"@en,
+        rdfs:comment "SigE dependent promoter"@en,
+        rdfs:label "SigE promoter"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "BSU15320"^^xsd:string))) or (sybio:has_part some sybio:SigEPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
+    
+    
+Class: <http://purl.org/obo/owl/SO#SO_0000139>
+
+    
+Class: sybio:KOGE
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "KOGE"@en
+    
+    
+Class: sybio:COG
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "COG"@en
+    
+    
+Class: sybio:MicroArrayExperiment
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "MicroArrayExperiment"@en
+    
+    
+Class: <http://purl.org/obo/owl/SO#SO_0000997>
+
+    
+Class: sybio:RNA
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "RNA"@en
+    
+    SubClassOf: 
+        <http://purl.org/obo/owl/SO#SO_0000356>
+    
+    
+Class: sybio:SigGPromoter
+
+    Annotations: 
+        rdfs:comment "SigG dependent promoter"@en,
+        rdfs:label "SigG promoter"@en,
+        <http://www.purl.org/ontolink/tawny#name> "SigGPromoter"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "BSU15330"^^xsd:string))) or (sybio:has_part some sybio:SigGPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
+    
+    
+Class: sybio:ResponseRegulatorEncodingCDS
+
+    Annotations: 
+        rdfs:label "Response regulator encoding CDS"@en,
+        <http://www.purl.org/ontolink/tawny#name> "ResponseRegulatorEncodingCDS"@en,
+        rdfs:comment "Coding sequences that encode for response regulators"@en
+    
+    EquivalentTo: 
+        sybio:CDS
+         and (sybio:encodes some 
+            (sybio:Protein
+             and (sybio:has_function some <http://purl.org/obo/owl/GO#GO_0000156>)))
+    
+    
+Class: sybio:TF
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "TF"@en
+    
+    
+Class: sybio:Protcmplx
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Protcmplx"@en
+    
+    
+Class: sybio:DataSource
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "DataSource"@en
+    
+    
+Class: sybio:Protein
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Protein"@en
+    
+    
+Class: sybio:CelComp
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "CelComp"@en
+    
+    EquivalentTo: 
+        <http://purl.org/obo/owl/GO#GO_0005575>
+    
+    
+Class: sybio:SigWPromoter
+
+    Annotations: 
+        rdfs:comment "SigW dependent promoter"@en,
+        rdfs:label "SigW promoter"@en,
+        <http://www.purl.org/ontolink/tawny#name> "SigWPromoter"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "BSU01730"^^xsd:string))) or (sybio:has_part some sybio:SigWPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
+    
+    
+Class: sybio:Operon
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Operon"@en
+    
+    SubClassOf: 
+        <http://purl.org/obo/owl/SO#SO_0000178>
+    
+    
+Class: sybio:SigYPromoter
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "SigYPromoter"@en,
+        rdfs:label "SigY promoter"@en,
+        rdfs:comment "SigY dependent promoter"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "BSU38700"^^xsd:string))) or (sybio:has_part some sybio:SigYPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
+    
+    
+Class: sybio:InduciblePromoter
+
+    Annotations: 
+        rdfs:label "Inducible promoter"@en,
+        <http://www.purl.org/ontolink/tawny#name> "InduciblePromoter"@en,
+        rdfs:comment "Promoter with an activator site"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and (sybio:has_part exactly 1 sybio:Operator)
+         and (sybio:has_part exactly 1 sybio:PositivelyRegulatedOperator)
+    
+    
+Class: sybio:Terminator
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Terminator"@en
+    
+    SubClassOf: 
+        <http://purl.org/obo/owl/SO#SO_0000614>
+    
+    
+Class: sybio:ConstitutivePromoter
+
+    Annotations: 
+        rdfs:comment "Constitutive promoter"@en,
+        rdfs:label "Constitutive promoter"@en,
+        <http://www.purl.org/ontolink/tawny#name> "ConstitutivePromoter"@en
+    
+    SubClassOf: 
+        sybio:Promoter
+    
+    
+Class: sybio:KOEN
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "KOEN"@en
+    
+    
+Class: <http://purl.org/obo/owl/GO#GO_0003674>
+
+    EquivalentTo: 
+        sybio:MolFunc
+    
+    
+Class: sybio:Shim
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Shim"@en
+    
+    SubClassOf: 
+        <http://purl.org/obo/owl/SO#SO_0000997>
+    
+    
+Class: sybio:SigIPromoter
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "SigIPromoter"@en,
+        rdfs:label "SigI promoter"@en,
+        rdfs:comment "SigI dependent promoter"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "BSU13450"^^xsd:string))) or (sybio:has_part some sybio:SigIPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
+    
+    
+Class: sybio:RepressorEncodingCDS
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "RepressorEncodingCDS"@en,
+        rdfs:label "Repressor encoding CDS"@en,
+        rdfs:comment "Coding sequences that encode for transcriptional repressors"@en
+    
+    EquivalentTo: 
+        sybio:CDS
+         and (sybio:encodes some 
+            (sybio:Protein
+             and (sybio:bi_to some sybio:NegativelyRegulatedOperator)))
+    
+    
+Class: sybio:NORGatePromoter
+
+    Annotations: 
+        rdfs:comment "NOR gate promoter"@en,
+        rdfs:label "NOR gate promoter"@en,
+        <http://www.purl.org/ontolink/tawny#name> "NORGatePromoter"@en
+    
+    SubClassOf: 
+        sybio:RepressiblePromoterWith2Operators
+    
+    
+Class: sybio:ActivatorEncodingCDS
+
+    Annotations: 
+        rdfs:label "Activator encoding CDS"@en,
+        rdfs:comment "Coding sequences that encode for transcriptional activators"@en,
+        <http://www.purl.org/ontolink/tawny#name> "ActivatorEncodingCDS"@en
+    
+    EquivalentTo: 
+        sybio:CDS
+         and (sybio:encodes some 
+            (sybio:Protein
+             and (sybio:bi_to some sybio:PositivelyRegulatedOperator)))
+    
+    
+Class: <http://purl.org/obo/owl/SO#SO_0000178>
+
+    
+Class: sybio:ANDNGatePromoter
+
+    Annotations: 
+        rdfs:label "ANDN gate promoter"@en,
+        <http://www.purl.org/ontolink/tawny#name> "ANDNGatePromoter"@en,
+        rdfs:comment "ANDN gate promoter"@en
+    
+    SubClassOf: 
+        sybio:RepressibleInduciblePromoterWith2Operators
+    
+    
+Class: sybio:SigKPromoter
+
+    Annotations: 
+        rdfs:comment "SigK dependent promoter"@en,
+        rdfs:label "SigK promoter"@en,
+        <http://www.purl.org/ontolink/tawny#name> "SigKPromoter"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "P12254"^^xsd:string))) or (sybio:has_part some sybio:SigKPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
+    
+    
+Class: sybio:Promoter
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Promoter"@en
+    
+    SubClassOf: 
+        <http://purl.org/obo/owl/SO#SO_0000167>
+    
+    DisjointWith: 
+        sybio:Operator
+    
+    
+Class: sybio:SigBPromoter
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "SigBPromoter"@en,
+        rdfs:label "SigB promoter"@en,
+        rdfs:comment "SigB dependent promoter"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "BSU04730"^^xsd:string))) or (sybio:has_part some sybio:SigBPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
+    
+    
+Class: sybio:ConstitutiveSigAPromoter
+
+    Annotations: 
+        rdfs:label "Constitutive SigA promoter"@en,
+        <http://www.purl.org/ontolink/tawny#name> "ConstitutiveSigAPromoter"@en,
+        rdfs:comment "Constitutive SigA promoter"@en
+    
+    EquivalentTo: 
+        sybio:SigAPromoter
+         and (not (sybio:has_part some sybio:Operator))
+    
+    SubClassOf: 
+        sybio:ConstitutivePromoter,
+        sybio:SigAPromoter
+    
+    
+Class: sybio:SigMPromoter
+
+    Annotations: 
+        rdfs:label "SigM promoter"@en,
+        <http://www.purl.org/ontolink/tawny#name> "SigMPromoter"@en,
+        rdfs:comment "SigM dependent promoter"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "BSU09520"^^xsd:string))) or (sybio:has_part some sybio:SigMPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
+    
+    
+Class: <http://purl.org/obo/owl/GO#GO_0005575>
+
+    EquivalentTo: 
+        sybio:CelComp
+    
+    
+Class: sybio:Operator
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Operator"@en
+    
+    SubClassOf: 
+        <http://purl.org/obo/owl/SO#SO_0000057>
+    
+    DisjointWith: 
+        sybio:Promoter
+    
+    
+Class: sybio:EC
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "EC"@en
+    
+    
+Class: sybio:SigDPromoter
+
+    Annotations: 
+        rdfs:label "SigD promoter"@en,
+        rdfs:comment "SigD dependent promoter"@en,
+        <http://www.purl.org/ontolink/tawny#name> "SigDPromoter"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "BSU16470"^^xsd:string))) or (sybio:has_part some sybio:SigDPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
+    
+    
+Class: <http://purl.org/obo/owl/SO#SO_0000057>
+
+    
+Class: sybio:Comp
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Comp"@en
+    
+    
+Class: sybio:Reaction
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Reaction"@en
+    
+    
+Class: sybio:SigFPromoter
+
+    Annotations: 
+        rdfs:comment "SigF dependent promoter"@en,
+        <http://www.purl.org/ontolink/tawny#name> "SigFPromoter"@en,
+        rdfs:label "SigF promoter"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "BSU23450"^^xsd:string))) or (sybio:has_part some sybio:SigFPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
+    
+    
+Class: sybio:KOPR
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "KOPR"@en
+    
+    
+Class: sybio:ANDGatePromoter
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "ANDGatePromoter"@en,
+        rdfs:comment "AND gate promoter"@en,
+        rdfs:label "AND gate promoter"@en
+    
+    SubClassOf: 
+        sybio:InduciblePromoterWith2Operators
+    
+    
+Class: <http://purl.org/obo/owl/SO#SO_0000167>
+
+    
+Class: <http://purl.org/obo/owl/SO#SO_0000316>
+
+    
+Class: sybio:RepressiblePromoter
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "RepressiblePromoter"@en,
+        rdfs:label "Repressible promoter"@en,
+        rdfs:comment "Promoter with an repressor site"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and (sybio:has_part exactly 1 sybio:NegativelyRegulatedOperator)
+         and (sybio:has_part exactly 1 sybio:Operator)
+    
+    
+Class: sybio:SigVPromoter
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "SigVPromoter"@en,
+        rdfs:label "SigV promoter"@en,
+        rdfs:comment "SigV dependent promoter"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "BSU27120"^^xsd:string))) or (sybio:has_part some sybio:SigVPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
+    
+    
+Class: sybio:EvidenceType
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "EvidenceType"@en
+    
+    
+Class: <http://purl.org/obo/owl/GO#GO_0000156>
+
+    
+Class: <http://purl.org/obo/owl/GO#GO_0000155>
+
+    
+Class: sybio:PositivelyRegulatedOperator
+
+    Annotations: 
+        rdfs:comment "Operator site for an activator"@en,
+        rdfs:label "Positively regulated operator"@en,
+        <http://www.purl.org/ontolink/tawny#name> "PositivelyRegulatedOperator"@en
+    
+    EquivalentTo: 
+        sybio:Operator
+         and (sybio:NA some rdf:PlainLiteral)
+         and (sybio:RT value "Positive"^^xsd:string)
+    
+    
+Class: sybio:SigXPromoter
+
+    Annotations: 
+        rdfs:comment "SigX dependent promoter"@en,
+        <http://www.purl.org/ontolink/tawny#name> "SigXPromoter"@en,
+        rdfs:label "SigX promoter"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "BSU23100"^^xsd:string))) or (sybio:has_part some sybio:SigXPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
+    
+    
+Class: sybio:CDS
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "CDS"@en
+    
+    SubClassOf: 
+        <http://purl.org/obo/owl/SO#SO_0000316>
+    
+    
+Class: sybio:MolFunc
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "MolFunc"@en
+    
+    EquivalentTo: 
+        <http://purl.org/obo/owl/GO#GO_0003674>
+    
+    
+Class: sybio:NegativelyRegulatedOperator
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "NegativelyRegulatedOperator"@en,
+        rdfs:comment "Operator site for an repressor"@en,
+        rdfs:label "Negatively regulated operator"@en
+    
+    EquivalentTo: 
+        sybio:Operator
+         and (sybio:NA some rdf:PlainLiteral)
+         and (sybio:RT value "Negative"^^xsd:string)
+    
+    
+Class: sybio:YlaCPromoter
+
+    Annotations: 
+        rdfs:comment "YlaC dependent promoter"@en,
+        rdfs:label "YlaC promoter"@en,
+        <http://www.purl.org/ontolink/tawny#name> "YlaCPromoter"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "BSU14730"^^xsd:string))) or (sybio:has_part some sybio:YlaCPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
+    
+    
+Class: sybio:SigZPromoter
+
+    Annotations: 
+        rdfs:comment "SigZ dependent promoter"@en,
+        <http://www.purl.org/ontolink/tawny#name> "SigZPromoter"@en,
+        rdfs:label "SigZ promoter"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "BSU26840"^^xsd:string))) or (sybio:has_part some sybio:SigZPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
+    
+    
+Class: sybio:InduciblePromoterWith2Operators
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "InduciblePromoterWith2Operators"@en,
+        rdfs:comment "Inducible promoter with two activator sites"@en,
+        rdfs:label "Inducible promoter with 2 operators"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and (sybio:has_part exactly 2 sybio:Operator)
+         and (sybio:has_part exactly 2 sybio:PositivelyRegulatedOperator)
+    
+    
+Class: sybio:SigHPromoter
+
+    Annotations: 
+        rdfs:comment "SigH dependent promoter"@en,
+        <http://www.purl.org/ontolink/tawny#name> "SigHPromoter"@en,
+        rdfs:label "SigH promoter"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "BSU00980"^^xsd:string))) or (sybio:has_part some sybio:SigHPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
+    
+    
+Class: sybio:Path
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Path"@en
+    
+    
+Class: sybio:RepressibleInduciblePromoterWith2Operators
+
+    Annotations: 
+        rdfs:comment "A promoter that has an activator and a repressor site"@en,
+        <http://www.purl.org/ontolink/tawny#name> "RepressibleInduciblePromoterWith2Operators"@en,
+        rdfs:label "Repressible inducible promoter with 2 operators"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and (sybio:has_part exactly 1 sybio:NegativelyRegulatedOperator)
+         and (sybio:has_part exactly 1 sybio:PositivelyRegulatedOperator)
+         and (sybio:has_part exactly 2 sybio:Operator)
+    
+    
+Class: sybio:RBS
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "RBS"@en
+    
+    SubClassOf: 
+        <http://purl.org/obo/owl/SO#SO_0000139>
+    
+    
+Class: sybio:NANDGatePromoter
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "NANDGatePromoter"@en,
+        rdfs:comment "NAND gate promoter"@en,
+        rdfs:label "NAND gate promoter"@en
+    
+    SubClassOf: 
+        sybio:RepressiblePromoterWith2Operators
+    
+    
+Class: sybio:ORGatePromoter
+
+    Annotations: 
+        rdfs:comment "OR gate promoter"@en,
+        rdfs:label "OR gate promoter"@en,
+        <http://www.purl.org/ontolink/tawny#name> "ORGatePromoter"@en
+    
+    SubClassOf: 
+        sybio:InduciblePromoterWith2Operators
+    
+    
+Class: sybio:BioProc
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "BioProc"@en
+    
+    EquivalentTo: 
+        <http://purl.org/obo/owl/GO#GO_0008150>
+    
+    
+Class: sybio:FFL
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "FFL"@en
+    
+    
+Class: sybio:SigAPromoter
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "SigAPromoter"@en,
+        rdfs:label "SigA promoter"@en,
+        rdfs:comment "SigA dependent promoter"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "BSU25200"^^xsd:string))) or (sybio:has_part some sybio:SigAPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
+    
+    
+Class: sybio:SigLPromoter
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "SigLPromoter"@en,
+        rdfs:comment "SigL dependent promoter"@en,
+        rdfs:label "SigL promoter"@en
+    
+    EquivalentTo: 
+        sybio:Promoter
+         and ((sybio:bound_by some 
+            (sybio:TF
+             and (sybio:conceptAccession value "BSU34200"^^xsd:string))) or (sybio:has_part some sybio:SigLPromoter))
+    
+    SubClassOf: 
+        sybio:Promoter
+    
+    
+Class: <http://purl.org/obo/owl/GO#GO_0008150>
+
+    EquivalentTo: 
+        sybio:BioProc
+    
+    
+Class: <http://purl.org/obo/owl/SO#SO_0000356>
+
+    
+Class: <http://purl.org/obo/owl/SO#SO_0000614>
+
+    
+Class: sybio:Enzyme
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Enzyme"@en
+    
+    

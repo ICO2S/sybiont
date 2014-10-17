@@ -113,13 +113,20 @@
     (let [inversePredicate (.get INVERSE_PROPERTIES predicate)]
         (if-not (nil? inversePredicate)
           (do
-	          (as-inverse
-	             (object-property predicateOntology predicate)
-	             (object-property predicateOntology inversePredicate))          
-               (owl-class classIri :subclass (owl-some predicateOntology predicate (owl-class valueClassIri)))
+	          ;(println "inverseProperty:" inversePredicate)
+            (as-inverse
+	              (object-property predicateOntology predicate)
+	              (object-property predicateOntology inversePredicate))          
+               ;(owl-class classIri :subclass (owl-some predicateOntology predicate (owl-class valueClassIri)))
+               (owl-class valueClassIri :subclass (owl-some predicateOntology predicate (owl-class classIri)))
+               
   		      
-             (if (= inversePredicate "has_part")                 
-                 (owl-class valueClassIri :subclass ( exactly predicateOntology 1 inversePredicate (owl-class classIri) ))                 
+             (if (= inversePredicate "has_part")
+               (do
+                 (owl-class valueClassIri :subclass ( exactly predicateOntology 1 inversePredicate (owl-class classIri) ))
+                 ;TODO Enhance this
+                 (owl-class valueClassIri :subclass ( owl-some predicateOntology inversePredicate (owl-class classIri) ))      
+                )
                )                 
           ))
     ))         
@@ -311,18 +318,27 @@
    )))
 
 (defn addClosureAxiomsToSuperClass[ontology classOntology class propertyOntology property]
+ ;(println "In addClosureAxiomsToSuperClass")
  ( def  unionClasses []) 
  (let [classIri (iri (str (.toString (.getOntologyIRI (.getOntologyID classOntology))) "#" class))]
  (doseq [subClass (subclasses ontology classIri)]   
+   ;(println "subclass:"  (getClassIri ontology subClass))
    (doseq [superClass (superclasses ontology subClass)]
        (if  (= (.getClassExpressionType superClass) (ClassExpressionType/OBJECT_SOME_VALUES_FROM) )
-            (if (= property (.getFragment(.getIRI(.getProperty (cast OWLObjectSomeValuesFrom superClass)))))
-                (def  unionClasses (conj unionClasses  (owl-class ontology (getIriFragment (.asOWLClass (.getFiller (cast OWLObjectSomeValuesFrom superClass)))))))                      
-              )
+         (do   
+           ;(println "SomeValuesExpression:")
+         (if (= property (.getFragment(.getIRI(.getProperty (cast OWLObjectSomeValuesFrom superClass)))))
+           (do  
+             ;(println "Adding the union class")
+             (def  unionClasses (conj unionClasses  (owl-class ontology (getIriFragment (.asOWLClass (.getFiller (cast OWLObjectSomeValuesFrom superClass)))))))                      
+           )
+           )
+         )
           )
 	  )
    (if-not (empty? unionClasses)
      (do 
+       ;(println unionClasses)
        (owl-class ontology (getIriFragment subClass) :subclass (owl-only propertyOntology property (owl-or unionClasses) ))   
        ( def  unionClasses [])      
      )
@@ -436,7 +452,7 @@
 ;(print "subclasses" (subclasses bacillondex (iri (str (.toString (.getOntologyIRI (.getOntologyID synthbiont))) "#Promoter"))))
  
  (save-ontology synthbiont "synthbiont.omn" :omn)
- (owl-import bacillondex (iri(File."synthbiont.omn")))
+ ;(owl-import bacillondex (iri(File."synthbiont.omn")))
  ;(owl-import bacillondex (iri(str "file:synthbiont.omn"))) 
  
  ;(save-ontology bacillondex "bacillondexontology.rdf" :rdf)   

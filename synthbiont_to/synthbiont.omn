@@ -1129,6 +1129,9 @@ Class: sybio:Promoter
     SubClassOf: 
         <http://purl.org/obo/owl/SO#SO_0000167>
     
+    DisjointWith: 
+        sybio:Operator
+    
     
 Class: sybio:SigBPromoter
 
@@ -1193,6 +1196,9 @@ Class: sybio:Operator
     
     SubClassOf: 
         <http://purl.org/obo/owl/SO#SO_0000057>
+    
+    DisjointWith: 
+        sybio:Promoter
     
     
 Class: sybio:EC
