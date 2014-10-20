@@ -5,9 +5,6 @@
     <uri id="User Entered Import Resolution" name="file://ontology1.omn" uri="ontology1.omn"/>
     <uri id="User Entered Import Resolution" name="file:ontology1.omn" uri="ontology1.omn"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1413547108696" name="http://purl.obolibrary.org/obo/go.owl" uri="go-snippet.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1413547108696" name="duplicate:http://www.bacillondex.org" uri="bacillondexontology.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1413547108696" name="duplicate:http://www.bacillondex.org" uri="Operators.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1413547108696" name="http://www.ontology2.org" uri="ontology2.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1413834029360" name="http://purl.obolibrary.org/obo/go.owl" uri="go-snippet.owl"/>
     </group>
 </catalog>

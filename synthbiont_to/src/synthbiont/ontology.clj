@@ -68,6 +68,9 @@
   (iri (str (.toString (.getOntologyIRI (.getOntologyID ontology))) "#" className))
   )
 
+(defn getOntologyIri [ontology] 
+  (.getOntologyIRI(.getOntologyID ontology))
+  )
 ;(defn import [ontologyIri filePath]
 ;  
 ;  )

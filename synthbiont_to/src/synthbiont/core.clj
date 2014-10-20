@@ -118,7 +118,7 @@
 	              (object-property predicateOntology predicate)
 	              (object-property predicateOntology inversePredicate))          
                ;(owl-class classIri :subclass (owl-some predicateOntology predicate (owl-class valueClassIri)))
-               (owl-class valueClassIri :subclass (owl-some predicateOntology predicate (owl-class classIri)))
+               (owl-class valueClassIri :subclass (owl-some predicateOntology inversePredicate (owl-class classIri)))
                
   		      
              (if (= inversePredicate "has_part")
@@ -345,10 +345,46 @@
     )
    )))
 
+
+(defn addCountAxioms[ontology classOntology class propertyOntology property targetClassOntology targetClass countCondition]
+ (println "Adding the count axiom for " class ". The count condition is " (str countCondition))
+  
+ ( def  unionClasses []) 
+ (let [classIri (iri (str (.toString (.getOntologyIRI (.getOntologyID classOntology))) "#" class))]
+ (doseq [subClass (subclasses ontology classIri)]   
+   ;(println "subclass" subClass)
+   (doseq [superClass (superclasses ontology subClass)]
+       ;(println "-----" "superclass" superClass)
+       (if  (= (.getClassExpressionType superClass) (ClassExpressionType/OBJECT_SOME_VALUES_FROM) )
+            (if (= property (.getFragment(.getIRI(.getProperty (cast OWLObjectSomeValuesFrom superClass)))))
+               (let [relatedClass (getIriFragment (.asOWLClass (.getFiller (cast OWLObjectSomeValuesFrom superClass))))] 
+                 ;(println "-----" "-----" "related class:" relatedClass)
+                 (if (superclass? ontology relatedClass (getClassIri targetClassOntology targetClass))
+                   (do
+                     ;(println "-----" "-----" "-----" "adding the related class:" relatedClass)
+                     (def  unionClasses (conj unionClasses  (owl-class ontology relatedClass)))
+                   )
+                 )
+               )
+             )
+          )
+	  )
+   (println "count:" (count unionClasses) "condition:" (str countCondition))
+   (if (= (count unionClasses) (long countCondition))
+     (do  
+       (print "adding the count axiom:")
+       (owl-class (.getIRI subClass) :subclass (exactly propertyOntology (long countCondition) property (owl-class (getClassIri targetClassOntology targetClass))))   
+       (println "...done!") 
+     )
+    )
+    ( def  unionClasses [])   
+   )))
+
 (defn addClosureAxioms[]
   (println "Adding the closure axioms for promoters" )
   (addClosureAxiomsToSuperClass bacillondex synthbiont "Promoter" synthbiont "has_part")
-  (addDisjointAxioms bacillondex synthbiont "Promoter" synthbiont "has_part", synthbiont "Operator");
+  (addDisjointAxioms bacillondex synthbiont "Promoter" synthbiont "has_part" synthbiont "Operator");
+  (addCountAxioms bacillondex synthbiont "Promoter" synthbiont "has_part" synthbiont "Operator" (long 0));  
   (println "Added the closure axioms for promoters" )  
   )
 
