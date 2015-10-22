@@ -849,6 +849,12 @@ Class: sybio:KOGE
         <http://www.purl.org/ontolink/tawny#name> "KOGE"@en
     
     
+Class: sybio:Enzyme
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Enzyme"@en
+    
+    
 Class: sybio:COG
 
     Annotations: 
@@ -1279,6 +1285,9 @@ Class: <http://purl.org/obo/owl/SO#SO_0000167>
 Class: <http://purl.org/obo/owl/SO#SO_0000316>
 
     
+Class: <http://sbols.org/sbol.owl#SequenceAnnotation>
+
+    
 Class: sybio:RepressiblePromoter
 
     Annotations: 
@@ -1381,6 +1390,9 @@ Class: sybio:NegativelyRegulatedOperator
          and (sybio:NA some rdf:PlainLiteral)
          and (sybio:RT value "Negative"^^xsd:string)
     
+    
+Class: <http://sbols.org/sbol.owl#DnaSequence>
+
     
 Class: sybio:YlaCPromoter
 
@@ -1558,9 +1570,6 @@ Class: <http://purl.org/obo/owl/SO#SO_0000356>
 Class: <http://purl.org/obo/owl/SO#SO_0000614>
 
     
-Class: sybio:Enzyme
+Class: <http://sbols.org/sbol.owl#DnaComponent>
 
-    Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "Enzyme"@en
-    
     

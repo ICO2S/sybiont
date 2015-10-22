@@ -61,8 +61,8 @@
   (println label ":" (count inferredClasses) " classes inferred"))
 
 (defn mergeOntologies [file1 file2 namespace prefix] 
-  (def ontology1 (.loadOntologyFromOntologyDocument (owl-ontology-manager) (File. "Operators.omn")))
- (def ontology2 (.loadOntologyFromOntologyDocument (owl-ontology-manager) (File. "synthbiont.omn")))
+  (def ontology1 (.loadOntologyFromOntologyDocument (owl-ontology-manager) (File. file1)))
+ (def ontology2 (.loadOntologyFromOntologyDocument (owl-ontology-manager) (File. file2)))
  (def merger (OWLOntologyMerger. (owl-ontology-manager)))
  (def merged (.createMergedOntology merger (owl-ontology-manager) (iri namespace) )) 
  (remove-ontology-maybe  (.getOntologyID ontology1))
@@ -181,4 +181,7 @@
   (subsetForPromotersBySigmaFactors)
   (subsetForPromoters) 
   (subsetForCDSsByMolecularFunction)
-  (subsetForCDSsByTrancriptionalActivity))
+  (subsetForCDSsByTrancriptionalActivity)
+  
+  )
+

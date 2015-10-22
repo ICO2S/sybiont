@@ -1386,23 +1386,6 @@ Class: <http://www.bacillondex.org#4190>
         <http://www.sybio.ncl.ac.uk#SF> value "SigA"^^xsd:string
     
     
-Class: <http://www.bacillondex.org#3511>
-
-    Annotations: 
-        <http://www.sybio.ncl.ac.uk#pid> "AbrB_yoaW_OP"@en,
-        <http://www.sybio.ncl.ac.uk#elementOf> "http://www.bacillondex.org/cv/DBTBS"@en,
-        <http://www.purl.org/ontolink/tawny#name> "3511"@en,
-        rdfs:label "AbrB_yoaW"@en,
-        <http://www.sybio.ncl.ac.uk#evidence> "http://www.bacillondex.org/evidenceType/IMPD"@en
-    
-    SubClassOf: 
-        <http://www.sybio.ncl.ac.uk#RT> value "Negative"^^xsd:string,
-        <http://www.sybio.ncl.ac.uk#PMID> value "15101989"^^xsd:string,
-        <http://www.sybio.ncl.ac.uk#SF> value "SigE"^^xsd:string,
-        <http://www.sybio.ncl.ac.uk#Operator>,
-        <http://www.sybio.ncl.ac.uk#Comment> value "Negative"^^xsd:string
-    
-    
 Class: <http://www.sybio.ncl.ac.uk#SigFPromoter>
 
     Annotations: 
@@ -5574,6 +5557,30 @@ Class: <http://www.bacillondex.org#3739>
         <http://www.sybio.ncl.ac.uk#Operator>
     
     
+Class: <http://www.bacillondex.org#3490>
+
+    Annotations: 
+        <http://www.sybio.ncl.ac.uk#elementOf> "http://www.bacillondex.org/cv/DBTBS"@en,
+        <http://www.sybio.ncl.ac.uk#pid> "AbrB_dppA_OP"@en,
+        <http://www.sybio.ncl.ac.uk#annotatedsequence> "TTTAATATAATTTGTTAGAATATTCATAATTTAG"@en,
+        <http://www.purl.org/ontolink/tawny#name> "3490"@en,
+        <http://www.sybio.ncl.ac.uk#evidence> "http://www.bacillondex.org/evidenceType/IMPD"@en,
+        rdfs:label "AbrB_dppA"@en,
+        <http://www.sybio.ncl.ac.uk#BEGIN> "1360349"@en,
+        <http://www.sybio.ncl.ac.uk#END> "1360382"@en
+    
+    SubClassOf: 
+        <http://www.sybio.ncl.ac.uk#SF> value "SigA"^^xsd:string,
+        <http://www.sybio.ncl.ac.uk#NA> value "TTTAATATAATTTGTTAGAATATTCATAATTTAG"^^xsd:string,
+        <http://www.sybio.ncl.ac.uk#Comment> value "Negative"^^xsd:string,
+        <http://www.sybio.ncl.ac.uk#RT> value "Negative"^^xsd:string,
+        <http://www.sybio.ncl.ac.uk#Operator>,
+        <http://www.sybio.ncl.ac.uk#PMID> value "1766371"^^xsd:string
+    
+    DisjointWith: 
+        <http://www.bacillondex.org#3616>
+    
+    
 Class: <http://www.sybio.ncl.ac.uk#CelComp>
 
     Annotations: 
@@ -7545,28 +7552,21 @@ Class: <http://www.bacillondex.org#3512>
         <http://www.sybio.ncl.ac.uk#SF> value "SigA"^^xsd:string
     
     
-Class: <http://www.bacillondex.org#3490>
+Class: <http://www.bacillondex.org#3511>
 
     Annotations: 
+        <http://www.sybio.ncl.ac.uk#pid> "AbrB_yoaW_OP"@en,
         <http://www.sybio.ncl.ac.uk#elementOf> "http://www.bacillondex.org/cv/DBTBS"@en,
-        <http://www.sybio.ncl.ac.uk#pid> "AbrB_dppA_OP"@en,
-        <http://www.sybio.ncl.ac.uk#annotatedsequence> "TTTAATATAATTTGTTAGAATATTCATAATTTAG"@en,
-        <http://www.purl.org/ontolink/tawny#name> "3490"@en,
-        <http://www.sybio.ncl.ac.uk#evidence> "http://www.bacillondex.org/evidenceType/IMPD"@en,
-        rdfs:label "AbrB_dppA"@en,
-        <http://www.sybio.ncl.ac.uk#BEGIN> "1360349"@en,
-        <http://www.sybio.ncl.ac.uk#END> "1360382"@en
+        <http://www.purl.org/ontolink/tawny#name> "3511"@en,
+        rdfs:label "AbrB_yoaW"@en,
+        <http://www.sybio.ncl.ac.uk#evidence> "http://www.bacillondex.org/evidenceType/IMPD"@en
     
     SubClassOf: 
-        <http://www.sybio.ncl.ac.uk#SF> value "SigA"^^xsd:string,
-        <http://www.sybio.ncl.ac.uk#NA> value "TTTAATATAATTTGTTAGAATATTCATAATTTAG"^^xsd:string,
-        <http://www.sybio.ncl.ac.uk#Comment> value "Negative"^^xsd:string,
         <http://www.sybio.ncl.ac.uk#RT> value "Negative"^^xsd:string,
+        <http://www.sybio.ncl.ac.uk#PMID> value "15101989"^^xsd:string,
+        <http://www.sybio.ncl.ac.uk#SF> value "SigE"^^xsd:string,
         <http://www.sybio.ncl.ac.uk#Operator>,
-        <http://www.sybio.ncl.ac.uk#PMID> value "1766371"^^xsd:string
-    
-    DisjointWith: 
-        <http://www.bacillondex.org#3616>
+        <http://www.sybio.ncl.ac.uk#Comment> value "Negative"^^xsd:string
     
     
 Class: <http://www.sybio.ncl.ac.uk#SigVPromoter>
@@ -10506,13 +10506,13 @@ Class: <http://www.bacillondex.org#3819>
 
     Annotations: 
         <http://www.purl.org/ontolink/tawny#name> "3819"@en,
-        <http://www.sybio.ncl.ac.uk#annotatedsequence> "AAT{AAAAGCCTAAAA}TTT"@en,
         rdfs:label "GerE_cotH"@en,
         <http://www.sybio.ncl.ac.uk#elementOf> "http://www.bacillondex.org/cv/DBTBS"@en,
         <http://www.sybio.ncl.ac.uk#BEGIN> "3717131"@en,
         <http://www.sybio.ncl.ac.uk#END> "3717114"@en,
+        <http://www.sybio.ncl.ac.uk#pid> "GerE_cotH_OP"@en,
         <http://www.sybio.ncl.ac.uk#evidence> "http://www.bacillondex.org/evidenceType/IMPD"@en,
-        <http://www.sybio.ncl.ac.uk#pid> "GerE_cotH_OP"@en
+        <http://www.sybio.ncl.ac.uk#annotatedsequence> "AAT{AAAAGCCTAAAA}TTT"@en
     
     SubClassOf: 
         <http://www.sybio.ncl.ac.uk#RT> value "Negative"^^xsd:string,

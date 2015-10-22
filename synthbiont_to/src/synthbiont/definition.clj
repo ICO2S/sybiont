@@ -38,6 +38,10 @@
 (defclass Protein)
 (defclass TF)
 
+(owl-class (iri (str SBOL_URI "#DnaComponent")))
+(owl-class (iri (str SBOL_URI "#SequenceAnnotation")))
+(owl-class (iri (str SBOL_URI "#DnaSequence")))
+
 (as-disjoint Operator Promoter)
 ; TODO Remove:
 ;(owl-class (iri(str "http://purl.org/obo/owl/GO#GO_0000156")))

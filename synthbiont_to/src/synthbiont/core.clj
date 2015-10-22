@@ -3,7 +3,8 @@
   (:use [synthbiont.ontology])  
   (:use [synthbiont.rdf])
   (:use [synthbiont.param])  
-  (:use [synthbiont.definition])    
+  (:use [synthbiont.definition]) 
+  (:use [synthbiont.reasoner])   
   (:require [tawny
              [polyglot]
              [reasoner :as r]
@@ -300,10 +301,68 @@
 ;   (tawny.owl/owl-ontology-manager)
 ;   (IRI/create (clojure.java.io/resource "go-snippet.owl"))))
 
-(defn createont []
+(defn createontORG []
     (convert)
     (addClosureAxioms)  
     (save-ontology synthbiont "synthbiont.omn" :omn)
-    (save-ontology bacillondex "bacillondexontology.omn" :omn)   
+    (save-ontology bacillondex "bacillondexontology.omn" :omn)    
 )
 
+(import '(org.semanticweb.owlapi.model OWLOntology PrefixManager SetOntologyID ))
+(import '(org.semanticweb.owlapi.apibinding OWLManager ))
+(import '(org.semanticweb.owlapi.util OWLOntologyMerger DefaultPrefixManager))
+(import '(org.semanticweb.owlapi.io RDFXMLOntologyFormat ))
+
+
+(defn mergeOntologies2 [file1 file2 namespace prefix] 
+  (def ontologyA (.loadOntologyFromOntologyDocument (owl-ontology-manager) (File. file1)))
+ (def ontologyB (.loadOntologyFromOntologyDocument (owl-ontology-manager) (File. file2)))
+ (def mergerAB (OWLOntologyMerger. (owl-ontology-manager)))
+ (def mergedAB (.createMergedOntology mergerAB (owl-ontology-manager) (iri namespace) )) 
+ (remove-ontology-maybe  (.getOntologyID ontologyA))
+ (remove-ontology-maybe  (.getOntologyID ontologyB)) 
+ (set-prefix mergedAB prefix))
+
+
+(defn createOntologyWithSequenceClasses [from to]
+  (let [tempOntology (.loadOntologyFromOntologyDocument (owl-ontology-manager) (File. from))]
+       (removeClassesExcept  tempOntology ["Operator" "Promoter" "CDS" "Shim" "Terminator" "RBS"])  
+       (save-ontology tempOntology to :omn)    
+     )
+  )
+(defn addSBOLClasses []
+    ; bacillondex file does not have the SO class definitions required by the SparQL queries. Here synthbiont is merged into bacillondexontologytemp.rdf
+    ;(remove-ontology-maybe  (.getOntologyID synthbiont))
+    ;(remove-ontology-maybe  (.getOntologyID bacillondex))    
+    
+       
+    ;(mergeOntologies2 "synthbiont.omn" "bacillondexontology_sequenceclasses.rdf" "http://www.bacillondex_withontology.org" "bowo") 
+    ;(save-ontology mergedAB "bacillondex_sequenceclasses_withontology.rdf" :rdf) 
+    
+    ;Query the newly merged RDF file and add the results to the knowledge base file without the class definitions
+    (println "Querying for SBOL resources")
+    (
+      let [nosbolmodel (getRDFModel2 "bacillondexontology_nosbol.rdf")
+           modelwithontology (getRDFModel2 "bacillondex_sequenceclasses_withontology.rdf") 
+           ]
+      (addSPARQLConstructQueryResult nosbolmodel modelwithontology "SBOLDnaComponents.sparql" "bacillondexontology.rdf")
+      (println "Loaded the rdf files")
+      )
+    ;;(addSPARQLConstructQueryResult (getRDFModel2 "bacillondexontology_nosbol.rdf") (getRDFModel2 "bacillondexontology_withontology.rdf") "SBOLDnaComponents.sparql", "bacillondexontology.rdf")
+    
+    ;Create the omn version of the rdf file
+    ;(loadOntology "bacillondexontology.rdf")
+    ;(save-ontology bacillondex "bacillondexontology.omn" :omn)    
+  )
+ 
+(defn createont []
+    (print "converting")
+    (convert)
+    (addClosureAxioms)  
+    (save-ontology synthbiont "synthbiont.omn" :omn)
+    (save-ontology bacillondex "bacillondexontology.omn" :omn)    
+    (save-ontology bacillondex "bacillondexontology_nosbol.rdf" :rdf)    
+    (removeClassesExcept  bacillondex ["Operator" "Promoter" "CDS" "Shim" "Terminator" "RBS"]) 
+    (save-ontology bacillondex "bacillondexontology_sequenceclasses.rdf" :rdf)    
+    
+)
