@@ -5,10 +5,9 @@
     <uri id="User Entered Import Resolution" name="file://ontology1.omn" uri="ontology1.omn"/>
     <uri id="User Entered Import Resolution" name="file:ontology1.omn" uri="ontology1.omn"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1445529057523" name="http://purl.obolibrary.org/obo/go.owl" uri="go-snippet.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1445529057523" name="duplicate:http://www.bacillondex.org" uri="bacillondexontology_nosbol.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1445529057523" name="duplicate:http://www.bacillondex.org" uri="bacillondexontology_sequenceclasses.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1445529057523" name="duplicate:http://www.bacillondex.org" uri="bacillondexontology.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1445529057523" name="http://www.bacillondex_withontology.org" uri="bacillondex_sequenceclasses_withontology.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1445607575230" name="http://purl.obolibrary.org/obo/go.owl" uri="go-snippet.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1445607575230" name="duplicate:http://www.bacillondex.org" uri="bacillondexontology_nosbol.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1445607575230" name="duplicate:http://www.bacillondex.org" uri="bacillondexontology_sequenceclasses.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1445607575230" name="http://www.bacillondex_withontology.org" uri="bacillondex_sequenceclasses_withontology.rdf"/>
     </group>
 </catalog>

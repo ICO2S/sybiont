@@ -33,11 +33,6 @@ WHERE
   LET ( ?SequenceFeatureResource := IRI(fn:concat(str(?SequenceFeature),"_sbol")))              
 
   FILTER (
-       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#Promoter") ||
-       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#CDS") ||
-       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#RBS") ||
-       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#Terminator") ||
-       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#Shim") ||
-       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#Operator")  
+       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#Promoter")
      )
   }

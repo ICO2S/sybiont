@@ -345,14 +345,14 @@
       let [nosbolmodel (getRDFModel2 "bacillondexontology_nosbol.rdf")
            modelwithontology (getRDFModel2 "bacillondex_sequenceclasses_withontology.rdf") 
            ]
-      (addSPARQLConstructQueryResult nosbolmodel modelwithontology "SBOLDnaComponents.sparql" "bacillondexontology.rdf")
-      (println "Loaded the rdf files")
+      (addSPARQLConstructQueryResult nosbolmodel modelwithontology "SBOLDnaComponents2.sparql")
+      (save nosbolmodel "bacillondexontology_sbol.ttl")
       )
-    ;;(addSPARQLConstructQueryResult (getRDFModel2 "bacillondexontology_nosbol.rdf") (getRDFModel2 "bacillondexontology_withontology.rdf") "SBOLDnaComponents.sparql", "bacillondexontology.rdf")
     
     ;Create the omn version of the rdf file
-    ;(loadOntology "bacillondexontology.rdf")
-    ;(save-ontology bacillondex "bacillondexontology.omn" :omn)    
+    ;(remove-ontology-maybe  (.getOntologyID bacillondex))   
+    ;(loadOntology "bacillondexontology.ttl")
+    ;(save-ontology localOntology "bacillondexontology.omn" :omn)    
   )
  
 (defn createont []

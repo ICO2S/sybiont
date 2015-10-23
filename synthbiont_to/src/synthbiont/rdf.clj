@@ -30,17 +30,26 @@
 
 ;(defn mergeModels[model1 model2])
 
-(defn addSPARQLConstructQueryResult[modelToAdd modelToQuery sparqlFilePath filePath]
+(defn save[model filePath]
+  ;(.write model (new FileOutputStream (new File filePath)) "RDF/XML-ABBREV")
+  (.write model (new FileOutputStream (new File filePath)) "Turtle")
+  
+  )
+
+
+(defn addSPARQLConstructQueryResult[modelToAdd modelToQuery sparqlFilePath]
   (
     let [resultModel (executeSPARQLConstructQuery modelToQuery sparqlFilePath)]
     (if (.isEmpty resultModel)
       (println (concat sparqlFilePath  " did not return any results!"))
-      (
+      (do
         (println "Adding query results")
         (.add modelToAdd resultModel)
-        (println (concat "Saving the file " filePath))        
-        (.save modelToAdd  filePath)
-      )  
+        (println "Added the result")        
+        ;(println (str "Saving the file " (str filePath)))        
+        ;(save modelToAdd  filePath)
+        ;(println "Saved the file")
+       )
     )
  ))
 
@@ -55,9 +64,6 @@
   (.read model stream (RDFS/getURI))
   ))
 
-(defn save[model filePath]
-  (.write model (new FileOutputStream (new File filePath)) "RDF/XML-ABBREV")
-  )
 
 
 (defn test1[]
@@ -74,17 +80,21 @@
 
 
 (defn test2[]
-  (def modelGlobal (getRDFModel2 "bacillondexsequenceclassesonly_withontology.rdf"))  
+  (def modelGlobal (getRDFModel2 "bacillondex_sequenceclasses_withontology.rdf"))  
   )
 
 (defn test3[]
   (let [ file "SBOLDnaComponents2.sparql"
         result (executeSPARQLConstructQuery modelGlobal file)
         ]
-  (print "hello3")
+  (println "Got the result")
    ;(print(executeSPARQLConstructQuery model file))
    ;(print (.isEmpty result))
-   (print result)
+   ;(println result)
+   (println "Saving the result")   
+   (save result "testdel.rdf")
+   (println "done!")
+   
    
   ))
 
