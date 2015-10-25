@@ -63,6 +63,18 @@
 (defn handleMetaResource [ontology resource parentOntology parentClass]
   (let [typeId (getID (.getURI resource))
         typeResourceProperties (iterator-seq (.listProperties resource))]  
+  (owl-class ontology typeId) 
+  (println str "  Creating the class" typeId)
+  (if-not (nil? parentClass)
+    (owl-class ontology typeId :subclass (owl-class parentOntology parentClass)))
+  (doseq [stmt typeResourceProperties] 
+     (if (.isLiteral (.getObject stmt))
+         (addLiteralPropertyToClass  stmt (owl-class ontology typeId)))
+  )))
+
+(defn handleMetaResourceORG_Delete [ontology resource parentOntology parentClass]
+  (let [typeId (getID (.getURI resource))
+        typeResourceProperties (iterator-seq (.listProperties resource))]  
   (owl-class ontology typeId)  
   (if-not (nil? parentClass)
     (owl-class ontology typeId :subclass (owl-class parentOntology parentClass)))
@@ -70,6 +82,7 @@
      (if (.isLiteral (.getObject stmt))
          (addLiteralPropertyToClass  stmt (owl-class ontology typeId)))
   )))
+
 
 (defn getGoTerm [resource]
   (let [
@@ -314,14 +327,17 @@
 (import '(org.semanticweb.owlapi.io RDFXMLOntologyFormat ))
 
 
-(defn mergeOntologies2 [file1 file2 namespace prefix] 
-  (def ontologyA (.loadOntologyFromOntologyDocument (owl-ontology-manager) (File. file1)))
- (def ontologyB (.loadOntologyFromOntologyDocument (owl-ontology-manager) (File. file2)))
- (def mergerAB (OWLOntologyMerger. (owl-ontology-manager)))
- (def mergedAB (.createMergedOntology mergerAB (owl-ontology-manager) (iri namespace) )) 
- (remove-ontology-maybe  (.getOntologyID ontologyA))
- (remove-ontology-maybe  (.getOntologyID ontologyB)) 
- (set-prefix mergedAB prefix))
+;(defn mergeOntologies2 [file1 file2 namespace prefix] 
+;  (def ontologyA (.loadOntologyFromOntologyDocument (owl-ontology-manager) (File. file1)))
+; (def ontologyB (.loadOntologyFromOntologyDocument (owl-ontology-manager) (File. file2)))
+; (def mergerAB (OWLOntologyMerger. (owl-ontology-manager)))
+; (def mergedAB (.createMergedOntology mergerAB (owl-ontology-manager) (iri namespace) )) 
+; (remove-ontology-maybe  (.getOntologyID ontologyA))
+; (remove-ontology-maybe  (.getOntologyID ontologyB)) 
+; (set-prefix mergedAB prefix))
+
+
+
 
 
 (defn createOntologyWithSequenceClasses [from to]
@@ -332,21 +348,22 @@
   )
 (defn addSBOLClasses []
     ; bacillondex file does not have the SO class definitions required by the SparQL queries. Here synthbiont is merged into bacillondexontologytemp.rdf
-    ;(remove-ontology-maybe  (.getOntologyID synthbiont))
-    ;(remove-ontology-maybe  (.getOntologyID bacillondex))    
-    
-       
-    ;(mergeOntologies2 "synthbiont.omn" "bacillondexontology_sequenceclasses.rdf" "http://www.bacillondex_withontology.org" "bowo") 
-    ;(save-ontology mergedAB "bacillondex_sequenceclasses_withontology.rdf" :rdf) 
+    (remove-ontology-maybe  (.getOntologyID synthbiont))
+    (remove-ontology-maybe  (.getOntologyID bacillondex))    
+           
+    (mergeOntologies "synthbiont.omn" "bacillondexontology_sequenceclasses.rdf" "http://www.bacillondex_withontology.org" "bowo") 
+    (save-ontology merged "bacillondex_sequenceclasses_withontology.rdf" :rdf) 
     
     ;Query the newly merged RDF file and add the results to the knowledge base file without the class definitions
     (println "Querying for SBOL resources")
     (
       let [nosbolmodel (getRDFModel2 "bacillondexontology_nosbol.rdf")
            modelwithontology (getRDFModel2 "bacillondex_sequenceclasses_withontology.rdf") 
-           ]
-      (addSPARQLConstructQueryResult nosbolmodel modelwithontology "SBOLDnaComponents2.sparql")
-      (save nosbolmodel "bacillondexontology_sbol.ttl")
+           newmodel_withcomponents (addSPARQLConstructQueryResult nosbolmodel modelwithontology "SBOLDnaComponents2.sparql")
+           newmodel_withannotations (addSPARQLConstructQueryResult newmodel_withcomponents modelwithontology "SBOLAnnotations.sparql")           
+           ]      
+        (save newmodel_withannotations "bacillondexontology_sbol.ttl")
+      
       )
     
     ;Create the omn version of the rdf file
@@ -358,11 +375,11 @@
 (defn createont []
     (print "converting")
     (convert)
-    (addClosureAxioms)  
+    ;(addClosureAxioms)  
     (save-ontology synthbiont "synthbiont.omn" :omn)
     (save-ontology bacillondex "bacillondexontology.omn" :omn)    
-    (save-ontology bacillondex "bacillondexontology_nosbol.rdf" :rdf)    
-    (removeClassesExcept  bacillondex ["Operator" "Promoter" "CDS" "Shim" "Terminator" "RBS"]) 
-    (save-ontology bacillondex "bacillondexontology_sequenceclasses.rdf" :rdf)    
+    ;(save-ontology bacillondex "bacillondexontology_nosbol.rdf" :rdf)    
+    ;(removeClassesExcept  bacillondex ["Operator" "Promoter" "CDS" "Shim" "Terminator" "RBS"]) 
+    ;(save-ontology bacillondex "bacillondexontology_sequenceclasses.rdf" :rdf)    
     
 )

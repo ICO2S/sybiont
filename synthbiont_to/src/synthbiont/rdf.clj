@@ -33,7 +33,7 @@
 (defn save[model filePath]
   ;(.write model (new FileOutputStream (new File filePath)) "RDF/XML-ABBREV")
   (.write model (new FileOutputStream (new File filePath)) "Turtle")
-  
+  (println "Wrote the model")  
   )
 
 
@@ -45,7 +45,7 @@
       (do
         (println "Adding query results")
         (.add modelToAdd resultModel)
-        (println "Added the result")        
+        ;(println "Added the result")        
         ;(println (str "Saving the file " (str filePath)))        
         ;(save modelToAdd  filePath)
         ;(println "Saved the file")

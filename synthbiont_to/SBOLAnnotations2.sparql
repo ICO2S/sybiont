@@ -1,0 +1,48 @@
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  bo:   <http://www.bacillondex.org#>
+PREFIX  owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX  so:   <http://purl.org/obo/owl/SO#>
+PREFIX  sbol: <http://sbols.org/sbol.owl#>
+PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX  fn:   <http://www.w3.org/2005/xpath-functions#>
+PREFIX  afn:  <http://jena.hpl.hp.com/ARQ/function#>
+PREFIX  apf:  <http://jena.hpl.hp.com/ARQ/property#>
+PREFIX  sybio: <http://www.sybio.ncl.ac.uk#>
+
+CONSTRUCT
+{
+    ?SequenceFeatureResource sbol:annotation ?DnaAnnotation .
+    ?DnaAnnotation a sbol:SequenceAnnotation ;
+                   sbol:strand "+" ;
+                   sbol:bioStart ?begin ;
+                   sbol:bioEnd ?end ;
+                   sbol:subComponent ?SequencePartResource .
+}
+WHERE
+{
+   ?SequenceFeature bo:BEGIN   ?sequenceFeatureBegin ;
+                    rdfs:subClassOf   ?HasPartRestriction ;
+                    rdfs:subClassOf  ?SuperClass .
+   ?HasPartRestriction rdf:type    owl:Restriction ;
+                  owl:onProperty      sybio:has_part ;
+                  owl:someValuesFrom  ?SequencePart .
+   ?SequencePart bo:BEGIN   ?partBegin ;
+                 bo:END   ?partEnd .
+  
+   LET ( ?partName := fn:substring (str(?SequencePart),28))
+   LET ( ?DnaAnnotation := IRI(fn:concat(str(?SequenceFeature),"_sbol_annotation_", ?partName)))
+   LET (?begin := fn:abs(xsd:integer(?sequenceFeatureBegin) - xsd:integer(?partBegin)) + 1)
+   LET (?end := fn:abs(xsd:integer(?sequenceFeatureBegin) - xsd:integer(?partEnd)) + 1)
+   LET ( ?SequenceFeatureResource := IRI(fn:concat(str(?SequenceFeature),"_sbol")))
+   LET ( ?SequencePartResource := IRI(fn:concat(str(?SequencePart),"_sbol")))
+
+   FILTER (
+       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#Promoter") ||
+       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#CDS") ||
+       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#RBS") ||
+       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#Terminator") ||
+       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#Shim") ||
+       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#Operator")
+    )
+}
