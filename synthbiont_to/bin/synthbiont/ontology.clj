@@ -5,12 +5,27 @@
              [reasoner :as r]
              [pattern :as p]]))
 
-(defn addComment [owlClass value]
-  (owl-class (.getIRI owlClass) :comment value))
+;(defn addComment [owlClass value]
+;  (owl-class (.getIRI owlClass) :comment value))
 
 
-(defn addLabel [owlClass value]
-  (owl-class (.getIRI owlClass) :label value))
+(defn addComment [ontology owlClass value]
+  (owl-class ontology owlClass :comment value))
+
+
+;(defn addLabel [owlClass value]
+  ;(let [strIRI (str (.getIRI owlClass))]
+  ;  (if (.contains strIRI "Promoter")
+  ;    (print "-----IRI2:strIRI")
+  ;    )
+  ;  )  
+ ; (owl-class (.getIRI owlClass) :label value)
+ ;)
+  ;(owlClass :label value))
+
+;GM:Delete
+(defn addLabel [ontology owlClass value]
+  (owl-class ontology owlClass :label value))
 
 (defn addAnnotationProperty [owlClass predicateOntology predicate value]
   (annotation-property predicateOntology predicate)
