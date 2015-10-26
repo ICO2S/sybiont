@@ -119,12 +119,16 @@
    ;Hermit:120 second, Fact++:1 second
   (subsetForClasses ["Operator" "Promoter"] "promotersbyrt" "PromotersByRegulationTypes_Reasoning.omn" "Creating the subset of the ontology to classify promoters by their regulation type only...")
   
-  ;Hermit:xxx second, Fact++:108 second
+  ;Hermit:? seconds, Fact++:108 seconds
   (subsetForClasses ["Promoter" "TF" "Protein"] "promotersbysf" "PromotersBySigmaFactors_Reasoning.omn" "Creating the subset of the ontology to classify promoters by sigma factors only...")
    
-  ;Hermit:xxxms, Fact++:xxxms
+  ;Hermit:? seconds, Fact++:394 seconds
   (subsetForClasses ["Promoter" "TF" "Protein" "Operator"] "promoters" "Promoters_Reasoning.omn" "Creating the subset of the ontology to classify all promoters...")
+  
+  ;Hermit:? seconds, Fact++:438 seconds
   (subsetForClasses ["Protein" "CDS" "MolecularFunction"] "cdssbymf" "CDSsByMolecularFunction_Reasoning.omn" "Creating the subset of the ontology to classify CDSs by the molecular functions of their encoded products...")
+  
+  ;Hermit:? seconds, Fact++:? seconds
   (subsetForClasses ["Protein" "CDS" "TF" "Operator"] "cdssbyta" "CDSsByTrancriptionalActivity_Reasoning.omn" "Creating the subset of the ontology to classify CDSs by the transcriptional activity of their encoded products...")
     )
 
