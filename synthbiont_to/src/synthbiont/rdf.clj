@@ -6,17 +6,6 @@
 
 (import '(com.hp.hpl.jena.query QueryFactory QueryExecutionFactory Syntax Query))
 
-
-(defn getRDFModel []
-  (let [rdfFilePath "/home/goksel/work/sbolstack/DataFiles/BacillOndexPlus.rdf"
-       RDF_BASE_URI "http://www.bacillondex.org"
-       stream (FileInputStream. (File. rdfFilePath))
-       model (ModelFactory/createDefaultModel)]               
-  (.setNsPrefix model "" RDF_BASE_URI)
-  (.read model stream (RDFS/getURI))
-  ))
-
-
 (defn executeSPARQLConstructQuery[model sparqlFilePath]
   (
     let [syntax (Syntax/syntaxARQ) 
@@ -54,7 +43,7 @@
  ))
 
 
-(defn getRDFModel2 [rdfFilePath]
+(defn getRDFModel [rdfFilePath]
   (let [
        RDF_BASE_URI "http://www.bacillondex.org"
        stream (FileInputStream. (File. rdfFilePath))

@@ -112,5 +112,7 @@
                         "URL" "url"
                         })
 
+(def SYBIONT "sybiont.omn")
+(def SYBIONTKB "sybiontkb.omn")
 
     
