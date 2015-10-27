@@ -5,12 +5,18 @@
              [reasoner :as r]
              [pattern :as p]]))
 
-(defn addComment [owlClass value]
-  (owl-class (.getIRI owlClass) :comment value))
+;(defn addComment [owlClass value]
+;  (owl-class (.getIRI owlClass) :comment value))
 
 
-(defn addLabel [owlClass value]
-  (owl-class (.getIRI owlClass) :label value))
+(defn addComment [ontology owlClass value]
+  (owl-class ontology owlClass :comment value))
+
+;(defn addLabel [owlClass value]
+  ;(owlClass :label value))
+
+(defn addLabel [ontology owlClass value]
+  (owl-class ontology owlClass :label value))
 
 (defn addAnnotationProperty [owlClass predicateOntology predicate value]
   (annotation-property predicateOntology predicate)
@@ -71,6 +77,3 @@
 (defn getOntologyIri [ontology] 
   (.getOntologyIRI(.getOntologyID ontology))
   )
-;(defn import [ontologyIri filePath]
-;  
-;  )

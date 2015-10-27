@@ -21,14 +21,14 @@ CONSTRUCT
 }
 WHERE
 {
-   ?SequenceFeature sybio:BEGIN   ?sequenceFeatureBegin ;
+   ?SequenceFeature sybio:begin   ?sequenceFeatureBegin ;
                     rdfs:subClassOf   ?HasPartRestriction ;
                     rdfs:subClassOf  ?SuperClass .
    ?HasPartRestriction rdf:type    owl:Restriction ;
-                  owl:onProperty      sybio:has_part ;
+                  owl:onProperty      sybio:hasPart ;
                   owl:someValuesFrom  ?SequencePart .
-   ?SequencePart sybio:BEGIN   ?partBegin ;
-                 sybio:END   ?partEnd .
+   ?SequencePart sybio:begin   ?partBegin ;
+                 sybio:end   ?partEnd .
   
    LET ( ?partName := fn:substring (str(?SequencePart),28))
    LET ( ?DnaAnnotation := IRI(fn:concat(str(?SequenceFeature),"_sbol_annotation_", ?partName)))
@@ -38,6 +38,11 @@ WHERE
    LET ( ?SequencePartResource := IRI(fn:concat(str(?SequencePart),"_sbol")))
 
    FILTER (
-       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#Promoter")
+       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#Promoter") ||
+       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#CDS") ||
+       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#RBS") ||
+       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#Terminator") ||
+       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#Shim") ||
+       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#Operator")
     )
 }

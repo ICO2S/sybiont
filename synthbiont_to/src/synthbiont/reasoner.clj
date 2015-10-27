@@ -1,13 +1,14 @@
 (ns synthbiont.reasoner
       (:use [tawny.owl])
-        (:use [synthbiont.ontology])  
+      (:use [synthbiont.ontology])  
+      (:use [synthbiont.param])  
   (:require [tawny
              [polyglot]
              [reasoner :as r]
              [pattern :as p]]))
-
+ 
 (import '(java.io FileInputStream File))    
-(import '(org.semanticweb.owlapi.model OWLOntology PrefixManager SetOntologyID ))
+(import '(org.semanticweb.owlapi.model OWLOntology PrefixManager SetOntologyID OWLOntologyID))
 (import '(org.semanticweb.owlapi.apibinding OWLManager ))
 (import '(org.semanticweb.owlapi.util OWLOntologyMerger DefaultPrefixManager))
 (import '(org.semanticweb.owlapi.io RDFXMLOntologyFormat ))
@@ -69,119 +70,94 @@
  (remove-ontology-maybe  (.getOntologyID ontology2)) 
  (set-prefix merged prefix))
 
+(defn inferOperatorsHermit[]
+ (loadOntology "Operators_Reasoning.omn")
+ 
+ ;(r/reasoner-factory :hermit)
+ ;(r/reasoner-factory :elk) 
+ (r/reasoner-factory :hermit)
+ 
+ (printReasoningSummary "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
+ ;(printReasoningSummary "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))) 
+ ;(printReasoning "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
+ ;(printReasoning "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator"))))
+ )
+
+(defn inferOperatorsFact[]
+  (println "test5")
+  (loadOntology "Operators_Reasoning.omn")
+ 
+ (r/reasoner-factory :jfact)
+ ;(r/reasoner-factory :elk) 
+ ;(r/reasoner-factory :jfact)
+ 
+ (printReasoningSummary "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
+ 
+ ;(printReasoningSummary "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))) 
+ ;(printReasoning "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
+ ;(printReasoning "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator"))))
+ ;(r/isubclasses localOntology (owl-class (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))
+ ;(r/isubclasses localOntology (owl-class (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))
+ 
+ )
+
 (defn inferOperators[]
- (mergeOntologies "Operators.omn" "synthbiont.omn" "http://www.bacillondex.org_operators" "bom")  
- (r/reasoner-factory :hermit)  
- (printReasoningSummary "NegativelyRegulatedOperator" (r/isubclasses merged (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
- (printReasoningSummary "PositivelyRegulatedOperator" (r/isubclasses merged (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))) 
- (printReasoning "NegativelyRegulatedOperator" (r/isubclasses merged (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
- (printReasoning "PositivelyRegulatedOperator" (r/isubclasses merged (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))))
+  (loadOntology "Operators_Reasoning.omn") 
+ ;(r/reasoner-factory :hermit)
+ ;(r/reasoner-factory :elk) 
+ (r/reasoner-factory :jfact)
+ 
+ (printReasoningSummary "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
+ (printReasoningSummary "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))) 
+ (printReasoning "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
+ (printReasoning "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))))
+
+
 
 (defn inferPromotersByRegulationType[]
- (mergeOntologies "PromotersByRegulationTypesOnly.omn" "synthbiont.omn" "http://www.bacillondex.org_promotersbyregulationtype" "bom")  
+ (loadOntology "PromotersByRegulationTypes_Reasoning.omn")
  (r/reasoner-factory :hermit)  
- (printReasoningSummary "InduciblePromoter" (r/isubclasses merged (iri (str "http://www.sybio.ncl.ac.uk#InduciblePromoter")))))
+ (printReasoningSummary "InduciblePromoter" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#InduciblePromoter")))))
 
-(defn inferPromoters[]
- (mergeOntologies "Promoters.omn" "synthbiont.omn" "http://www.bacillondex.org_promoters" "bom")  
- (r/reasoner-factory :elk)  
- (printReasoningSummary "NegativelyRegulatedOperator" (r/isubclasses merged (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
- (printReasoningSummary "PositivelyRegulatedOperator" (r/isubclasses merged (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))) 
- (printReasoningSummary "InduciblePromoter" (r/isubclasses merged (iri (str "http://www.sybio.ncl.ac.uk#InduciblePromoter"))))  
- (printReasoningSummary "SigAPromoter" (r/isubclasses merged (iri (str "http://www.sybio.ncl.ac.uk#SigAPromoter")))))
-
-;To classify operators
-(defn subsetForOperators[]
-  (print "Creating the subset of the ontology to classify operators only...")
-  (loadOntology "bacillondexontology.omn")
-  (removeClassesExcept localOntology ["Operator"])
-  ;(SetOntologyID. o (iri (str (getOntologyIri ontology) "_operators"))  )
-  (save-ontology localOntology "Operators.omn" :omn)  
+;To generate subsets of the ontology which can be submitted to reasoners directly
+(defn subsetForClasses[classesToKeep nssuffix targetFile message]
+  (print message)
+  (loadOntology SYBIONTKB)
+  (removeClassesExcept localOntology classesToKeep)
+  
+  (save-ontology localOntology (str "temp" targetFile) :omn)  
   (remove-ontology-maybe   (.getOntologyID localOntology))
   
-  (mergeOntologies "Operators.omn" "synthbiont.omn" "http://www.bacillondex.org_operators" "bom")  
-  (save-ontology merged "Operators_withDefinitions.omn" :omn) 
-  (remove-ontology-maybe   (.getOntologyID merged))  
-  (println "done!"))
-
-; To classify promoters based on their regulatory relationships with TFs
-(defn subsetForPromotersByRegulationTypes[]
-  (print "Creating the subset of the ontology to classify promoters by their regulation type only...")  
-  (loadOntology "bacillondexontology.omn")
-  (removeClassesExcept  localOntology ["Operator" "Promoter"])  
-  (save-ontology localOntology "PromotersByRegulationTypesOnly.omn" :omn)
-  (remove-ontology-maybe   (.getOntologyID localOntology))
-  
-  (mergeOntologies "PromotersByRegulationTypesOnly.omn" "synthbiont.omn" "http://www.bacillondex.org_promotersbyrt" "bom")  
-  (save-ontology merged "PromotersByRegulationTypesOnly_withDefinitions.omn" :omn) 
+  (mergeOntologies (str "temp" targetFile) SYBIONT (str "http://www.bacillondex.org_" nssuffix) "bomerged")  
+  (save-ontology merged targetFile :omn) 
   (remove-ontology-maybe   (.getOntologyID merged)) 
   
-  (println "done!"))  
+  ;(clojure.java.io/delete-file (str "temp" targetFile))
 
-; To classify promoters based sigma factors
-(defn subsetForPromotersBySigmaFactors[]
-  (print "Creating the subset of the ontology to classify promoters by sigma factors only...")  
-  (loadOntology "bacillondexontology.omn")
-  (removeClassesExcept localOntology ["Promoter" "TF" "Protein"])  
-  (save-ontology localOntology "PromotersBySigmaFactorsOnly.omn" :omn)
-  (remove-ontology-maybe   (.getOntologyID localOntology))
-  
-  (mergeOntologies "PromotersBySigmaFactorsOnly.omn" "synthbiont.omn" "http://www.bacillondex.org_promotersbysf" "bom")  
-  (save-ontology merged "PromotersBySigmaFactorsOnly_withDefinitions.omn" :omn) 
-  (remove-ontology-maybe   (.getOntologyID merged)) 
-  
   (println "done!"))
 
-;To classify all promoters
-;Takes around 43 seconds,
-(defn subsetForPromoters[]
-  (print "Creating the subset of the ontology to classify all promoters...")  
-  (loadOntology "bacillondexontology.omn")
-  (removeClassesExcept localOntology ["Promoter" "TF" "Protein" "Operator"])
-  (save-ontology localOntology "Promoters.omn" :omn)
-  (remove-ontology-maybe   (.getOntologyID localOntology))
-  
-  (mergeOntologies "Promoters.omn" "synthbiont.omn" "http://www.bacillondex.org_promoters" "bom")  
-  (save-ontology merged "Promoters_withDefinitions.omn" :omn) 
-  (remove-ontology-maybe   (.getOntologyID merged))   
-  (println "done!"))
-
-;Creates a subset of the ontology to infer CDSs by molecular functions of the encoded products.
-; Reasoning takes 330 seconds,
-(defn subsetForCDSsByMolecularFunction[]
-  (print "Creating the subset of the ontology to classify CDSs by the molecular functions of their encoded products...")  
-  (loadOntology "bacillondexontology.omn")
-  (removeClassesExcept localOntology ["Protein" "CDS" "MolFunc"])  
-  (save-ontology localOntology "CDSsByMolecularFunctionOnly.omn" :omn)
-  (remove-ontology-maybe   (.getOntologyID localOntology))  
-  
-  (mergeOntologies "CDSsByMolecularFunctionOnly.omn" "synthbiont.omn" "http://www.bacillondex.org_cdssbymf" "bom")  
-  (save-ontology merged "CDSsByMolecularFunctionOnly_withDefinitions.omn" :omn) 
-  (remove-ontology-maybe   (.getOntologyID merged))   
-  (println "done!"))
-
-;Creates a subset of the ontology to infer CDSs by transcriptional activity.
-;1390 seconds
-(defn subsetForCDSsByTrancriptionalActivity[]
-  (print "Creating the subset of the ontology to classify CDSs by the transcriptional activity of their encoded products...")  
-  (loadOntology "bacillondexontology.omn")
-  (removeClassesExcept localOntology ["Protein" "CDS" "TF" "Operator"])  
-  (save-ontology localOntology "CDSsByTrancriptionalActivityOnly.omn" :omn)
-  (remove-ontology-maybe   (.getOntologyID localOntology))  
-  
-  (mergeOntologies "CDSsByTrancriptionalActivityOnly.omn" "synthbiont.omn" "http://www.bacillondex.org_cdssbyta" "bom")  
-  (save-ontology merged "CDSsByTrancriptionalActivityOnly_withDefinitions.omn" :omn) 
-  (remove-ontology-maybe   (.getOntologyID merged)) 
-  
-  (println "done!"))
 
 (defn createOntologySubsets[]
-  (subsetForOperators)  
-  (subsetForPromotersByRegulationTypes)
-  (subsetForPromotersBySigmaFactors)
-  (subsetForPromoters) 
-  (subsetForCDSsByMolecularFunction)
-  (subsetForCDSsByTrancriptionalActivity)
+  ;Hermit:1.3.8.3, FaCT:1.6.4   
+  ;Hermit:979 ms, FaCT++:192 ms
+  (remove-ontology-maybe  (new OWLOntologyID (iri "http://www.bacillondex.org")))
+  (remove-ontology-maybe  (new OWLOntologyID (iri "http://www.sybio.ncl.ac.uk")))
   
-  )
+  (subsetForClasses ["Operator"] "operators" "Operators_Reasoning.omn" "Creating the subset of the ontology to classify operators only...")
+  
+   ;Hermit:120 second, Fact++:1 second
+  (subsetForClasses ["Operator" "Promoter"] "promotersbyrt" "PromotersByRegulationTypes_Reasoning.omn" "Creating the subset of the ontology to classify promoters by their regulation type only...")
+  
+  ;Hermit:? seconds, Fact++:108 seconds
+  (subsetForClasses ["Promoter" "TF" "Protein"] "promotersbysf" "PromotersBySigmaFactors_Reasoning.omn" "Creating the subset of the ontology to classify promoters by sigma factors only...")
+   
+  ;Hermit:? seconds, Fact++:394 seconds
+  (subsetForClasses ["Promoter" "TF" "Protein" "Operator"] "promoters" "Promoters_Reasoning.omn" "Creating the subset of the ontology to classify all promoters...")
+  
+  ;Hermit:? seconds, Fact++:438 seconds
+  (subsetForClasses ["Protein" "CDS" "MolecularFunction"] "cdssbymf" "CDSsByMolecularFunction_Reasoning.omn" "Creating the subset of the ontology to classify CDSs by the molecular functions of their encoded products...")
+  
+  ;Hermit:? seconds, Fact++:1387 seconds
+  (subsetForClasses ["Protein" "CDS" "TF" "Operator"] "cdssbyta" "CDSsByTrancriptionalActivity_Reasoning.omn" "Creating the subset of the ontology to classify CDSs by the transcriptional activity of their encoded products...")
+    )
 
