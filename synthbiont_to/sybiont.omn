@@ -5,6 +5,7 @@ Prefix: xml: <http://www.w3.org/XML/1998/namespace>
 Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
 Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 Prefix: sybio: <http://www.sybio.ncl.ac.uk#>
+Prefix: pattern: <http://www.w3id.org/ontolink/pattern.owl#>
 
 
 
@@ -13,6 +14,8 @@ Ontology: <http://www.sybio.ncl.ac.uk>
 Import: <http://www.purl.org/ontolink/tawny>
 
 Annotations: 
+    owl:versionInfo "1.0"@en,
+    rdfs:comment "An ontology for synthetic biology"@en,
     <http://www.purl.org/ontolink/tawny#name> "synthbiont"@en
 
 AnnotationProperty: sybio:end
@@ -150,6 +153,9 @@ AnnotationProperty: sybio:controlExperiment
         rdfs:comment "Control experiment"@en,
         rdfs:label "Control"@en
     
+    
+AnnotationProperty: owl:versionInfo
+
     
 AnnotationProperty: <http://www.purl.org/ontolink/tawny#name>
 
@@ -1233,7 +1239,7 @@ Class: sybio:SigMPromoter
 Class: <http://purl.org/obo/owl/GO#GO_0005575>
 
     EquivalentTo: 
-        sybio:CellularCompartment
+        sybio:CellularComponent
     
     
 Class: sybio:Operator
@@ -1327,17 +1333,6 @@ Class: <http://purl.org/obo/owl/SO#SO_0000167>
     
 Class: <http://purl.org/obo/owl/SO#SO_0000316>
 
-    
-Class: sybio:CellularCompartment
-
-    Annotations: 
-        rdfs:comment "Cellular Component (GO)"@en,
-        <http://www.purl.org/ontolink/tawny#name> "CellularCompartment"@en,
-        rdfs:label "Cellular_Component"@en
-    
-    EquivalentTo: 
-        <http://purl.org/obo/owl/GO#GO_0005575>
-    
     
 Class: <http://sbols.org/sbol.owl#SequenceAnnotation>
 
@@ -1605,6 +1600,17 @@ Class: sybio:SigAPromoter
     
     SubClassOf: 
         sybio:Promoter
+    
+    
+Class: sybio:CellularComponent
+
+    Annotations: 
+        rdfs:label "Cellular_Component"@en,
+        <http://www.purl.org/ontolink/tawny#name> "CellularComponent"@en,
+        rdfs:comment "Cellular Component (GO)"@en
+    
+    EquivalentTo: 
+        <http://purl.org/obo/owl/GO#GO_0005575>
     
     
 Class: sybio:SigLPromoter

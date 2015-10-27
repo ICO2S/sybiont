@@ -6,11 +6,9 @@
              [polyglot]
              [reasoner :as r]
              [pattern :as p]]))
-
-; (:require [clojure.java.io :as io])
  
 (import '(java.io FileInputStream File))    
-(import '(org.semanticweb.owlapi.model OWLOntology PrefixManager SetOntologyID ))
+(import '(org.semanticweb.owlapi.model OWLOntology PrefixManager SetOntologyID OWLOntologyID))
 (import '(org.semanticweb.owlapi.apibinding OWLManager ))
 (import '(org.semanticweb.owlapi.util OWLOntologyMerger DefaultPrefixManager))
 (import '(org.semanticweb.owlapi.io RDFXMLOntologyFormat ))
@@ -72,13 +70,49 @@
  (remove-ontology-maybe  (.getOntologyID ontology2)) 
  (set-prefix merged prefix))
 
-(defn inferOperators[]
+(defn inferOperatorsHermit[]
  (loadOntology "Operators_Reasoning.omn")
- (r/reasoner-factory :hermit)  
+ 
+ ;(r/reasoner-factory :hermit)
+ ;(r/reasoner-factory :elk) 
+ (r/reasoner-factory :hermit)
+ 
+ (printReasoningSummary "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
+ ;(printReasoningSummary "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))) 
+ ;(printReasoning "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
+ ;(printReasoning "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator"))))
+ )
+
+(defn inferOperatorsFact[]
+  (println "test5")
+  (loadOntology "Operators_Reasoning.omn")
+ 
+ (r/reasoner-factory :jfact)
+ ;(r/reasoner-factory :elk) 
+ ;(r/reasoner-factory :jfact)
+ 
+ (printReasoningSummary "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
+ 
+ ;(printReasoningSummary "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))) 
+ ;(printReasoning "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
+ ;(printReasoning "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator"))))
+ ;(r/isubclasses localOntology (owl-class (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))
+ ;(r/isubclasses localOntology (owl-class (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))
+ 
+ )
+
+(defn inferOperators[]
+  (loadOntology "Operators_Reasoning.omn") 
+ ;(r/reasoner-factory :hermit)
+ ;(r/reasoner-factory :elk) 
+ (r/reasoner-factory :jfact)
+ 
  (printReasoningSummary "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
  (printReasoningSummary "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))) 
  (printReasoning "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
  (printReasoning "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))))
+
+
 
 (defn inferPromotersByRegulationType[]
  (loadOntology "PromotersByRegulationTypes_Reasoning.omn")
@@ -98,7 +132,7 @@
   (save-ontology merged targetFile :omn) 
   (remove-ontology-maybe   (.getOntologyID merged)) 
   
-  (clojure.java.io/delete-file (str "temp" targetFile))
+  ;(clojure.java.io/delete-file (str "temp" targetFile))
 
   (println "done!"))
 
@@ -106,6 +140,9 @@
 (defn createOntologySubsets[]
   ;Hermit:1.3.8.3, FaCT:1.6.4   
   ;Hermit:979 ms, FaCT++:192 ms
+  (remove-ontology-maybe  (new OWLOntologyID (iri "http://www.bacillondex.org")))
+  (remove-ontology-maybe  (new OWLOntologyID (iri "http://www.sybio.ncl.ac.uk")))
+  
   (subsetForClasses ["Operator"] "operators" "Operators_Reasoning.omn" "Creating the subset of the ontology to classify operators only...")
   
    ;Hermit:120 second, Fact++:1 second

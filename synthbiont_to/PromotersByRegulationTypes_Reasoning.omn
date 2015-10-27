@@ -3,6 +3,7 @@ Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 Prefix: xml: <http://www.w3.org/XML/1998/namespace>
 Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
 Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: pattern: <http://www.w3id.org/ontolink/pattern.owl#>
 Prefix: bomerged: <http://www.bacillondex.org_promotersbyrt#>
 
 
@@ -30,6 +31,27 @@ AnnotationProperty: <http://www.sybio.ncl.ac.uk#evidence>
     
     Annotations: 
         <http://www.purl.org/ontolink/tawny#name> "evidence"@en
+    
+    
+AnnotationProperty: pattern:facetvalue
+
+    Annotations: 
+        rdfs:label "facet value"@en,
+        <http://www.purl.org/ontolink/tawny#name> "facetvalue"@en,
+        rdfs:comment "facet value indicates a relationship between an object property
+  and a class, indicating that the class is a value in a particular facet
+  where entities may be described by (one or more) existential relationship
+  involving a specific object property. The object property may also have a
+  range which is a superclass of the facet values but is not required to."@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "facetvalue"@en,
+        rdfs:comment "facet value indicates a relationship between an object property
+  and a class, indicating that the class is a value in a particular facet
+  where entities may be described by (one or more) existential relationship
+  involving a specific object property. The object property may also have a
+  range which is a superclass of the facet values but is not required to."@en,
+        rdfs:label "facet value"@en
     
     
 AnnotationProperty: <http://www.sybio.ncl.ac.uk#bindingMotif>
@@ -73,6 +95,16 @@ AnnotationProperty: <http://www.sybio.ncl.ac.uk#controlExperiment>
     
 AnnotationProperty: <http://www.purl.org/ontolink/tawny#name>
 
+    Annotations: 
+        rdfs:label "name"@en,
+        rdfs:comment "Name is the identifier for this entity inside tawny. It may be
+  used as a symbol in Clojure so must follow the rules for Clojure."@en
+    
+    Annotations: 
+        rdfs:comment "Name is the identifier for this entity inside tawny. It may be
+  used as a symbol in Clojure so must follow the rules for Clojure."@en,
+        rdfs:label "name"@en
+    
     
 AnnotationProperty: <http://www.sybio.ncl.ac.uk#operonGenes>
 
@@ -100,9 +132,6 @@ AnnotationProperty: <http://www.sybio.ncl.ac.uk#unnormalizedMaxExpression>
         rdfs:label "Unnormalized Max Expression"@en
     
     
-AnnotationProperty: <http://www.purl.org/ontolink/tawny/name>
-
-    
 AnnotationProperty: <http://www.sybio.ncl.ac.uk#elementOf>
 
     Annotations: 
@@ -129,6 +158,21 @@ AnnotationProperty: <http://www.sybio.ncl.ac.uk#end>
                     the forward strand, regardless of sense strand for the feature.
                 "@en,
         rdfs:label "End of feature"@en
+    
+    
+AnnotationProperty: pattern:inpattern
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "inpattern"@en,
+        rdfs:label "In Pattern"@en,
+        rdfs:comment "Indicates that the entity was created as part of a pattern
+with other entities that are annotated to the same anonymous individual."@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "inpattern"@en,
+        rdfs:comment "Indicates that the entity was created as part of a pattern
+with other entities that are annotated to the same anonymous individual."@en,
+        rdfs:label "In Pattern"@en
     
     
 AnnotationProperty: <http://www.sybio.ncl.ac.uk#annotatedSequence>
@@ -186,6 +230,9 @@ AnnotationProperty: <http://www.sybio.ncl.ac.uk#deltaGo>
         rdfs:comment "Gibbs free energy for the reaction"@en,
         rdfs:label "GibbsFreeEnergy"@en
     
+    
+AnnotationProperty: owl:versionInfo
+
     
 AnnotationProperty: <http://www.sybio.ncl.ac.uk#begin>
 
@@ -4311,6 +4358,17 @@ Class: <http://www.sybio.ncl.ac.uk#Operator>
     
     DisjointWith: 
         <http://www.sybio.ncl.ac.uk#Promoter>
+    
+    
+Class: <http://www.sybio.ncl.ac.uk#CellularComponent>
+
+    Annotations: 
+        rdfs:label "Cellular_Component"@en,
+        <http://www.purl.org/ontolink/tawny#name> "CellularComponent"@en,
+        rdfs:comment "Cellular Component (GO)"@en
+    
+    EquivalentTo: 
+        <http://purl.org/obo/owl/GO#GO_0005575>
     
     
 Class: <http://www.sybio.ncl.ac.uk#COG>
@@ -8631,17 +8689,6 @@ Class: <http://www.bacillondex.org#2726>
         <http://www.sybio.ncl.ac.uk#partOf> some <http://www.bacillondex.org#27637>
     
     
-Class: <http://www.sybio.ncl.ac.uk#CellularCompartment>
-
-    Annotations: 
-        rdfs:comment "Cellular Component (GO)"@en,
-        <http://www.purl.org/ontolink/tawny#name> "CellularCompartment"@en,
-        rdfs:label "Cellular_Component"@en
-    
-    EquivalentTo: 
-        <http://purl.org/obo/owl/GO#GO_0005575>
-    
-    
 Class: <http://www.bacillondex.org#2728>
 
     Annotations: 
@@ -8901,12 +8948,12 @@ Class: <http://www.bacillondex.org#3912>
 Class: <http://www.bacillondex.org#3911>
 
     Annotations: 
+        <http://www.sybio.ncl.ac.uk#end> "2879194"@en,
         rdfs:label "PerR_hemA"@en,
         <http://www.purl.org/ontolink/tawny#name> "3911"@en,
         <http://www.sybio.ncl.ac.uk#evidence> "http://www.bacillondex.org/evidenceType/IMPD"@en,
         <http://www.sybio.ncl.ac.uk#annotatedSequence> "AGAAACTATG{TTATAATTATTATAA}ATAA"@en,
         rdfs:comment "Negative"@en,
-        <http://www.sybio.ncl.ac.uk#end> "2879194"@en,
         <http://www.sybio.ncl.ac.uk#begin> "2879222"@en,
         <http://www.sybio.ncl.ac.uk#elementOf> "http://www.bacillondex.org/cv/DBTBS"@en
     
@@ -10385,11 +10432,11 @@ Class: <http://www.bacillondex.org#4172>
     
     SubClassOf: 
         <http://www.sybio.ncl.ac.uk#Operator>,
-        <http://www.sybio.ncl.ac.uk#partOf> some <http://www.bacillondex.org#27719>,
-        <http://www.sybio.ncl.ac.uk#NA> value "TAATAAAGGTGGTACCGCGAGA"^^xsd:string,
-        <http://www.sybio.ncl.ac.uk#regulationType> value "Positive"^^xsd:string,
         <http://www.sybio.ncl.ac.uk#interactsWith> some <http://www.bacillondex.org#2969>,
+        <http://www.sybio.ncl.ac.uk#partOf> some <http://www.bacillondex.org#27719>,
         <http://www.sybio.ncl.ac.uk#sigmaFactor> value "SigA"^^xsd:string,
+        <http://www.sybio.ncl.ac.uk#regulationType> value "Positive"^^xsd:string,
+        <http://www.sybio.ncl.ac.uk#NA> value "TAATAAAGGTGGTACCGCGAGA"^^xsd:string,
         <http://www.sybio.ncl.ac.uk#pmid> value "10706627"^^xsd:string
     
     
@@ -13363,11 +13410,11 @@ Class: <http://www.bacillondex.org#4221>
 Class: <http://www.bacillondex.org#4224>
 
     Annotations: 
-        rdfs:comment "Negative"@en,
+        <http://www.sybio.ncl.ac.uk#elementOf> "http://www.bacillondex.org/cv/DBTBS"@en,
+        rdfs:label "YlbO_spoIIM"@en,
         <http://www.sybio.ncl.ac.uk#evidence> "http://www.bacillondex.org/evidenceType/IMPD"@en,
         <http://www.purl.org/ontolink/tawny#name> "4224"@en,
-        <http://www.sybio.ncl.ac.uk#elementOf> "http://www.bacillondex.org/cv/DBTBS"@en,
-        rdfs:label "YlbO_spoIIM"@en
+        rdfs:comment "Negative"@en
     
     SubClassOf: 
         <http://www.sybio.ncl.ac.uk#interactsWith> some <http://www.bacillondex.org#3138>,
@@ -15601,11 +15648,11 @@ Class: <http://www.bacillondex.org#3537>
 Class: <http://www.bacillondex.org#3536>
 
     Annotations: 
-        rdfs:label "AraR_araR"@en,
         <http://www.sybio.ncl.ac.uk#evidence> "http://www.bacillondex.org/evidenceType/IMPD"@en,
-        <http://www.sybio.ncl.ac.uk#elementOf> "http://www.bacillondex.org/cv/DBTBS"@en,
         rdfs:comment "Negative"@en,
+        rdfs:label "AraR_araR"@en,
         <http://www.sybio.ncl.ac.uk#begin> "3485637"@en,
+        <http://www.sybio.ncl.ac.uk#elementOf> "http://www.bacillondex.org/cv/DBTBS"@en,
         <http://www.sybio.ncl.ac.uk#end> "3485656"@en,
         <http://www.sybio.ncl.ac.uk#annotatedSequence> "AA{ATTTGTCCGTATACAT}TT"@en,
         <http://www.purl.org/ontolink/tawny#name> "3536"@en
@@ -28142,9 +28189,9 @@ Class: <http://www.bacillondex.org#3403>
 Class: <http://www.bacillondex.org#3402>
 
     Annotations: 
-        <http://www.sybio.ncl.ac.uk#begin> "2629868"@en,
         <http://www.purl.org/ontolink/tawny#name> "3402"@en,
         <http://www.sybio.ncl.ac.uk#end> "2629812"@en,
+        <http://www.sybio.ncl.ac.uk#begin> "2629868"@en,
         <http://www.sybio.ncl.ac.uk#evidence> "http://www.bacillondex.org/evidenceType/IMPD"@en,
         <http://www.sybio.ncl.ac.uk#annotatedSequence> "CGGCCGTTCCCTGGATGGACTTTTCCCAAGCGTGTTAAAAGACCTCGCT/G/AAAAAGG"@en,
         <http://www.sybio.ncl.ac.uk#tfbsEnd> "+8"@en,
@@ -32679,7 +32726,7 @@ Class: <http://www.bacillondex.org#3085>
 Class: <http://purl.org/obo/owl/GO#GO_0005575>
 
     EquivalentTo: 
-        <http://www.sybio.ncl.ac.uk#CellularCompartment>
+        <http://www.sybio.ncl.ac.uk#CellularComponent>
     
     
 Class: <http://www.bacillondex.org#3083>
@@ -35521,13 +35568,13 @@ Class: <http://www.bacillondex.org#27649>
         <http://www.purl.org/ontolink/tawny#name> "27649"@en
     
     SubClassOf: 
+        <http://www.sybio.ncl.ac.uk#hasPart> exactly 1 <http://www.bacillondex.org#2767>,
         <http://www.sybio.ncl.ac.uk#hasPart> some <http://www.bacillondex.org#4212>,
         <http://www.sybio.ncl.ac.uk#hasPart> some <http://www.bacillondex.org#2767>,
         <http://www.sybio.ncl.ac.uk#NA> value "TTATTTTTTGTTACACACTTGTAAAGCCACATTCATTGTATTGTTGTTCCGCAAATAATAGAATAGAAATGATCGAA"^^xsd:string,
         <http://www.sybio.ncl.ac.uk#hasPart> only 
             (<http://www.bacillondex.org#2767> or <http://www.bacillondex.org#4212>),
         <http://www.sybio.ncl.ac.uk#Promoter>,
-        <http://www.sybio.ncl.ac.uk#hasPart> exactly 1 <http://www.bacillondex.org#2767>,
         <http://www.sybio.ncl.ac.uk#hasPart> exactly 1 <http://www.bacillondex.org#4212>
     
     
@@ -36103,8 +36150,8 @@ Class: <http://www.bacillondex.org#27632>
     
     SubClassOf: 
         <http://www.sybio.ncl.ac.uk#hasPart> some <http://www.bacillondex.org#3536>,
-        <http://www.sybio.ncl.ac.uk#hasPart> exactly 1 <http://www.bacillondex.org#2705>,
         <http://www.sybio.ncl.ac.uk#hasPart> some <http://www.bacillondex.org#2705>,
+        <http://www.sybio.ncl.ac.uk#hasPart> exactly 1 <http://www.bacillondex.org#2705>,
         <http://www.sybio.ncl.ac.uk#NA> value "AATGTTTTCTTACAAAGAACGCTGTGATATACTGAAATTTGTCCGTATACATTT"^^xsd:string,
         <http://www.sybio.ncl.ac.uk#Promoter>,
         <http://www.sybio.ncl.ac.uk#hasPart> only 
@@ -36375,15 +36422,15 @@ Class: <http://www.bacillondex.org#27627>
     
     SubClassOf: 
         <http://www.sybio.ncl.ac.uk#hasPart> exactly 1 <http://www.bacillondex.org#3636>,
-        <http://www.sybio.ncl.ac.uk#hasPart> some <http://www.bacillondex.org#3637>,
         <http://www.sybio.ncl.ac.uk#hasPart> exactly 1 <http://www.bacillondex.org#2692>,
+        <http://www.sybio.ncl.ac.uk#hasPart> some <http://www.bacillondex.org#3636>,
         <http://www.sybio.ncl.ac.uk#hasPart> some <http://www.bacillondex.org#2692>,
         <http://www.sybio.ncl.ac.uk#Promoter>,
+        <http://www.sybio.ncl.ac.uk#hasPart> some <http://www.bacillondex.org#3637>,
         <http://www.sybio.ncl.ac.uk#NA> value "TGCGGAGATAATCAGCTTTTTATATGTGAAAAGGCCGTTTTTACCAATAGATCAGATTGGTCATTTTCGTCAACATTCGATAAAATATAGAGAGATAA"^^xsd:string,
         <http://www.sybio.ncl.ac.uk#hasPart> exactly 1 <http://www.bacillondex.org#3637>,
         <http://www.sybio.ncl.ac.uk#hasPart> only 
-            (<http://www.bacillondex.org#2692> or <http://www.bacillondex.org#3636> or <http://www.bacillondex.org#3637>),
-        <http://www.sybio.ncl.ac.uk#hasPart> some <http://www.bacillondex.org#3636>
+            (<http://www.bacillondex.org#2692> or <http://www.bacillondex.org#3636> or <http://www.bacillondex.org#3637>)
     
     
 Class: <http://www.bacillondex.org#27626>

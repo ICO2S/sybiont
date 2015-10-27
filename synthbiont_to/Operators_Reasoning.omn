@@ -3,6 +3,7 @@ Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 Prefix: xml: <http://www.w3.org/XML/1998/namespace>
 Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
 Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: pattern: <http://www.w3id.org/ontolink/pattern.owl#>
 Prefix: bomerged: <http://www.bacillondex.org_operators#>
 
 
@@ -30,6 +31,27 @@ AnnotationProperty: <http://www.sybio.ncl.ac.uk#evidence>
     
     Annotations: 
         <http://www.purl.org/ontolink/tawny#name> "evidence"@en
+    
+    
+AnnotationProperty: pattern:facetvalue
+
+    Annotations: 
+        rdfs:label "facet value"@en,
+        <http://www.purl.org/ontolink/tawny#name> "facetvalue"@en,
+        rdfs:comment "facet value indicates a relationship between an object property
+  and a class, indicating that the class is a value in a particular facet
+  where entities may be described by (one or more) existential relationship
+  involving a specific object property. The object property may also have a
+  range which is a superclass of the facet values but is not required to."@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "facetvalue"@en,
+        rdfs:comment "facet value indicates a relationship between an object property
+  and a class, indicating that the class is a value in a particular facet
+  where entities may be described by (one or more) existential relationship
+  involving a specific object property. The object property may also have a
+  range which is a superclass of the facet values but is not required to."@en,
+        rdfs:label "facet value"@en
     
     
 AnnotationProperty: <http://www.sybio.ncl.ac.uk#bindingMotif>
@@ -73,6 +95,16 @@ AnnotationProperty: <http://www.sybio.ncl.ac.uk#controlExperiment>
     
 AnnotationProperty: <http://www.purl.org/ontolink/tawny#name>
 
+    Annotations: 
+        rdfs:label "name"@en,
+        rdfs:comment "Name is the identifier for this entity inside tawny. It may be
+  used as a symbol in Clojure so must follow the rules for Clojure."@en
+    
+    Annotations: 
+        rdfs:comment "Name is the identifier for this entity inside tawny. It may be
+  used as a symbol in Clojure so must follow the rules for Clojure."@en,
+        rdfs:label "name"@en
+    
     
 AnnotationProperty: <http://www.sybio.ncl.ac.uk#operonGenes>
 
@@ -100,9 +132,6 @@ AnnotationProperty: <http://www.sybio.ncl.ac.uk#unnormalizedMaxExpression>
         rdfs:label "Unnormalized Max Expression"@en
     
     
-AnnotationProperty: <http://www.purl.org/ontolink/tawny/name>
-
-    
 AnnotationProperty: <http://www.sybio.ncl.ac.uk#elementOf>
 
     Annotations: 
@@ -129,6 +158,21 @@ AnnotationProperty: <http://www.sybio.ncl.ac.uk#end>
                     the forward strand, regardless of sense strand for the feature.
                 "@en,
         rdfs:label "End of feature"@en
+    
+    
+AnnotationProperty: pattern:inpattern
+
+    Annotations: 
+        rdfs:comment "Indicates that the entity was created as part of a pattern
+with other entities that are annotated to the same anonymous individual."@en,
+        rdfs:label "In Pattern"@en,
+        <http://www.purl.org/ontolink/tawny#name> "inpattern"@en
+    
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "inpattern"@en,
+        rdfs:comment "Indicates that the entity was created as part of a pattern
+with other entities that are annotated to the same anonymous individual."@en,
+        rdfs:label "In Pattern"@en
     
     
 AnnotationProperty: <http://www.sybio.ncl.ac.uk#annotatedSequence>
@@ -186,6 +230,9 @@ AnnotationProperty: <http://www.sybio.ncl.ac.uk#deltaGo>
         rdfs:comment "Gibbs free energy for the reaction"@en,
         rdfs:label "GibbsFreeEnergy"@en
     
+    
+AnnotationProperty: owl:versionInfo
+
     
 AnnotationProperty: <http://www.sybio.ncl.ac.uk#begin>
 
@@ -1720,6 +1767,17 @@ Class: <http://purl.org/obo/owl/GO#GO_0003674>
 
     EquivalentTo: 
         <http://www.sybio.ncl.ac.uk#MolecularFunction>
+    
+    
+Class: <http://www.sybio.ncl.ac.uk#CellularComponent>
+
+    Annotations: 
+        rdfs:label "Cellular_Component"@en,
+        <http://www.purl.org/ontolink/tawny#name> "CellularComponent"@en,
+        rdfs:comment "Cellular Component (GO)"@en
+    
+    EquivalentTo: 
+        <http://purl.org/obo/owl/GO#GO_0005575>
     
     
 Class: <http://www.bacillondex.org#4206>
@@ -6124,7 +6182,7 @@ Class: <http://www.sybio.ncl.ac.uk#SigAPromoter>
 Class: <http://purl.org/obo/owl/GO#GO_0005575>
 
     EquivalentTo: 
-        <http://www.sybio.ncl.ac.uk#CellularCompartment>
+        <http://www.sybio.ncl.ac.uk#CellularComponent>
     
     
 Class: <http://www.bacillondex.org#3559>
@@ -6258,9 +6316,9 @@ Class: <http://www.bacillondex.org#3552>
         <http://www.sybio.ncl.ac.uk#begin> "3040018"@en,
         <http://www.sybio.ncl.ac.uk#annotatedSequence> "{TGAAAACGCTTTAT}"@en,
         rdfs:comment "Negative"@en,
-        rdfs:label "CcpA_acuA"@en,
         <http://www.sybio.ncl.ac.uk#elementOf> "http://www.bacillondex.org/cv/DBTBS"@en,
         <http://www.purl.org/ontolink/tawny#name> "3552"@en,
+        rdfs:label "CcpA_acuA"@en,
         <http://www.sybio.ncl.ac.uk#end> "3040031"@en,
         <http://www.sybio.ncl.ac.uk#evidence> "http://www.bacillondex.org/evidenceType/IMPD"@en
     
@@ -8370,10 +8428,10 @@ Class: <http://www.bacillondex.org#4244>
 Class: <http://www.bacillondex.org#4243>
 
     Annotations: 
-        <http://www.sybio.ncl.ac.uk#elementOf> "http://www.bacillondex.org/cv/DBTBS"@en,
         rdfs:comment "Negative"@en,
         rdfs:label "YqfL_ccpN"@en,
         <http://www.sybio.ncl.ac.uk#evidence> "http://www.bacillondex.org/evidenceType/IMPD"@en,
+        <http://www.sybio.ncl.ac.uk#elementOf> "http://www.bacillondex.org/cv/DBTBS"@en,
         <http://www.purl.org/ontolink/tawny#name> "4243"@en
     
     SubClassOf: 
@@ -10394,17 +10452,6 @@ Class: <http://www.bacillondex.org#4000>
         <http://www.sybio.ncl.ac.uk#Operator>,
         <http://www.sybio.ncl.ac.uk#pmid> value "15743949"^^xsd:string,
         <http://www.sybio.ncl.ac.uk#regulationType> value "Negative"^^xsd:string
-    
-    
-Class: <http://www.sybio.ncl.ac.uk#CellularCompartment>
-
-    Annotations: 
-        rdfs:comment "Cellular Component (GO)"@en,
-        <http://www.purl.org/ontolink/tawny#name> "CellularCompartment"@en,
-        rdfs:label "Cellular_Component"@en
-    
-    EquivalentTo: 
-        <http://purl.org/obo/owl/GO#GO_0005575>
     
     
 Class: <http://www.bacillondex.org#3809>
@@ -15379,10 +15426,10 @@ Class: <http://www.bacillondex.org#3966>
         <http://www.sybio.ncl.ac.uk#end> "1620385"@en,
         <http://www.sybio.ncl.ac.uk#evidence> "http://www.bacillondex.org/evidenceType/IMPD"@en,
         <http://www.sybio.ncl.ac.uk#annotatedSequence> "TTTAAAACC{TTTTAATGAAAGTCCAGAGAGGCTTGGAAGG}GTTATGAAGAGAAGGAAGCT"@en,
-        <http://www.purl.org/ontolink/tawny#name> "3966"@en,
         rdfs:comment "Negative"@en,
+        rdfs:label "PyrR_pyrB"@en,
         <http://www.sybio.ncl.ac.uk#elementOf> "http://www.bacillondex.org/cv/DBTBS"@en,
-        rdfs:label "PyrR_pyrB"@en
+        <http://www.purl.org/ontolink/tawny#name> "3966"@en
     
     SubClassOf: 
         <http://www.sybio.ncl.ac.uk#NA> value "TTTAAAACCTTTTAATGAAAGTCCAGAGAGGCTTGGAAGGGTTATGAAGAGAAGGAAGCT"^^xsd:string,

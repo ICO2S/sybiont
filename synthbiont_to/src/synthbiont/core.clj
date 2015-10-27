@@ -329,7 +329,7 @@
     (remove-ontology-maybe  (.getOntologyID synthbiont))
     (remove-ontology-maybe  (.getOntologyID bacillondex))    
            
-    (mergeOntologies "sybiont.omn" "sybiontkb_sequenceclasses.rdf" "http://www.bacillondex_withontology.org" "bowo") 
+    (mergeOntologies SYBIONT "sybiontkb_sequenceclasses.rdf" "http://www.bacillondex_withontology.org" "bowo") 
     (save-ontology merged "sybiontkb_sequenceclasses_withontology.rdf" :rdf) 
     
     ;Query the newly merged RDF file and add the results to the knowledge base file without the class definitions
@@ -352,8 +352,8 @@
     (println "converting")
     (convert)
     (addClosureAxioms)  
-    (save-ontology synthbiont "sybiont.omn" :omn)
-    (save-ontology bacillondex "sybiontkb.omn" :omn)    
+    (save-ontology synthbiont SYBIONT :omn)
+    (save-ontology bacillondex SYBIONTKB :omn)    
     (save-ontology bacillondex "sybiontkb_nosbol.rdf" :rdf)    
     (removeClassesExcept  bacillondex ["Operator" "Promoter" "CDS" "Shim" "Terminator" "RBS"]) 
     (save-ontology bacillondex "sybiontkb_sequenceclasses.rdf" :rdf)        

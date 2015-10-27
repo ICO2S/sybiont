@@ -7,9 +7,6 @@
 (def SO_URI "http://purl.org/obo/owl/SO")
 (def SBOL_URI "http://sbols.org/sbol.owl")
 
-
-
-
 ;Namespaces
 (def conceptNS (str ONTOLOGY_DATA_URI  "/concept/"))
 (def relationTypeNS (str ONTOLOGY_DATA_URI  "/relationType/"))
@@ -34,7 +31,7 @@
 (def INVERSE_PROPERTIES {"part_of" "hasPart", "en_by" "encodes", "equ" "equ","bi_to" "boundBy"})  
 (def HAS_PART "hasPart")
 
-(def CLASS_MAPPINGS {"BioProc" "BiologicalProcess", "MolFunc" "MolecularFunction", "CelComp" "CellularCompartment", 
+(def CLASS_MAPPINGS {"BioProc" "BiologicalProcess", "MolFunc" "MolecularFunction", "CelComp" "CellularComponent", 
                      "Comp" "Compound", "MicroArrayExperiment" "MicroarrayExperiment","Path" "Pathway", "Protcmplx" "ProteinComplex"})
 
 (def PROPERTY_MAPPINGS {"ac_by" "activatedBy", 

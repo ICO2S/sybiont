@@ -23,7 +23,7 @@
 (defoproperty boundBy)
 
 (defclass BiologicalProcess :equivalent (owl-class (iri (str GO_URI "#GO_0008150"))))
-(defclass CellularCompartment :equivalent (owl-class (iri (str GO_URI "#GO_0005575"))))
+(defclass CellularComponent :equivalent (owl-class (iri (str GO_URI "#GO_0005575"))))
 (defclass MolecularFunction :equivalent (owl-class (iri (str GO_URI "#GO_0003674"))))
 
 (defclass Promoter :subclass (owl-class (iri (str SO_URI "#SO_0000167"))))
