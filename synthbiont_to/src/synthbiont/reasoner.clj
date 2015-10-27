@@ -128,7 +128,7 @@
   ;Hermit:? seconds, Fact++:438 seconds
   (subsetForClasses ["Protein" "CDS" "MolecularFunction"] "cdssbymf" "CDSsByMolecularFunction_Reasoning.omn" "Creating the subset of the ontology to classify CDSs by the molecular functions of their encoded products...")
   
-  ;Hermit:? seconds, Fact++:? seconds
+  ;Hermit:? seconds, Fact++:1387 seconds
   (subsetForClasses ["Protein" "CDS" "TF" "Operator"] "cdssbyta" "CDSsByTrancriptionalActivity_Reasoning.omn" "Creating the subset of the ontology to classify CDSs by the transcriptional activity of their encoded products...")
     )
 
