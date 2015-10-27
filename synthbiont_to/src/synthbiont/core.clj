@@ -11,7 +11,6 @@
              [pattern :as p]]))
 
  
-
 (import '(java.io FileInputStream File))       
 (import '(com.hp.hpl.jena.rdf.model Model ModelFactory ResourceFactory))
 (import '(com.hp.hpl.jena.vocabulary RDF RDFS))
@@ -116,8 +115,7 @@
                (owl-class valueClassIri :subclass (owl-some predicateOntology inversePredicate (owl-class classIri)))                 		      
              (if (= inversePredicate HAS_PART)
                (do
-                 (owl-class valueClassIri :subclass ( exactly predicateOntology 1 inversePredicate (owl-class classIri)))
-                 ;TODO Enhance this
+                 (owl-class valueClassIri :subclass ( exactly predicateOntology 1 inversePredicate (owl-class classIri)))                 
                  (owl-class valueClassIri :subclass ( owl-some predicateOntology inversePredicate (owl-class classIri))))
                )))
     ))         
@@ -325,23 +323,6 @@
 ;   (tawny.owl/owl-ontology-manager)
 ;   (IRI/create (clojure.java.io/resource "go-snippet.owl"))))
 
-;(defn createontORG []
-;    (convert)
-;    (addClosureAxioms)  
-;    (save-ontology synthbiont "synthbiont.omn" :omn)
-;    (save-ontology bacillondex "bacillondexontology.omn" :omn)    
-;)
-
-;(import '(org.semanticweb.owlapi.model OWLOntology PrefixManager SetOntologyID ))
-;(import '(org.semanticweb.owlapi.apibinding OWLManager ))
-;(import '(org.semanticweb.owlapi.util OWLOntologyMerger DefaultPrefixManager))
-;(import '(org.semanticweb.owlapi.io RDFXMLOntologyFormat ))
-
-;(defn createOntologyWithSequenceClasses [from to]
-;  (let [tempOntology (.loadOntologyFromOntologyDocument (owl-ontology-manager) (File. from))]
-;        (removeClassesExcept  tempOntology ["Operator" "Promoter" "CDS" "Shim" "Terminator" "RBS"])  
-;        (save-ontology tempOntology to :omn)    
-;      ))
       
 (defn addSBOLClasses []
     ; bacillondex file does not have the SO class definitions required by the SparQL queries. Here synthbiont is merged into bacillondexontologytemp.rdf
@@ -364,12 +345,7 @@
      (clojure.java.io/delete-file "sybiontkb_nosbol.rdf")
      (clojure.java.io/delete-file "sybiontkb_sequenceclasses.rdf")
      (clojure.java.io/delete-file "sybiontkb_sequenceclasses_withontology.rdf")
-     
-     
-    ;Create the omn version of the rdf file
-    ;;(remove-ontology-maybe  (.getOntologyID bacillondex))   
-    ;;(loadOntology "bacillondexontology.ttl")
-    ;;(save-ontology localOntology "bacillondexontology.omn" :omn)    
+       
   )
  
 (defn createont []
@@ -382,13 +358,3 @@
     (removeClassesExcept  bacillondex ["Operator" "Promoter" "CDS" "Shim" "Terminator" "RBS"]) 
     (save-ontology bacillondex "sybiontkb_sequenceclasses.rdf" :rdf)        
 )
-
-
-(defn testa[]
-  (let [s (conj ["a" "b" "c" "d"] "d")]
-    (set s)
-    (doseq [item (set s)]
-      (println item)
-      )
-  )
-  )

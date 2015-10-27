@@ -12,18 +12,9 @@
 (defn addComment [ontology owlClass value]
   (owl-class ontology owlClass :comment value))
 
-
 ;(defn addLabel [owlClass value]
-  ;(let [strIRI (str (.getIRI owlClass))]
-  ;  (if (.contains strIRI "Promoter")
-  ;    (print "-----IRI2:strIRI")
-  ;    )
-  ;  )  
- ; (owl-class (.getIRI owlClass) :label value)
- ;)
   ;(owlClass :label value))
 
-;GM:Delete
 (defn addLabel [ontology owlClass value]
   (owl-class ontology owlClass :label value))
 
@@ -86,6 +77,3 @@
 (defn getOntologyIri [ontology] 
   (.getOntologyIRI(.getOntologyID ontology))
   )
-;(defn import [ontologyIri filePath]
-;  
-;  )

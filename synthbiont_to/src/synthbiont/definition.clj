@@ -307,10 +307,8 @@
  :comment "Coding sequences that encode for response regulators"
  :equivalent (owl-and CDS
                      (owl-some encodes (owl-and Protein (owl-some hasFunction (iri(str "http://purl.org/obo/owl/GO#GO_0000156")))))                    
-                     ;TODO: Remove
                      ;(owl-some encodes (owl-and Protein (owl-some hasFunction (owl-class (iri(str "http://purl.org/obo/owl/GO#GO_0000156"))))))                   
-             )
- )
+             ))
 
 (defclass KinaseEncodingCDS
  :label "Kinase encoding CDS"

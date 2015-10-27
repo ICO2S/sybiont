@@ -73,25 +73,17 @@
  (set-prefix merged prefix))
 
 (defn inferOperators[]
- (mergeOntologies "Operators.omn" "synthbiont.omn" "http://www.bacillondex.org_operators" "bom")  
+ (loadOntology "Operators_Reasoning.omn")
  (r/reasoner-factory :hermit)  
- (printReasoningSummary "NegativelyRegulatedOperator" (r/isubclasses merged (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
- (printReasoningSummary "PositivelyRegulatedOperator" (r/isubclasses merged (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))) 
- (printReasoning "NegativelyRegulatedOperator" (r/isubclasses merged (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
- (printReasoning "PositivelyRegulatedOperator" (r/isubclasses merged (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))))
+ (printReasoningSummary "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
+ (printReasoningSummary "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))) 
+ (printReasoning "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
+ (printReasoning "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))))
 
 (defn inferPromotersByRegulationType[]
- (mergeOntologies "PromotersByRegulationTypesOnly.omn" "synthbiont.omn" "http://www.bacillondex.org_promotersbyregulationtype" "bom")  
+ (loadOntology "PromotersByRegulationTypes_Reasoning.omn")
  (r/reasoner-factory :hermit)  
- (printReasoningSummary "InduciblePromoter" (r/isubclasses merged (iri (str "http://www.sybio.ncl.ac.uk#InduciblePromoter")))))
-
-(defn inferPromoters[]
- (mergeOntologies "Promoters.omn" "synthbiont.omn" "http://www.bacillondex.org_promoters" "bom")  
- (r/reasoner-factory :elk)  
- (printReasoningSummary "NegativelyRegulatedOperator" (r/isubclasses merged (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
- (printReasoningSummary "PositivelyRegulatedOperator" (r/isubclasses merged (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))) 
- (printReasoningSummary "InduciblePromoter" (r/isubclasses merged (iri (str "http://www.sybio.ncl.ac.uk#InduciblePromoter"))))  
- (printReasoningSummary "SigAPromoter" (r/isubclasses merged (iri (str "http://www.sybio.ncl.ac.uk#SigAPromoter")))))
+ (printReasoningSummary "InduciblePromoter" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#InduciblePromoter")))))
 
 ;To generate subsets of the ontology which can be submitted to reasoners directly
 (defn subsetForClasses[classesToKeep nssuffix targetFile message]
@@ -106,7 +98,7 @@
   (save-ontology merged targetFile :omn) 
   (remove-ontology-maybe   (.getOntologyID merged)) 
   
-  ;(clojure.java.io/delete-file "temp.omn")
+  (clojure.java.io/delete-file (str "temp" targetFile))
 
   (println "done!"))
 
