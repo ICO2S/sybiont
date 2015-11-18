@@ -1,4 +1,4 @@
-(defproject synthbiont_to "0.1.0-SNAPSHOT"
+(defproject synthbiont_generator "1.0"
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
@@ -20,5 +20,5 @@
                  [com.hermit-reasoner/org.semanticweb.hermit "1.3.8.4"]
                  [net.sourceforge.owlapi/jfact "1.2.2"]
                  ]
-   
+   :plugins [[lein2-eclipse "2.0.0"]]
   )
