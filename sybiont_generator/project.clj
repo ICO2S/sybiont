@@ -1,6 +1,6 @@
 (defproject synthbiont_generator "1.0"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+  :description "Clojure scripts to generate the SyBiOnt ontology"
+  :url "http://w3id.org/synbio/ont"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.6.0"]
