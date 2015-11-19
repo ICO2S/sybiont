@@ -1,0 +1,11 @@
+.metadata
+.project
+target
+.settings
+*.class
+*.log
+.classpath
+build
+bin
+catalog*
+temp*
