@@ -8,7 +8,7 @@ PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
 PREFIX  fn:   <http://www.w3.org/2005/xpath-functions#>
 PREFIX  afn:  <http://jena.hpl.hp.com/ARQ/function#>
 PREFIX  apf:  <http://jena.hpl.hp.com/ARQ/property#>
-PREFIX  sybio: <http://www.sybio.ncl.ac.uk#>
+PREFIX  sybio: <http://w3id.org/synbio/ont#>
 
 CONSTRUCT
 {
@@ -38,6 +38,6 @@ WHERE
    LET ( ?SequencePartResource := IRI(fn:concat(str(?SequencePart),"_sbol")))
 
    FILTER (
-       regex(str(?SuperClass) , "http://www.sybio.ncl.ac.uk#Promoter")
+       regex(str(?SuperClass) , "http://w3id.org/synbio/ont#Promoter")
     )
 }

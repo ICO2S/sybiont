@@ -1,0 +1,2370 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://w3id.org/synbio/ont#"
+     xml:base="http://w3id.org/synbio/ont"
+     xmlns:bo="http://www.bacillondex.org#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:pattern="http://www.w3id.org/ontolink/pattern.owl#"
+     xmlns:sybio="http://w3id.org/synbio/ont#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:tawny="http://www.purl.org/ontolink/tawny#">
+    <owl:Ontology rdf:about="http://w3id.org/synbio/ont">
+        <owl:versionInfo xml:lang="en">1.0</owl:versionInfo>
+        <rdfs:comment xml:lang="en">An ontology for synthetic biology</rdfs:comment>
+        <tawny:name xml:lang="en">synthbiont</tawny:name>
+        <owl:imports rdf:resource="http://www.purl.org/ontolink/tawny"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3id.org/synbio/ont#AA -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#AA">
+        <rdfs:label xml:lang="en">AminoacidSequence</rdfs:label>
+        <tawny:name xml:lang="en">AA</tawny:name>
+        <rdfs:comment xml:lang="en">Any Sequence of Amino Acids like a protein</rdfs:comment>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#annotatedSequence -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#annotatedSequence">
+        <rdfs:label xml:lang="en">Annotated Sequence </rdfs:label>
+        <tawny:name xml:lang="en">annotatedSequence</tawny:name>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#begin -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#begin">
+        <rdfs:label xml:lang="en">Start of feature</rdfs:label>
+        <rdfs:comment xml:lang="en">Location of start of a feature
+                    In the case of DNA, taken to be the lowest base pair location from
+                    the forward strand, regardless of sense strand for the feature.
+                </rdfs:comment>
+        <tawny:name xml:lang="en">begin</tawny:name>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#bindingMotif -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#bindingMotif">
+        <rdfs:label xml:lang="en">BindingMotif</rdfs:label>
+        <rdfs:comment xml:lang="en">Binding motif</rdfs:comment>
+        <tawny:name xml:lang="en">bindingMotif</tawny:name>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#cogProcess -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#cogProcess">
+        <rdfs:label xml:lang="en">COG Process</rdfs:label>
+        <rdfs:comment xml:lang="en">COG Process</rdfs:comment>
+        <tawny:name xml:lang="en">cogProcess</tawny:name>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#controlExperiment -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#controlExperiment">
+        <rdfs:label xml:lang="en">Control</rdfs:label>
+        <rdfs:comment xml:lang="en">Control experiment</rdfs:comment>
+        <tawny:name xml:lang="en">controlExperiment</tawny:name>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#deltaGo -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#deltaGo">
+        <rdfs:label xml:lang="en">GibbsFreeEnergy</rdfs:label>
+        <rdfs:comment xml:lang="en">Gibbs free energy for the reaction</rdfs:comment>
+        <tawny:name xml:lang="en">deltaGo</tawny:name>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#elementOf -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#elementOf">
+        <tawny:name xml:lang="en">elementOf</tawny:name>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#end -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#end">
+        <rdfs:label xml:lang="en">End of feature</rdfs:label>
+        <rdfs:comment xml:lang="en">Location of end of a feature
+                    In the case of DNA, taken to be the highest base pair location from
+                    the forward strand, regardless of sense strand for the feature.
+                </rdfs:comment>
+        <tawny:name xml:lang="en">end</tawny:name>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#evidence -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#evidence">
+        <tawny:name xml:lang="en">evidence</tawny:name>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#length -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#length">
+        <rdfs:label xml:lang="en">Length</rdfs:label>
+        <rdfs:comment xml:lang="en">Length</rdfs:comment>
+        <tawny:name xml:lang="en">length</tawny:name>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#operonGenes -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#operonGenes">
+        <rdfs:label xml:lang="en">Operon Genes</rdfs:label>
+        <rdfs:comment xml:lang="en">List of genes in the operon</rdfs:comment>
+        <tawny:name xml:lang="en">operonGenes</tawny:name>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#originalAnnotatedSequence -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#originalAnnotatedSequence">
+        <rdfs:label xml:lang="en">Original Annotated Sequence</rdfs:label>
+        <rdfs:comment xml:lang="en">Original version of the annotation</rdfs:comment>
+        <tawny:name xml:lang="en">originalAnnotatedSequence</tawny:name>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#readingFrame -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#readingFrame">
+        <rdfs:label xml:lang="en">Reading Frame</rdfs:label>
+        <rdfs:comment xml:lang="en">Reading frames from -3 to 3</rdfs:comment>
+        <tawny:name xml:lang="en">readingFrame</tawny:name>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#targetExperiment -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#targetExperiment">
+        <rdfs:label xml:lang="en">Target</rdfs:label>
+        <rdfs:comment xml:lang="en">Target Experiment</rdfs:comment>
+        <tawny:name xml:lang="en">targetExperiment</tawny:name>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#taxId -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#taxId">
+        <rdfs:label xml:lang="en">Taxonomy_ID</rdfs:label>
+        <rdfs:comment xml:lang="en">NCBI Taxonomic Identifier</rdfs:comment>
+        <tawny:name xml:lang="en">taxId</tawny:name>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#tfbsEnd -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#tfbsEnd">
+        <rdfs:label xml:lang="en">End of Transcription Factor Binding Site</rdfs:label>
+        <rdfs:comment xml:lang="en">End position of a transcription factor binding site in a promotor region</rdfs:comment>
+        <tawny:name xml:lang="en">tfbsEnd</tawny:name>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#unnormalizedMaxExpression -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#unnormalizedMaxExpression">
+        <rdfs:label xml:lang="en">Unnormalized Max Expression</rdfs:label>
+        <rdfs:comment xml:lang="en">Unnormalized Max Gene Expression</rdfs:comment>
+        <tawny:name xml:lang="en">unnormalizedMaxExpression</tawny:name>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#unnormalizedMinExpression -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#unnormalizedMinExpression">
+        <rdfs:label xml:lang="en">Unnormalized Min Expression</rdfs:label>
+        <rdfs:comment xml:lang="en">Unnormalized Min Gene Expression</rdfs:comment>
+        <tawny:name xml:lang="en">unnormalizedMinExpression</tawny:name>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#url -->
+
+    <owl:AnnotationProperty rdf:about="http://w3id.org/synbio/ont#url">
+        <rdfs:label xml:lang="en">URL</rdfs:label>
+        <tawny:name xml:lang="en">url</tawny:name>
+        <rdfs:comment xml:lang="en">url</rdfs:comment>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3id.org/synbio/ont#activatedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#activatedBy">
+        <rdfs:label xml:lang="en">activated_by</rdfs:label>
+        <tawny:name xml:lang="en">activatedBy</tawny:name>
+        <rdfs:comment xml:lang="en">activation of a gene&apos;s expression by a transcription factor</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#adjacentTo -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#adjacentTo">
+        <rdfs:label xml:lang="en">adjacent_to</rdfs:label>
+        <tawny:name xml:lang="en">adjacentTo</tawny:name>
+        <rdfs:comment xml:lang="en">n C adjacent to C&apos; if and only if: given any
+                    instance c that instantiates C at a time t, there is
+                    some c&apos; such that: c&apos; instantiates C&apos; at time t and
+                    c and c&apos; are in spatial proximity
+                </rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#bindsTo -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#bindsTo">
+        <rdfs:label xml:lang="en">binds_to</rdfs:label>
+        <rdfs:comment xml:lang="en">Molecule-&gt;Molecule</rdfs:comment>
+        <tawny:name xml:lang="en">bindsTo</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#boundBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#boundBy">
+        <tawny:name xml:lang="en">boundBy</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#catalyzedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#catalyzedBy">
+        <rdfs:label xml:lang="en">catalyzed_by</rdfs:label>
+        <rdfs:comment xml:lang="en">catalyzation of a reaction by a catalyst</rdfs:comment>
+        <tawny:name xml:lang="en">catalyzedBy</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#catalyzingClass -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#catalyzingClass">
+        <rdfs:label xml:lang="en">part_of_catalyzing_class</rdfs:label>
+        <tawny:name xml:lang="en">catalyzingClass</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#consumedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#consumedBy">
+        <rdfs:label xml:lang="en">consumed_by</rdfs:label>
+        <tawny:name xml:lang="en">consumedBy</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#demethylatedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#demethylatedBy">
+        <rdfs:label xml:lang="en">demethylated_by</rdfs:label>
+        <tawny:name xml:lang="en">demethylatedBy</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#dephosphorylatedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#dephosphorylatedBy">
+        <rdfs:label xml:lang="en">dephosphorylated_by</rdfs:label>
+        <tawny:name xml:lang="en">dephosphorylatedBy</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#derivesFrom -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#derivesFrom">
+        <rdfs:label xml:lang="en">derives_from</rdfs:label>
+        <rdfs:comment xml:lang="en">Derivation on the instance level (*derives_from*) holds between distinct material
+                    continuants when one succeeds the other across a temporal divide in such
+                    a way that at least a biologically significant
+                    portion of the matter of the earlier continuant is
+                    inherited by the later. We say that one class C
+                    derives_from class C&apos; if instances of C are
+                    connected to instances of C&apos; via some chain of
+                    instance-level derivation relations. Example:
+                    osteocyte derives_from osteoblast. Formally: C
+                    derives_immediately_from C&apos; if and only if: given
+                    any c and any t, if c instantiates C at time t, then
+                    there is some c&apos; and some t&apos;, such that c&apos;
+                    instantiates C&apos; at t&apos; and t&apos; earlier-than t and c
+                    *derives_from* c&apos;. C derives_from C&apos; if and only if:
+                    there is an chain of immediate derivation relations
+                    connecting C to C&apos;.
+                </rdfs:comment>
+        <tawny:name xml:lang="en">derivesFrom</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#dissociatedFrom -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#dissociatedFrom">
+        <rdfs:label xml:lang="en">dissociated_from</rdfs:label>
+        <tawny:name xml:lang="en">dissociatedFrom</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#encodedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#encodedBy">
+        <rdfs:label xml:lang="en">is_encoded_by</rdfs:label>
+        <rdfs:comment xml:lang="en">Polypeptide-&gt;Gene</rdfs:comment>
+        <tawny:name xml:lang="en">encodedBy</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#encodes -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#encodes">
+        <tawny:name xml:lang="en">encodes</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#expressedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#expressedBy">
+        <rdfs:label xml:lang="en">expressed_by</rdfs:label>
+        <tawny:name xml:lang="en">expressedBy</tawny:name>
+        <rdfs:comment xml:lang="en">interactions via DNA binding</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#firstGeneOf -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#firstGeneOf">
+        <rdfs:label xml:lang="en">First Gene Of</rdfs:label>
+        <rdfs:comment xml:lang="en">First Gene Of an FFL</rdfs:comment>
+        <tawny:name xml:lang="en">firstGeneOf</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#hasFunction -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#hasFunction">
+        <rdfs:label xml:lang="en">has_function</rdfs:label>
+        <tawny:name xml:lang="en">hasFunction</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#hasPart -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#hasPart">
+        <tawny:name xml:lang="en">hasPart</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#hasParticipant -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#hasParticipant">
+        <rdfs:label xml:lang="en">has_participant</rdfs:label>
+        <rdfs:comment xml:lang="en">P has_participant C if and only if: given any
+                        process p that instantiates P there is some
+                        continuant c, and some time t, such that: c
+                        instantiates C at t and c participates in p at t
+                    </rdfs:comment>
+        <tawny:name xml:lang="en">hasParticipant</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#inhibitedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#inhibitedBy">
+        <rdfs:label xml:lang="en">inhibited_by</rdfs:label>
+        <tawny:name xml:lang="en">inhibitedBy</tawny:name>
+        <rdfs:comment xml:lang="en">inhibition of a gene&apos;s expression by a transcription factor</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#interactsWith -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#interactsWith">
+        <rdfs:label xml:lang="en">interacts_with</rdfs:label>
+        <rdfs:comment xml:lang="en">Thing-&gt;Thing</rdfs:comment>
+        <tawny:name xml:lang="en">interactsWith</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#locatedIn -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#locatedIn">
+        <rdfs:label xml:lang="en">located_in</rdfs:label>
+        <rdfs:comment xml:lang="en">Localizable-&gt;Space</rdfs:comment>
+        <tawny:name xml:lang="en">locatedIn</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#maxExpressedIn -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#maxExpressedIn">
+        <rdfs:label xml:lang="en">Max Expressed In</rdfs:label>
+        <rdfs:comment xml:lang="en">Max Expressed In</rdfs:comment>
+        <tawny:name xml:lang="en">maxExpressedIn</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#memberOf -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#memberOf">
+        <rdfs:label xml:lang="en">member_of</rdfs:label>
+        <rdfs:comment xml:lang="en">Used for characterisation of grouping relationships, e.g. a reaction is member of a
+                    pathway.
+                </rdfs:comment>
+        <tawny:name xml:lang="en">memberOf</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#methylatedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#methylatedBy">
+        <rdfs:label xml:lang="en">methylated_by</rdfs:label>
+        <tawny:name xml:lang="en">methylatedBy</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#minExpressedIn -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#minExpressedIn">
+        <rdfs:label xml:lang="en">Min Expressed In</rdfs:label>
+        <rdfs:comment xml:lang="en">Min Expressed In</rdfs:comment>
+        <tawny:name xml:lang="en">minExpressedIn</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#partOf -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#partOf">
+        <rdfs:label xml:lang="en">part_of</rdfs:label>
+        <rdfs:comment xml:lang="en">For continuants: C part_of C&apos; if and only if: given
+                        any c that instantiates C at a time t, there is some
+                        c&apos; such that c&apos; instantiates C&apos; at time t, and c
+                        *part_of* c&apos; at t. For processes: P part_of P&apos; if
+                        and only if: given any p that instantiates P at a
+                        time t, there is some p&apos; such that p&apos; instantiates
+                        P&apos; at time t, and p *part_of* p&apos; at t. (Here
+                        *part_of* is the instance-level part-relation.)
+                    </rdfs:comment>
+        <tawny:name xml:lang="en">partOf</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#phosphorylatedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#phosphorylatedBy">
+        <rdfs:label xml:lang="en">phosphorylated_by</rdfs:label>
+        <rdfs:comment xml:lang="en">Protein-&gt;Protein</rdfs:comment>
+        <tawny:name xml:lang="en">phosphorylatedBy</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#producedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#producedBy">
+        <rdfs:label xml:lang="en">produced_by</rdfs:label>
+        <tawny:name xml:lang="en">producedBy</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#regulatedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#regulatedBy">
+        <rdfs:label xml:lang="en">regulated_by</rdfs:label>
+        <rdfs:comment xml:lang="en">TF-&gt;Gene</rdfs:comment>
+        <tawny:name xml:lang="en">regulatedBy</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#relatedTo -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#relatedTo">
+        <rdfs:label xml:lang="en">is_related_to</rdfs:label>
+        <rdfs:comment xml:lang="en">Root relation type</rdfs:comment>
+        <tawny:name xml:lang="en">relatedTo</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#secondGeneOf -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#secondGeneOf">
+        <rdfs:label xml:lang="en">Second Gene Of</rdfs:label>
+        <rdfs:comment xml:lang="en">Second Gene Of an FFL</rdfs:comment>
+        <tawny:name xml:lang="en">secondGeneOf</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#sharesIntermediate -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#sharesIntermediate">
+        <rdfs:label xml:lang="en">share_intermediate</rdfs:label>
+        <rdfs:comment xml:lang="en">shared with two successive reactions (ECrel) or intermediate of two interacting proteins
+                    (PPrel)
+                </rdfs:comment>
+        <tawny:name xml:lang="en">sharesIntermediate</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#terminates -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#terminates">
+        <rdfs:label xml:lang="en">terminates</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines the relation of a terminator with a gene</rdfs:comment>
+        <tawny:name xml:lang="en">terminates</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#thirdGeneOf -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#thirdGeneOf">
+        <rdfs:label xml:lang="en">Third Gene Of</rdfs:label>
+        <rdfs:comment xml:lang="en">Third Gene Of an FFL</rdfs:comment>
+        <tawny:name xml:lang="en">thirdGeneOf</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#transcribesTo -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#transcribesTo">
+        <rdfs:label xml:lang="en">transcribes_to</rdfs:label>
+        <rdfs:comment xml:lang="en">Gene-&gt;mRNA</rdfs:comment>
+        <tawny:name xml:lang="en">transcribesTo</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#upstreamOf -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/synbio/ont#upstreamOf">
+        <rdfs:label xml:lang="en">is_upstream_of</rdfs:label>
+        <tawny:name xml:lang="en">upstreamOf</tawny:name>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3id.org/synbio/ont#NA -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#NA">
+        <rdfs:label xml:lang="en">Nucleic_acid_sequence</rdfs:label>
+        <rdfs:comment xml:lang="en">Any Sequence of Nuclein Acids like DNA or RNA</rdfs:comment>
+        <tawny:name xml:lang="en">NA</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#accession -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#accession">
+        <tawny:name xml:lang="en">accession</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#biologicalProcess -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#biologicalProcess">
+        <rdfs:label xml:lang="en">BioProcess classification</rdfs:label>
+        <tawny:name xml:lang="en">biologicalProcess</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#fCDS -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#fCDS">
+        <rdfs:label xml:lang="en">Is fCDS</rdfs:label>
+        <tawny:name xml:lang="en">fCDS</tawny:name>
+        <rdfs:comment xml:lang="en">true if the gene is fCDS</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#fflType -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#fflType">
+        <rdfs:label xml:lang="en">FFL Type</rdfs:label>
+        <rdfs:comment xml:lang="en">FFL Type</rdfs:comment>
+        <tawny:name xml:lang="en">fflType</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#gc3Content -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#gc3Content">
+        <rdfs:label xml:lang="en">GC3 Content</rdfs:label>
+        <rdfs:comment xml:lang="en">Fraction of Guanine/Cytosine at third base in nucleic acid coding sequence</rdfs:comment>
+        <tawny:name xml:lang="en">gc3Content</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#gcContent -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#gcContent">
+        <rdfs:label xml:lang="en">GC Content</rdfs:label>
+        <rdfs:comment xml:lang="en">Fraction of Guanine/Cytosine in nucleic acid sequence</rdfs:comment>
+        <tawny:name xml:lang="en">gcContent</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#hasNegativeFeedback -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#hasNegativeFeedback">
+        <rdfs:label xml:lang="en">Negative Feedback</rdfs:label>
+        <rdfs:comment xml:lang="en">Negative auto-regulation</rdfs:comment>
+        <tawny:name xml:lang="en">hasNegativeFeedback</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#hasPositiveFeedback -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#hasPositiveFeedback">
+        <rdfs:label xml:lang="en">Positive Feedback</rdfs:label>
+        <rdfs:comment xml:lang="en">Positive auto-regulation</rdfs:comment>
+        <tawny:name xml:lang="en">hasPositiveFeedback</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#hasRole -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#hasRole">
+        <rdfs:label xml:lang="en">Role Classification</rdfs:label>
+        <tawny:name xml:lang="en">hasRole</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#localisation -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#localisation">
+        <rdfs:label xml:lang="en">LOC</rdfs:label>
+        <rdfs:comment xml:lang="en">Localisation</rdfs:comment>
+        <tawny:name xml:lang="en">localisation</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#maxExpression -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#maxExpression">
+        <rdfs:label xml:lang="en">Max Expression</rdfs:label>
+        <rdfs:comment xml:lang="en">Max Gene Expression</rdfs:comment>
+        <tawny:name xml:lang="en">maxExpression</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#minExpression -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#minExpression">
+        <rdfs:label xml:lang="en">Min Expression</rdfs:label>
+        <rdfs:comment xml:lang="en">Min Gene Expression</rdfs:comment>
+        <tawny:name xml:lang="en">minExpression</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#molecularWeight -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#molecularWeight">
+        <rdfs:label xml:lang="en">MW</rdfs:label>
+        <rdfs:comment xml:lang="en">Molecular Weight (Daltons)</rdfs:comment>
+        <tawny:name xml:lang="en">molecularWeight</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#pI -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#pI">
+        <rdfs:label xml:lang="en">pI</rdfs:label>
+        <rdfs:comment xml:lang="en">Isoelectric Point</rdfs:comment>
+        <tawny:name xml:lang="en">pI</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#pmid -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#pmid">
+        <rdfs:label xml:lang="en">PMID</rdfs:label>
+        <rdfs:comment xml:lang="en">PubmedID</rdfs:comment>
+        <tawny:name xml:lang="en">pmid</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#productType -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#productType">
+        <rdfs:label xml:lang="en">Product Type</rdfs:label>
+        <rdfs:comment xml:lang="en">The type of the gene product. E.g: protein, regulator, enzyme</rdfs:comment>
+        <tawny:name xml:lang="en">productType</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#regulationType -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#regulationType">
+        <rdfs:label xml:lang="en">RegulatorType</rdfs:label>
+        <rdfs:comment xml:lang="en">Regulator Type</rdfs:comment>
+        <tawny:name xml:lang="en">regulationType</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#sigmaFactor -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#sigmaFactor">
+        <rdfs:label xml:lang="en">Sigma Factor </rdfs:label>
+        <rdfs:comment xml:lang="en">Promoter Sigma Factor</rdfs:comment>
+        <tawny:name xml:lang="en">sigmaFactor</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#tfDomain -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#tfDomain">
+        <rdfs:label xml:lang="en">Transcription Factor Domain</rdfs:label>
+        <rdfs:comment xml:lang="en">Transcription Factor Domain</rdfs:comment>
+        <tawny:name xml:lang="en">tfDomain</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#tfFamily -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#tfFamily">
+        <rdfs:label xml:lang="en">Transcription Factor Family</rdfs:label>
+        <rdfs:comment xml:lang="en">Transcription Factor Family</rdfs:comment>
+        <tawny:name xml:lang="en">tfFamily</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#tfbsStart -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/synbio/ont#tfbsStart">
+        <rdfs:label xml:lang="en">Start of Transcription Factor Binding Site</rdfs:label>
+        <rdfs:comment xml:lang="en">Start position of a transcription factor binding site in a promotor region</rdfs:comment>
+        <tawny:name xml:lang="en">tfbsStart</tawny:name>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/obo/owl/GO#GO_0000155 -->
+
+    <owl:Class rdf:about="http://purl.org/obo/owl/GO#GO_0000155"/>
+    
+
+
+    <!-- http://purl.org/obo/owl/GO#GO_0000156 -->
+
+    <owl:Class rdf:about="http://purl.org/obo/owl/GO#GO_0000156"/>
+    
+
+
+    <!-- http://purl.org/obo/owl/GO#GO_0003674 -->
+
+    <owl:Class rdf:about="http://purl.org/obo/owl/GO#GO_0003674">
+        <owl:equivalentClass rdf:resource="http://w3id.org/synbio/ont#MolecularFunction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/GO#GO_0005575 -->
+
+    <owl:Class rdf:about="http://purl.org/obo/owl/GO#GO_0005575">
+        <owl:equivalentClass rdf:resource="http://w3id.org/synbio/ont#CellularComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/GO#GO_0008150 -->
+
+    <owl:Class rdf:about="http://purl.org/obo/owl/GO#GO_0008150">
+        <owl:equivalentClass rdf:resource="http://w3id.org/synbio/ont#BiologicalProcess"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/SO#SO_0000057 -->
+
+    <owl:Class rdf:about="http://purl.org/obo/owl/SO#SO_0000057"/>
+    
+
+
+    <!-- http://purl.org/obo/owl/SO#SO_0000139 -->
+
+    <owl:Class rdf:about="http://purl.org/obo/owl/SO#SO_0000139"/>
+    
+
+
+    <!-- http://purl.org/obo/owl/SO#SO_0000167 -->
+
+    <owl:Class rdf:about="http://purl.org/obo/owl/SO#SO_0000167"/>
+    
+
+
+    <!-- http://purl.org/obo/owl/SO#SO_0000178 -->
+
+    <owl:Class rdf:about="http://purl.org/obo/owl/SO#SO_0000178"/>
+    
+
+
+    <!-- http://purl.org/obo/owl/SO#SO_0000316 -->
+
+    <owl:Class rdf:about="http://purl.org/obo/owl/SO#SO_0000316"/>
+    
+
+
+    <!-- http://purl.org/obo/owl/SO#SO_0000356 -->
+
+    <owl:Class rdf:about="http://purl.org/obo/owl/SO#SO_0000356"/>
+    
+
+
+    <!-- http://purl.org/obo/owl/SO#SO_0000614 -->
+
+    <owl:Class rdf:about="http://purl.org/obo/owl/SO#SO_0000614"/>
+    
+
+
+    <!-- http://purl.org/obo/owl/SO#SO_0000997 -->
+
+    <owl:Class rdf:about="http://purl.org/obo/owl/SO#SO_0000997"/>
+    
+
+
+    <!-- http://sbols.org/sbol.owl#DnaComponent -->
+
+    <owl:Class rdf:about="http://sbols.org/sbol.owl#DnaComponent"/>
+    
+
+
+    <!-- http://sbols.org/sbol.owl#DnaSequence -->
+
+    <owl:Class rdf:about="http://sbols.org/sbol.owl#DnaSequence"/>
+    
+
+
+    <!-- http://sbols.org/sbol.owl#SequenceAnnotation -->
+
+    <owl:Class rdf:about="http://sbols.org/sbol.owl#SequenceAnnotation"/>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#ANDGatePromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#ANDGatePromoter">
+        <rdfs:label xml:lang="en">AND gate promoter</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#InduciblePromoterWith2Operators"/>
+        <rdfs:comment xml:lang="en">AND gate promoter</rdfs:comment>
+        <tawny:name xml:lang="en">ANDGatePromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#ANDNGatePromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#ANDNGatePromoter">
+        <rdfs:label xml:lang="en">ANDN gate promoter</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#RepressibleInduciblePromoterWith2Operators"/>
+        <rdfs:comment xml:lang="en">ANDN gate promoter</rdfs:comment>
+        <tawny:name xml:lang="en">ANDNGatePromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#ActivatorEncodingCDS -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#ActivatorEncodingCDS">
+        <rdfs:label xml:lang="en">Activator encoding CDS</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#CDS"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#encodes"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Protein"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#bindsTo"/>
+                                        <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#PositivelyRegulatedOperator"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <tawny:name xml:lang="en">ActivatorEncodingCDS</tawny:name>
+        <rdfs:comment xml:lang="en">Coding sequences that encode for transcriptional activators</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#BiologicalProcess -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#BiologicalProcess">
+        <rdfs:label xml:lang="en">Biological_Process</rdfs:label>
+        <tawny:name xml:lang="en">BiologicalProcess</tawny:name>
+        <rdfs:comment xml:lang="en">Biological_Process (GO)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#CDS -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#CDS">
+        <rdfs:label xml:lang="en">Coding sequence</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/obo/owl/SO#SO_0000316"/>
+        <tawny:name xml:lang="en">CDS</tawny:name>
+        <rdfs:comment xml:lang="en">Coding sequence</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#COG -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#COG">
+        <rdfs:label xml:lang="en">COG Class</rdfs:label>
+        <tawny:name xml:lang="en">COG</tawny:name>
+        <rdfs:comment xml:lang="en">COG Class</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#COGCategory -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#COGCategory">
+        <rdfs:label xml:lang="en">COG Class Category</rdfs:label>
+        <rdfs:comment xml:lang="en">COG Class Category</rdfs:comment>
+        <tawny:name xml:lang="en">COGCategory</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#CellularComponent -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#CellularComponent">
+        <rdfs:label xml:lang="en">Cellular_Component</rdfs:label>
+        <rdfs:comment xml:lang="en">Cellular Component (GO)</rdfs:comment>
+        <tawny:name xml:lang="en">CellularComponent</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#Compound -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#Compound">
+        <rdfs:label xml:lang="en">Compound</rdfs:label>
+        <tawny:name xml:lang="en">Compound</tawny:name>
+        <rdfs:comment xml:lang="en">a chemical compound</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#ConstitutivePromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#ConstitutivePromoter">
+        <rdfs:label xml:lang="en">Constitutive promoter</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#Promoter"/>
+        <rdfs:comment xml:lang="en">Constitutive promoter</rdfs:comment>
+        <tawny:name xml:lang="en">ConstitutivePromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#ConstitutiveSigAPromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#ConstitutiveSigAPromoter">
+        <rdfs:label xml:lang="en">Constitutive SigA promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#SigAPromoter"/>
+                    <owl:Class>
+                        <owl:complementOf>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                                <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#Operator"/>
+                            </owl:Restriction>
+                        </owl:complementOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#ConstitutivePromoter"/>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#SigAPromoter"/>
+        <rdfs:comment xml:lang="en">Constitutive SigA promoter</rdfs:comment>
+        <tawny:name xml:lang="en">ConstitutiveSigAPromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#DataSource -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#DataSource">
+        <rdfs:label xml:lang="en">DataSource</rdfs:label>
+        <rdfs:comment xml:lang="en">Data source, such as a biological database</rdfs:comment>
+        <tawny:name xml:lang="en">DataSource</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#EC -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#EC">
+        <rdfs:label xml:lang="en">Enzyme Classification</rdfs:label>
+        <rdfs:comment xml:lang="en">All Enzymes are ordered by Classes(e.g. 1.2.3.2)</rdfs:comment>
+        <tawny:name xml:lang="en">EC</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#Enzyme -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#Enzyme">
+        <rdfs:label xml:lang="en">Enzyme</rdfs:label>
+        <rdfs:comment xml:lang="en">An Enzyme is a Protein that catalyzes a chemical reaction.</rdfs:comment>
+        <tawny:name xml:lang="en">Enzyme</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#EvidenceType -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#EvidenceType">
+        <rdfs:label xml:lang="en">EvidenceType</rdfs:label>
+        <rdfs:comment xml:lang="en">Evidence type, such as electronically inferred or imported from a database</rdfs:comment>
+        <tawny:name xml:lang="en">EvidenceType</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#FFL -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#FFL">
+        <rdfs:label xml:lang="en">Feed Forward Loop</rdfs:label>
+        <tawny:name xml:lang="en">FFL</tawny:name>
+        <rdfs:comment xml:lang="en">Feed Forward Loop</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#IEA -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#IEA">
+        <rdfs:label xml:lang="en">Inferred from Electronic Annotation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#EvidenceType"/>
+        <rdfs:comment xml:lang="en">Annotations based on &quot;hits&quot; in sequence similarity
+                    searches, if they have not been reviewed by curators
+                    (curator-reviewed hits would get ISS)
+                </rdfs:comment>
+        <tawny:name xml:lang="en">IEA</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#IMPD -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#IMPD">
+        <rdfs:label xml:lang="en">Imported from database</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#EvidenceType"/>
+        <tawny:name xml:lang="en">IMPD</tawny:name>
+        <rdfs:comment xml:lang="en">imported from database</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#InduciblePromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#InduciblePromoter">
+        <rdfs:label xml:lang="en">Inducible promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                        <owl:onClass rdf:resource="http://w3id.org/synbio/ont#Operator"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                        <owl:onClass rdf:resource="http://w3id.org/synbio/ont#PositivelyRegulatedOperator"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <tawny:name xml:lang="en">InduciblePromoter</tawny:name>
+        <rdfs:comment xml:lang="en">Promoter with an activator site</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#InduciblePromoterWith2Operators -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#InduciblePromoterWith2Operators">
+        <rdfs:label xml:lang="en">Inducible promoter with 2 operators</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                        <owl:onClass rdf:resource="http://w3id.org/synbio/ont#Operator"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                        <owl:onClass rdf:resource="http://w3id.org/synbio/ont#PositivelyRegulatedOperator"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="en">Inducible promoter with two activator sites</rdfs:comment>
+        <tawny:name xml:lang="en">InduciblePromoterWith2Operators</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#KOEN -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#KOEN">
+        <rdfs:label xml:lang="en">Kegg Orthologs Enzyme</rdfs:label>
+        <tawny:name xml:lang="en">KOEN</tawny:name>
+        <rdfs:comment xml:lang="en">Kegg Ortholog Group of sequence similarity</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#KOGE -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#KOGE">
+        <rdfs:label xml:lang="en">Kegg Orthologs Gene</rdfs:label>
+        <tawny:name xml:lang="en">KOGE</tawny:name>
+        <rdfs:comment xml:lang="en">Kegg Ortholog Group of sequence similarity</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#KOPR -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#KOPR">
+        <rdfs:label xml:lang="en">Kegg Orthologs Protein</rdfs:label>
+        <tawny:name xml:lang="en">KOPR</tawny:name>
+        <rdfs:comment xml:lang="en">Kegg Ortholog Group of sequence similarity</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#KinaseEncodingCDS -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#KinaseEncodingCDS">
+        <rdfs:label xml:lang="en">Kinase encoding CDS</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#CDS"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#encodes"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Protein"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasFunction"/>
+                                        <owl:someValuesFrom rdf:resource="http://purl.org/obo/owl/GO#GO_0000155"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="en">Coding sequences that encode for kinases</rdfs:comment>
+        <tawny:name xml:lang="en">KinaseEncodingCDS</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#MicroarrayExperiment -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#MicroarrayExperiment">
+        <rdfs:label xml:lang="en">MicroArrayExperiment</rdfs:label>
+        <rdfs:comment xml:lang="en">Microarray experiment</rdfs:comment>
+        <tawny:name xml:lang="en">MicroarrayExperiment</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#MolecularFunction -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#MolecularFunction">
+        <rdfs:label xml:lang="en">Molecular_Function</rdfs:label>
+        <rdfs:comment xml:lang="en">Molecular Function (GO)</rdfs:comment>
+        <tawny:name xml:lang="en">MolecularFunction</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#NANDGatePromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#NANDGatePromoter">
+        <rdfs:label xml:lang="en">NAND gate promoter</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#RepressiblePromoterWith2Operators"/>
+        <rdfs:comment xml:lang="en">NAND gate promoter</rdfs:comment>
+        <tawny:name xml:lang="en">NANDGatePromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#NORGatePromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#NORGatePromoter">
+        <rdfs:label xml:lang="en">NOR gate promoter</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#RepressiblePromoterWith2Operators"/>
+        <rdfs:comment xml:lang="en">NOR gate promoter</rdfs:comment>
+        <tawny:name xml:lang="en">NORGatePromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#NegativelyRegulatedOperator -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#NegativelyRegulatedOperator">
+        <rdfs:label xml:lang="en">Negatively regulated operator</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Operator"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#NA"/>
+                        <owl:someValuesFrom rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#regulationType"/>
+                        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Negative</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <tawny:name xml:lang="en">NegativelyRegulatedOperator</tawny:name>
+        <rdfs:comment xml:lang="en">Operator site for an repressor</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#ORGatePromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#ORGatePromoter">
+        <rdfs:label xml:lang="en">OR gate promoter</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#InduciblePromoterWith2Operators"/>
+        <rdfs:comment xml:lang="en">OR gate promoter</rdfs:comment>
+        <tawny:name xml:lang="en">ORGatePromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#Operator -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#Operator">
+        <rdfs:label xml:lang="en">Operator</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/obo/owl/SO#SO_0000057"/>
+        <owl:disjointWith rdf:resource="http://w3id.org/synbio/ont#Promoter"/>
+        <rdfs:comment xml:lang="en">Operator</rdfs:comment>
+        <tawny:name xml:lang="en">Operator</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#Operon -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#Operon">
+        <rdfs:label xml:lang="en">Operon</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/obo/owl/SO#SO_0000178"/>
+        <rdfs:comment xml:lang="en">An operon is comprised of a promoter, an operator, one or more genes and a terminator.
+                </rdfs:comment>
+        <tawny:name xml:lang="en">Operon</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#Pathway -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#Pathway">
+        <rdfs:label xml:lang="en">Pathway</rdfs:label>
+        <rdfs:comment xml:lang="en">Biological Pathway</rdfs:comment>
+        <tawny:name xml:lang="en">Pathway</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#PositivelyRegulatedOperator -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#PositivelyRegulatedOperator">
+        <rdfs:label xml:lang="en">Positively regulated operator</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Operator"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#NA"/>
+                        <owl:someValuesFrom rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#regulationType"/>
+                        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Positive</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="en">Operator site for an activator</rdfs:comment>
+        <tawny:name xml:lang="en">PositivelyRegulatedOperator</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#Promoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#Promoter">
+        <rdfs:label xml:lang="en">Promoter</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/obo/owl/SO#SO_0000167"/>
+        <tawny:name xml:lang="en">Promoter</tawny:name>
+        <rdfs:comment xml:lang="en">Promoter</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#Protein -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#Protein">
+        <rdfs:label xml:lang="en">Protein</rdfs:label>
+        <rdfs:comment xml:lang="en">A protein is comprised of one or more Polypeptides and potentially other molecules.
+                </rdfs:comment>
+        <tawny:name xml:lang="en">Protein</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#ProteinComplex -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#ProteinComplex">
+        <rdfs:label xml:lang="en">Protein complex</rdfs:label>
+        <rdfs:comment xml:lang="en">Protein Complex consists of several subunits</rdfs:comment>
+        <tawny:name xml:lang="en">ProteinComplex</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#RBS -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#RBS">
+        <rdfs:label xml:lang="en">Ribosome Binding Site</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/obo/owl/SO#SO_0000139"/>
+        <tawny:name xml:lang="en">RBS</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#RNA -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#RNA">
+        <rdfs:label xml:lang="en">RNA</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/obo/owl/SO#SO_0000356"/>
+        <tawny:name xml:lang="en">RNA</tawny:name>
+        <rdfs:comment xml:lang="en">Ribonucleic Acid. A polymer of riboses with pyrimidine and purine bases.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#Reaction -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#Reaction">
+        <rdfs:label xml:lang="en">Reaction</rdfs:label>
+        <tawny:name xml:lang="en">Reaction</tawny:name>
+        <rdfs:comment xml:lang="en">a chemical reaction</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#RepressibleInduciblePromoterWith2Operators -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#RepressibleInduciblePromoterWith2Operators">
+        <rdfs:label xml:lang="en">Repressible inducible promoter with 2 operators</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                        <owl:onClass rdf:resource="http://w3id.org/synbio/ont#NegativelyRegulatedOperator"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                        <owl:onClass rdf:resource="http://w3id.org/synbio/ont#PositivelyRegulatedOperator"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                        <owl:onClass rdf:resource="http://w3id.org/synbio/ont#Operator"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="en">A promoter that has an activator and a repressor site</rdfs:comment>
+        <tawny:name xml:lang="en">RepressibleInduciblePromoterWith2Operators</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#RepressiblePromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#RepressiblePromoter">
+        <rdfs:label xml:lang="en">Repressible promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                        <owl:onClass rdf:resource="http://w3id.org/synbio/ont#NegativelyRegulatedOperator"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                        <owl:onClass rdf:resource="http://w3id.org/synbio/ont#Operator"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="en">Promoter with an repressor site</rdfs:comment>
+        <tawny:name xml:lang="en">RepressiblePromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#RepressiblePromoterWith2Operators -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#RepressiblePromoterWith2Operators">
+        <rdfs:label xml:lang="en">Repressible promoter with 2 operators</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                        <owl:onClass rdf:resource="http://w3id.org/synbio/ont#NegativelyRegulatedOperator"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                        <owl:onClass rdf:resource="http://w3id.org/synbio/ont#Operator"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="en">Repressible promoter with two Repressible sites</rdfs:comment>
+        <tawny:name xml:lang="en">RepressiblePromoterWith2Operators</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#RepressorEncodingCDS -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#RepressorEncodingCDS">
+        <rdfs:label xml:lang="en">Repressor encoding CDS</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#CDS"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#encodes"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Protein"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#bindsTo"/>
+                                        <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#NegativelyRegulatedOperator"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="en">Coding sequences that encode for transcriptional repressors</rdfs:comment>
+        <tawny:name xml:lang="en">RepressorEncodingCDS</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#ResponseRegulatorEncodingCDS -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#ResponseRegulatorEncodingCDS">
+        <rdfs:label xml:lang="en">Response regulator encoding CDS</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#CDS"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#encodes"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Protein"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasFunction"/>
+                                        <owl:someValuesFrom rdf:resource="http://purl.org/obo/owl/GO#GO_0000156"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="en">Coding sequences that encode for response regulators</rdfs:comment>
+        <tawny:name xml:lang="en">ResponseRegulatorEncodingCDS</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#Shim -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#Shim">
+        <rdfs:label xml:lang="en">Spacer sequence</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/obo/owl/SO#SO_0000997"/>
+        <tawny:name xml:lang="en">Shim</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#SigAPromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#SigAPromoter">
+        <rdfs:label xml:lang="en">SigA promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#boundBy"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://w3id.org/synbio/ont#TF"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#accession"/>
+                                                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BSU25200</owl:hasValue>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                                <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#SigAPromoter"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#Promoter"/>
+        <rdfs:comment xml:lang="en">SigA dependent promoter</rdfs:comment>
+        <tawny:name xml:lang="en">SigAPromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#SigBPromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#SigBPromoter">
+        <rdfs:label xml:lang="en">SigB promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#boundBy"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://w3id.org/synbio/ont#TF"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#accession"/>
+                                                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BSU04730</owl:hasValue>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                                <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#SigBPromoter"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#Promoter"/>
+        <rdfs:comment xml:lang="en">SigB dependent promoter</rdfs:comment>
+        <tawny:name xml:lang="en">SigBPromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#SigDPromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#SigDPromoter">
+        <rdfs:label xml:lang="en">SigD promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#boundBy"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://w3id.org/synbio/ont#TF"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#accession"/>
+                                                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BSU16470</owl:hasValue>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                                <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#SigDPromoter"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#Promoter"/>
+        <rdfs:comment xml:lang="en">SigD dependent promoter</rdfs:comment>
+        <tawny:name xml:lang="en">SigDPromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#SigEPromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#SigEPromoter">
+        <rdfs:label xml:lang="en">SigE promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#boundBy"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://w3id.org/synbio/ont#TF"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#accession"/>
+                                                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BSU15320</owl:hasValue>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                                <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#SigEPromoter"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#Promoter"/>
+        <rdfs:comment xml:lang="en">SigE dependent promoter</rdfs:comment>
+        <tawny:name xml:lang="en">SigEPromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#SigFPromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#SigFPromoter">
+        <rdfs:label xml:lang="en">SigF promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#boundBy"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://w3id.org/synbio/ont#TF"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#accession"/>
+                                                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BSU23450</owl:hasValue>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                                <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#SigFPromoter"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#Promoter"/>
+        <rdfs:comment xml:lang="en">SigF dependent promoter</rdfs:comment>
+        <tawny:name xml:lang="en">SigFPromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#SigGPromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#SigGPromoter">
+        <rdfs:label xml:lang="en">SigG promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#boundBy"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://w3id.org/synbio/ont#TF"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#accession"/>
+                                                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BSU15330</owl:hasValue>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                                <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#SigGPromoter"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#Promoter"/>
+        <rdfs:comment xml:lang="en">SigG dependent promoter</rdfs:comment>
+        <tawny:name xml:lang="en">SigGPromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#SigHPromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#SigHPromoter">
+        <rdfs:label xml:lang="en">SigH promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#boundBy"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://w3id.org/synbio/ont#TF"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#accession"/>
+                                                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BSU00980</owl:hasValue>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                                <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#SigHPromoter"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#Promoter"/>
+        <rdfs:comment xml:lang="en">SigH dependent promoter</rdfs:comment>
+        <tawny:name xml:lang="en">SigHPromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#SigIPromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#SigIPromoter">
+        <rdfs:label xml:lang="en">SigI promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#boundBy"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://w3id.org/synbio/ont#TF"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#accession"/>
+                                                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BSU13450</owl:hasValue>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                                <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#SigIPromoter"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#Promoter"/>
+        <rdfs:comment xml:lang="en">SigI dependent promoter</rdfs:comment>
+        <tawny:name xml:lang="en">SigIPromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#SigKPromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#SigKPromoter">
+        <rdfs:label xml:lang="en">SigK promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#boundBy"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://w3id.org/synbio/ont#TF"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#accession"/>
+                                                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">P12254</owl:hasValue>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                                <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#SigKPromoter"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#Promoter"/>
+        <rdfs:comment xml:lang="en">SigK dependent promoter</rdfs:comment>
+        <tawny:name xml:lang="en">SigKPromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#SigLPromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#SigLPromoter">
+        <rdfs:label xml:lang="en">SigL promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#boundBy"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://w3id.org/synbio/ont#TF"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#accession"/>
+                                                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BSU34200</owl:hasValue>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                                <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#SigLPromoter"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#Promoter"/>
+        <rdfs:comment xml:lang="en">SigL dependent promoter</rdfs:comment>
+        <tawny:name xml:lang="en">SigLPromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#SigMPromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#SigMPromoter">
+        <rdfs:label xml:lang="en">SigM promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#boundBy"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://w3id.org/synbio/ont#TF"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#accession"/>
+                                                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BSU09520</owl:hasValue>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                                <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#SigMPromoter"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#Promoter"/>
+        <rdfs:comment xml:lang="en">SigM dependent promoter</rdfs:comment>
+        <tawny:name xml:lang="en">SigMPromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#SigVPromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#SigVPromoter">
+        <rdfs:label xml:lang="en">SigV promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#boundBy"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://w3id.org/synbio/ont#TF"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#accession"/>
+                                                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BSU27120</owl:hasValue>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                                <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#SigVPromoter"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#Promoter"/>
+        <rdfs:comment xml:lang="en">SigV dependent promoter</rdfs:comment>
+        <tawny:name xml:lang="en">SigVPromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#SigWPromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#SigWPromoter">
+        <rdfs:label xml:lang="en">SigW promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#boundBy"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://w3id.org/synbio/ont#TF"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#accession"/>
+                                                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BSU01730</owl:hasValue>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                                <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#SigWPromoter"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#Promoter"/>
+        <rdfs:comment xml:lang="en">SigW dependent promoter</rdfs:comment>
+        <tawny:name xml:lang="en">SigWPromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#SigXPromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#SigXPromoter">
+        <rdfs:label xml:lang="en">SigX promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#boundBy"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://w3id.org/synbio/ont#TF"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#accession"/>
+                                                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BSU23100</owl:hasValue>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                                <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#SigXPromoter"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#Promoter"/>
+        <rdfs:comment xml:lang="en">SigX dependent promoter</rdfs:comment>
+        <tawny:name xml:lang="en">SigXPromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#SigYPromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#SigYPromoter">
+        <rdfs:label xml:lang="en">SigY promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#boundBy"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://w3id.org/synbio/ont#TF"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#accession"/>
+                                                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BSU38700</owl:hasValue>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                                <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#SigYPromoter"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#Promoter"/>
+        <rdfs:comment xml:lang="en">SigY dependent promoter</rdfs:comment>
+        <tawny:name xml:lang="en">SigYPromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#SigZPromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#SigZPromoter">
+        <rdfs:label xml:lang="en">SigZ promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#boundBy"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://w3id.org/synbio/ont#TF"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#accession"/>
+                                                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BSU26840</owl:hasValue>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                                <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#SigZPromoter"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#Promoter"/>
+        <rdfs:comment xml:lang="en">SigZ dependent promoter</rdfs:comment>
+        <tawny:name xml:lang="en">SigZPromoter</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#TF -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#TF">
+        <rdfs:label xml:lang="en">Transcription factor</rdfs:label>
+        <rdfs:comment xml:lang="en">A transcription factor is a protein that regulates the expression of one or more gene by
+                    binding to an associated DNA region (see TFBS).
+                </rdfs:comment>
+        <tawny:name xml:lang="en">TF</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#Terminator -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#Terminator">
+        <rdfs:label xml:lang="en">Terminator</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/obo/owl/SO#SO_0000614"/>
+        <rdfs:comment xml:lang="en">Terminator</rdfs:comment>
+        <tawny:name xml:lang="en">Terminator</tawny:name>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/synbio/ont#YlaCPromoter -->
+
+    <owl:Class rdf:about="http://w3id.org/synbio/ont#YlaCPromoter">
+        <rdfs:label xml:lang="en">YlaC promoter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/synbio/ont#Promoter"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#boundBy"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://w3id.org/synbio/ont#TF"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#accession"/>
+                                                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BSU14730</owl:hasValue>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://w3id.org/synbio/ont#hasPart"/>
+                                <owl:someValuesFrom rdf:resource="http://w3id.org/synbio/ont#YlaCPromoter"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/synbio/ont#Promoter"/>
+        <rdfs:comment xml:lang="en">YlaC dependent promoter</rdfs:comment>
+        <tawny:name xml:lang="en">YlaCPromoter</tawny:name>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

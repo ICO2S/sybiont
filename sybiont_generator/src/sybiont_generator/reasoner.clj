@@ -22,9 +22,9 @@
  (doseq [owlClass (.getClassesInSignature ontology)] 
    (def  foundSuperClass false)
    (doseq [superClass classList] 
-	   (if (superclass? ontology (.getIRI owlClass) (iri (str "http://www.sybio.ncl.ac.uk#" superClass)))    
+	   (if (superclass? ontology (.getIRI owlClass) (iri (str ONTOLOGY_URI "#" superClass)))    
 	     (def foundSuperClass true))
-	     (if (= (.getIRI owlClass) (iri (str "http://www.sybio.ncl.ac.uk#" superClass)) )
+	     (if (= (.getIRI owlClass) (iri (str ONTOLOGY_URI "#" superClass)) )
 	            (def foundSuperClass true)))
    
    (if-not (= foundSuperClass true)
@@ -71,53 +71,36 @@
  (set-prefix merged prefix))
 
 (defn inferOperatorsHermit[]
+ (println "Inferring using HermiT")
  (loadOntology "Operators_Reasoning.omn")
- 
- ;(r/reasoner-factory :hermit)
- ;(r/reasoner-factory :elk) 
- (r/reasoner-factory :hermit)
- 
- (printReasoningSummary "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
- ;(printReasoningSummary "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))) 
- ;(printReasoning "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
- ;(printReasoning "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator"))))
+ (r/reasoner-factory :hermit) 
+ (printReasoningSummary "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str ONTOLOGY_URI "#NegativelyRegulatedOperator"))))  
  )
 
 (defn inferOperatorsFact[]
-  (println "test5")
-  (loadOntology "Operators_Reasoning.omn")
- 
+  (println "Inferring using JFact")
+  (loadOntology "Operators_Reasoning.omn") 
  (r/reasoner-factory :jfact)
  ;(r/reasoner-factory :elk) 
- ;(r/reasoner-factory :jfact)
- 
- (printReasoningSummary "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
- 
- ;(printReasoningSummary "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))) 
- ;(printReasoning "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
- ;(printReasoning "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator"))))
- ;(r/isubclasses localOntology (owl-class (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))
- ;(r/isubclasses localOntology (owl-class (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))
- 
- )
+ ;(r/reasoner-factory :jfact) 
+ (printReasoningSummary "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str ONTOLOGY_URI "#NegativelyRegulatedOperator"))))   
+  )
 
 (defn inferOperators[]
   (loadOntology "Operators_Reasoning.omn") 
  ;(r/reasoner-factory :hermit)
  ;(r/reasoner-factory :elk) 
- (r/reasoner-factory :jfact)
- 
- (printReasoningSummary "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
- (printReasoningSummary "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))) 
- (printReasoning "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#NegativelyRegulatedOperator"))))  
- (printReasoning "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#PositivelyRegulatedOperator")))))
-
+ (r/reasoner-factory :jfact) 
+ (printReasoningSummary "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str ONTOLOGY_URI "#NegativelyRegulatedOperator"))))  
+ (printReasoningSummary "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str ONTOLOGY_URI "#PositivelyRegulatedOperator")))) 
+ (printReasoning "NegativelyRegulatedOperator" (r/isubclasses localOntology (iri (str ONTOLOGY_URI "#NegativelyRegulatedOperator"))))  
+ (printReasoning "PositivelyRegulatedOperator" (r/isubclasses localOntology (iri (str ONTOLOGY_URI "#PositivelyRegulatedOperator")))))
 
 
 (defn inferPromotersByRegulationType[]
  (loadOntology "PromotersByRegulationTypes_Reasoning.omn")
  (r/reasoner-factory :hermit)  
- (printReasoningSummary "InduciblePromoter" (r/isubclasses localOntology (iri (str "http://www.sybio.ncl.ac.uk#InduciblePromoter")))))
+ (printReasoningSummary "InduciblePromoter" (r/isubclasses localOntology (iri (str ONTOLOGY_URI "#InduciblePromoter")))))
 
 ;To generate subsets of the ontology which can be submitted to reasoners directly
 (defn subsetForClasses[classesToKeep nssuffix targetFile message]
@@ -133,15 +116,15 @@
   (remove-ontology-maybe   (.getOntologyID merged)) 
   
   (clojure.java.io/delete-file (str "temp" targetFile))
-
-  (println "done!"))
+  (println "done!")
+  )
 
 
 (defn createOntologySubsets[]
   ;Hermit:1.3.8.3, FaCT:1.6.4   
   ;Hermit:979 ms, FaCT++:192 ms
-  (remove-ontology-maybe  (new OWLOntologyID (iri "http://www.bacillondex.org")))
-  (remove-ontology-maybe  (new OWLOntologyID (iri "http://www.sybio.ncl.ac.uk")))
+  (remove-ontology-maybe  (new OWLOntologyID (iri (str ONTOLOGY_DATA_URI))))
+  (remove-ontology-maybe  (new OWLOntologyID (iri (str ONTOLOGY_URI))))
   
   (subsetForClasses ["Operator"] "operators" "Operators_Reasoning.omn" "Creating the subset of the ontology to classify operators only...")
   
