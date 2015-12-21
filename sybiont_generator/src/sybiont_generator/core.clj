@@ -353,8 +353,13 @@
     (convert)
     (addClosureAxioms)  
     (save-ontology synthbiont SYBIONT :omn)
+    (save-ontology synthbiont SYBIONT_OWL :rdf)    
     (save-ontology bacillondex SYBIONTKB :omn)    
     (save-ontology bacillondex "sybiontkb_nosbol.rdf" :rdf)    
     (removeClassesExcept  bacillondex ["Operator" "Promoter" "CDS" "Shim" "Terminator" "RBS"]) 
     (save-ontology bacillondex "sybiontkb_sequenceclasses.rdf" :rdf)        
 )
+
+;Steps to execute
+;(createont)
+;(addSBOLClasses)

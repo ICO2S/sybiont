@@ -1,7 +1,7 @@
 (ns sybiont_generator.param)
 
 ; ontology URIs
-(def ONTOLOGY_URI "http://www.sybio.ncl.ac.uk")
+(def ONTOLOGY_URI "http://w3id.org/synbio/ont")
 (def ONTOLOGY_DATA_URI "http://www.bacillondex.org")
 (def GO_URI "http://purl.org/obo/owl/GO")
 (def SO_URI "http://purl.org/obo/owl/SO")
@@ -110,6 +110,7 @@
                         })
 
 (def SYBIONT "sybiont.omn")
+(def SYBIONT_OWL "sybiont.owl")
 (def SYBIONTKB "sybiontkb.omn")
 
     

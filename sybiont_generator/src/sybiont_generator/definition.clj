@@ -7,7 +7,7 @@
              [pattern :as p]]))
   
 (defontology synthbiont
-	 :iri "http://www.sybio.ncl.ac.uk"
+	 :iri "http://w3id.org/synbio/ont"
 	 :prefix "sybio:"
 	 :comment "An ontology for synthetic biology"
 	 :versioninfo "1.0"
