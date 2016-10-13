@@ -60,6 +60,10 @@
   (datatype-property predicateOntology predicate)
   (owl-class (.getIRI owlClass) :subclass (has-value predicateOntology predicate value)))
 
+(defn addDatatypePropertyForIndividual [owlIndividual predicateOntology predicate value]
+  (datatype-property predicateOntology predicate)
+  (individual owlIndividual :fact (fact predicateOntology predicate value)))
+
 (defn addObjectProperty [owlClass valueClass predicateOntology predicate]
   (object-property predicateOntology predicate)
   (owl-class (.getIRI owlClass) :subclass (owl-some predicateOntology predicate (owl-class (.getIRI valueClass))))
