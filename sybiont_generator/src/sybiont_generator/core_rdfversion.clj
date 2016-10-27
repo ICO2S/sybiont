@@ -577,9 +577,47 @@
 ;https://crossclj.info/doc/uk.org.russet/tawny-owl/1.5.0/tawny.owl.html#_add-comment
 ;http://www.bacillondex.org#6634
 
-(defn testgm []
-    (println "test")
+(defn addReasoningResults []
+  
+   (let [rdfModel (getRDFModel "sybiontkb_rdfversion.rdf")]      
+      (addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/NegativelyRegulatedOperator.sparql")
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/PositivelyRegulatedOperator.sparql")    	
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/RepressiblePromoter.sparql")
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/InduciblePromoter.sparql")
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/InduciblePromoterWith2Operators.sparql")
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/RepressiblePromoterWith2Operators.sparql")
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/RepressibleInduciblePromoterWith2Operators.sparql")    	
+     
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/SigAPromoter.sparql")
+      (addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/SigBPromoter.sparql")
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/SigDPromoter.sparql")
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/SigEPromoter.sparql")
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/SigFPromoter.sparql")
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/SigGPromoter.sparql")
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/SigHPromoter.sparql")
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/SigIPromoter.sparql")
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/SigKPromoter.sparql")
+      (addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/SigLPromoter.sparql")
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/SigMPromoter.sparql")
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/SigVPromoter.sparql")
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/SigWPromoter.sparql")     
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/SigXPromoter.sparql")     
+      (addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/SigYPromoter.sparql")
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/SigZPromoter.sparql")
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/YlaCPromoter.sparql")    	
+     
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/ConstitutiveSigAPromoter.sparql")    	
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/RepressorEncodingCDS.sparql")
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/ActivatorEncodingCDS.sparql")
+    	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/KinaseEncodingCDS.sparql")
+      (addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/ResponseRegulatorEncodingCDS.sparql")            
+      (save rdfModel "sybiontkb_rdfversion_inferred.rdf")      
+     ) 
+
+  
+ 	    	
     )
+    
 ;Steps to execute
-;(createont)
-;(addSBOLClasses)
+;(createrdf)
+;(addReasoningResults)
