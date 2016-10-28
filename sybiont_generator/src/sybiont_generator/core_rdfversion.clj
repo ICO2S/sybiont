@@ -611,7 +611,7 @@
     	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/ActivatorEncodingCDS.sparql")
     	(addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/KinaseEncodingCDS.sparql")
       (addSPARQLConstructQueryResult rdfModel rdfModel "rdfinference/ResponseRegulatorEncodingCDS.sparql")            
-      (save rdfModel "sybiontkb_rdfversion_inferred.rdf")      
+      (save rdfModel "sybiontkb_rdfversion_inferred.ttl")      
      ) 
 
   

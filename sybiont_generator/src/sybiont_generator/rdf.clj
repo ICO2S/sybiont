@@ -23,6 +23,13 @@
   (println "Wrote the model")  
   )
 
+(defn saveRdfXml[model filePath]
+  ;(.write model (new FileOutputStream (new File filePath)) "RDF/XML-ABBREV")
+  (.write model (new FileOutputStream (new File filePath)) "RDF/XML")
+  ;(.write model (new FileOutputStream (new File filePath)) "Turtle")  
+  (println "Wrote the model")  
+  )
+
 
 (defn addSPARQLConstructQueryResult[modelToAdd modelToQuery sparqlFilePath]
   (
@@ -30,7 +37,7 @@
     (if (.isEmpty resultModel)
       (println (concat sparqlFilePath  " did not return any results!"))
       (do
-        (println "Adding query results")
+        (println (str "Adding query results for "  sparqlFilePath))
         (.add modelToAdd resultModel)
        )
     )
