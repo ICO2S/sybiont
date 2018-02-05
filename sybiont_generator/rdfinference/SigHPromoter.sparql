@@ -1,0 +1,37 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  sybio: <http://w3id.org/synbio/ont#>
+
+CONSTRUCT {?promoter a sybio:SigHPromoter}
+WHERE {    	
+	{
+		?protein a sybio:Protein ;
+			sybio:accession ?accession .
+	
+        ?TF sybio:bindsTo ?promoter .
+	
+		{?TF owl:sameAs ?protein .} UNION {?protein owl:sameAs ?TF .}
+	
+		?promoter a sybio:Promoter
+		
+		FILTER (regex(?accession,"BSU00980"))
+	}
+	UNION
+	{
+		?protein a sybio:Protein ;
+			sybio:accession ?accession .	
+        
+        ?TF sybio:bindsTo ?childPromoter .
+		
+		{?TF owl:sameAs ?protein .} UNION {?protein owl:sameAs ?TF .}
+		
+		?childPromoter a sybio:Promoter ;
+			sybio:partOf ?promoter .
+	
+		?promoter a sybio:Promoter
+		
+		FILTER (regex(?accession,"BSU00980"))
+	}
+}

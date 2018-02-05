@@ -1,0 +1,24 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  sybio: <http://w3id.org/synbio/ont#>
+
+CONSTRUCT {?promoter a sybio:InduciblePromoter}
+WHERE {    
+  {
+      SELECT ?promoter (count(?positivelyRegulatedOperator) AS ?numberOfPositivelyRegulatedOperators) (count(?operator) AS ?numberOfOperators)
+      WHERE
+        {
+          ?positivelyRegulatedOperator sybio:partOf  ?promoter ;
+          	a sybio:PositivelyRegulatedOperator .
+
+          ?operator sybio:partOf  ?promoter ;
+          	a sybio:Operator .
+
+          ?promoter a sybio:Promoter .   
+        }
+        GROUP BY ?promoter
+    }
+   FILTER (?numberOfPositivelyRegulatedOperators=1 && ?numberOfOperators=1)
+}
