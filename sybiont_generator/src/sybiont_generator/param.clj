@@ -28,7 +28,7 @@
 (def EVIDENCE_TYPE_PARENT_CLASS "EvidenceType")
 (def DATA_SOURCE_PARENT_CLASS "DataSource")
 
-(def INVERSE_PROPERTIES {"part_of" "hasPart", "en_by" "encodes", "equ" "equ","bi_to" "boundBy"})  
+(def INVERSE_PROPERTIES {"part_of" "hasPart", "en_by" "encodes", "equ" "equ","bi_to" "boundBy", "has_participant" "participatesIn"})  
 (def HAS_PART "hasPart")
 
 (def CLASS_MAPPINGS {"BioProc" "BiologicalProcess", "MolFunc" "MolecularFunction", "CelComp" "CellularComponent", 
